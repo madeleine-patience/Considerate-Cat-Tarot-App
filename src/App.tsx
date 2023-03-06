@@ -17,27 +17,32 @@ let tarotData = data.tarotDeck.map((card, index) => {
 // Prime Gaminghugodos: You need to splice and provide a second argument
 
 // https://gist.github.com/joshwashywash/98303ea29775feb052b1c722adf921d0
-let indexes: number[] = [];
-for (let i = 1; i < data.tarotDeck.length; i++) {
-  indexes.push(i);
-}
-console.log(indexes);
+
 function App() {
   const [randomTarotNumber, setRandomTarotNumber] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
 
+  //define an empty array that will eventually receive 3 random numbers.
+  const randomNumbers: number[] = [];
+
   function getOneCard() {
+    //defeine array length
     const arrayLength = data.tarotDeck.length;
-    setRandomTarotNumber(Math.floor(Math.random() * arrayLength));
-    setRandomTarotNumber1(Math.floor(Math.random() * arrayLength));
-    setRandomTarotNumber2(Math.floor(Math.random() * arrayLength));
 
-    indexes = indexes.splice(randomTarotNumber, 1);
-    indexes = indexes.splice(randomTarotNumber2, 1);
+    //while loop to fill up the above array with three number that are neither 0 nor already in the array. If false, push to randomNumbers array.
+    while (randomNumbers.length < 3) {
+      let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
+      if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
+        randomNumbers.push(randomNum);
+      }
+      // update state with three new numbers for the tarot deck.
+      setRandomTarotNumber(randomNumbers[0]);
+      setRandomTarotNumber1(randomNumbers[1]);
+      setRandomTarotNumber2(randomNumbers[2]);
+    }
   }
-
-  function flipCard() {}
+  console.log(randomTarotNumber, randomTarotNumber1, randomTarotNumber2);
 
   return (
     <>
@@ -49,9 +54,9 @@ function App() {
       </div>
 
       <div className=" flex mx-auto ">
-        {/* <TarotBack />
         <TarotBack />
-        <TarotBack /> */}
+        <TarotBack />
+        <TarotBack />
       </div>
     </>
   );
