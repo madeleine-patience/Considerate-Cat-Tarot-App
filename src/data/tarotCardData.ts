@@ -78,6 +78,9 @@ import image77 from "../artwork/77.jpg";
 import image78 from "../artwork/78.jpg";
 import back from "../artwork/back.jpg";
 
+import Phaedra from "../images/Cats/Phaedra.jpg";
+import MyGal from "../images/Cats/MyGal.jpg";
+
 const tarotDeck = {
   tarotDeck: [
     {
@@ -86,7 +89,7 @@ const tarotDeck = {
       keyWords: [],
       description: "",
       imageFileName: back,
-      suit: "",
+      suit: "Major",
     },
     {
       id: 1,
@@ -141,6 +144,7 @@ const tarotDeck = {
         "This card can represent a teacher or someone who feels strongly about rules and expectations.",
       imageFileName: image6,
       suit: "Major",
+      catImage: MyGal,
     },
     {
       id: 7,
@@ -221,6 +225,7 @@ const tarotDeck = {
       description:
         "This card represents balance. Your have struck a balance in your life that is allowing you to feel peaceful. Show gratitude for this time and the balance will remain.",
       imageFileName: image15,
+      catImage: Phaedra,
       suit: "Major",
     },
     {
@@ -294,64 +299,64 @@ const tarotDeck = {
       keyWords: ["Discipline", "Will Power", "Influence"],
       description:
         "You're a strong person and are constantly showing strength in the face of difficult situations.",
-      imageFileName: image9,
+      imageFileName: image23,
+    },
+    {
+      id: 24,
+      cardName: "Two of Cups",
+      keyWords: ["Partnership", "Stability", "Compatibility"],
+      description:
+        "You are on the same page with many of the important people in your life. Your relationships feel supportive and equal and you're being respected and appreciated in your work life..",
+      imageFileName: image24,
     },
     // {
-    //   id: 24,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
-    // {
     //   id: 25,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
+    //   cardName: "Three of Cups",
+    //   keyWords: ["Friendship", "Laughter", "Celebration"],
     //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
+    //     "This is a card of friendship. The people in your life are supportive, caring, kind and loving. There is many events and opportunities to celebrate and your heart will be full from being around family and friends.",
+    //   imageFileName: image25,
     // },
-    // {
-    //   id: 26,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
-    // {
-    //   id: 27,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
-    // {
-    //   id: 28,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
-    // {
-    //   id: 29,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
-    // {
-    //   id: 30,
-    //   cardName: "Strength",
-    //   keyWords: ["Discipline", "Will Power", "Influence"],
-    //   description:
-    //     "You're a strong person and are constantly showing strength in the face of difficult situations.",
-    //   imageFileName: image9,
-    // },
+    {
+      id: 26,
+      cardName: "Four of Cups",
+      keyWords: ["Retreat", "Feeling Disconnected", "Contemplation"],
+      description:
+        "This card represents peace and relaxation. This is a good time to meditate, show gratitude and reconnect with yourself.",
+      imageFileName: image26,
+    },
+    {
+      id: 27,
+      cardName: "Five of Cups",
+      keyWords: ["Negativity", "Ungratefulness", "Loss"],
+      description:
+        "You may be in a headspace where everything is feeling very negative right now. Focus on gratitude and the positives to get yourself out of this funk.",
+      imageFileName: image27,
+    },
+    {
+      id: 28,
+      cardName: "Six of Cups",
+      keyWords: ["Nostalgia", "Compassion", "Happy memories"],
+      description:
+        "Feelings of childhood and 'the good old days' might be coming up for you lately. Right now is a good time to journal and reflect on the past. Remember that the past is the past and thinking too much about it can pull you away from the present.",
+      imageFileName: image28,
+    },
+    {
+      id: 29,
+      cardName: "Seven of Cups",
+      keyWords: ["Choices", "Indecision", "Daydreaming"],
+      description:
+        "You have a choice to make and it may be overwhelming you. There are many options, outcomes and possibilities ahead of you. Visualize what it is that you want and see yourself with each one. Which one feels right?",
+      imageFileName: image29,
+    },
+    {
+      id: 30,
+      cardName: "Eight of Cups",
+      keyWords: ["Walking Away", "Searching For Meaning"],
+      description:
+        "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
+      imageFileName: image30,
+    },
   ],
 };
 
