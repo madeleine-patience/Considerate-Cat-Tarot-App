@@ -1,5 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import TarotCard from "./components/TarotCard";
 import Button from "./components/Button";
@@ -8,8 +7,17 @@ import "@fontsource/merriweather";
 import TarotBack from "./components/TarotBack";
 import TarotFront from "./components/TarotFront";
 import React from "react";
-let tarotData = data.tarotDeck.map((card, index) => {
-  return <TarotCard data={card} />;
+import cats from "./data/cats";
+import CatInfoCard from "./components/CatInfoCard";
+
+console.log(data);
+
+let tarotData = data.tarotDeck.map((card) => {
+  return <TarotCard key={card.id} data={card} />;
+});
+
+let catData = cats.cats.map((card) => {
+  return <CatInfoCard key={card.id} data={card} />;
 });
 
 function App() {
@@ -20,6 +28,7 @@ function App() {
 
   // random number generator for tarot read
   function getOneCard() {
+    setShowHide(false);
     const arrayLength = data.tarotDeck.length;
 
     while (randomNumbers.length < 3) {
@@ -33,35 +42,38 @@ function App() {
     }
   }
   let [showHide, setShowHide] = React.useState(false);
+  let [showNumber, setShowNumber] = React.useState(0);
   let [typeOfRandom, setTypeOfRandom] = React.useState(randomTarotNumber0);
 
-  function displayTarotInfo() {
+  function displayTarotInfo(random: number) {
     setShowHide(!showHide);
+    setShowNumber(random);
   }
-
   return (
-    <>
+    <div className="static">
       <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
       <div className=" flex justify-center ">
         <TarotFront
-          onClick={displayTarotInfo}
+          onClick={() => displayTarotInfo(randomTarotNumber0)}
           imageSrc={data.tarotDeck[randomTarotNumber0].imageFileName}
         />
         <TarotFront
-          onClick={displayTarotInfo}
+          onClick={() => displayTarotInfo(randomTarotNumber1)}
           imageSrc={data.tarotDeck[randomTarotNumber1].imageFileName}
         />
         <TarotFront
-          onClick={displayTarotInfo}
+          onClick={() => displayTarotInfo(randomTarotNumber2)}
           imageSrc={data.tarotDeck[randomTarotNumber2].imageFileName}
         />
       </div>
-      {showHide && (
-        <div className=" flex mx-auto ">
-          <TarotCard data={data.tarotDeck[randomTarotNumber0]} />
+      {catData}
+
+      {showHide && randomTarotNumber0 !== 0 && (
+        <div className=" flex mx-auto justify-center  ">
+          <TarotCard data={data.tarotDeck[showNumber]} />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

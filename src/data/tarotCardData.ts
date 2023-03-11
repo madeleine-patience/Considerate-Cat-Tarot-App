@@ -30,8 +30,8 @@ import image29 from "../artwork/29.jpg";
 import image30 from "../artwork/30.jpg";
 import image31 from "../artwork/31.jpg";
 import image32 from "../artwork/32.jpg";
-import image33 from "../artwork/33.jpg";
-import image34 from "../artwork/34.jpg";
+import image33 from "../artwork/33new.jpg";
+import image34 from "../artwork/34new.jpg";
 import image35 from "../artwork/35.jpg";
 import image36 from "../artwork/36.jpg";
 import image37 from "../artwork/37.jpg";
@@ -356,6 +356,318 @@ const tarotDeck = {
       description:
         "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
       imageFileName: image30,
+    },
+    {
+      id: 31,
+      cardName: "Nine of Cups",
+      keyWords: ["Indulging", "Treating Yourself", "Luxury"],
+      description:
+        "Nine of cups is all about treating yourself. Something that you've been waiting for will soon come. Your hard work is about to pay off! If you're asking a question, the answer is yes.",
+      imageFileName: image31,
+    },
+    {
+      id: 32,
+      cardName: "Ten of Cups",
+      keyWords: ["Bliss", "Happiness", "Made Dreams"],
+      description:
+        "Everything is good; ten of cups is one of the happiest cards in the deck. All the parts of life seem to be working out the way you like and you feel content. Enjoy.",
+      imageFileName: image32,
+    },
+    {
+      id: 33,
+      cardName: "Daughter of Cups",
+      keyWords: ["Playfulness", "Mischeif", "Seeking Fun"],
+      description:
+        "You've gone through a period where you've had to be strict or serious with yourself. It's now time to loosen up a bit; be free and playful. Let others see your fun side.",
+      imageFileName: image33,
+    },
+    {
+      id: 34,
+      cardName: "Son of Cups",
+      keyWords: ["Good News", "Love", "Passion"],
+      description:
+        "Your life has been filled with posive energy and you're ready to take on any task! If you've been waiting for good news- it's on the way.",
+      imageFileName: image34,
+    },
+    {
+      id: 35,
+      cardName: "Mother of Cups",
+      keyWords: ["Wisdom", "Sensitivity", "Maturity"],
+      description:
+        "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
+      imageFileName: image35,
+    },
+    {
+      id: 36,
+      cardName: "Father Of Cups",
+      keyWords: ["Supportive Male Energy", "Kindness", "Guidance"],
+      description:
+        "The Father of Cups represents someone who is compassionate, kind, supportive and in touch with his feminine side. This is a supportive card about helping others and receiving help in return.",
+      imageFileName: image36,
+    },
+    {
+      id: 37,
+      cardName: "Ace of Pentacles",
+      keyWords: ["Prosperity", "Opportunity", "Adventure"],
+      description:
+        "This is the start of something new for you and you have the time and resources to see it through. You may be given support and this card can represent that support in the form of money.",
+      imageFileName: image37,
+    },
+    {
+      id: 38,
+      cardName: "Two of Pentacles",
+      keyWords: ["Balance", "Priorities", "Adaptation"],
+      description:
+        "You're working very hard to keep a balanced lifestyle, whatever that means for you. When this car id pulled, it's an encouragement to say you're succeding at your goal to maintain balance",
+      imageFileName: image38,
+    },
+    {
+      id: 39,
+      cardName: "Three of Pentacles",
+      keyWords: ["Completion", "Finished Work", "Satisfaction"],
+      description:
+        "You are ready to take on a new and creative challenge. you have a new skill at the ready and you're eager to put them to the test. Perhaps you've just finished a course or graduated from a prgoram and your'e excited to put all your hard work into play.",
+      imageFileName: image39,
+    },
+    {
+      id: 40,
+      cardName: "Four of Pentacles",
+      keyWords: ["Holding Back", "Conservation", "Safety"],
+      description:
+        "Are you holding onto something that is no longer serving you? This could be a person, object or even a thought. These things all make us feel safe and comfortable but if you are no longer feeling joy in the presence it's time to let go.",
+      imageFileName: image40,
+    },
+    {
+      id: 41,
+      cardName: "Five of Pentacles",
+      keyWords: ["Reaching Out", "Need", "Transition"],
+      description:
+        "Money troubles might be on the horizon but know that these things are always part of an ebb and flow. Sometimes we have more and sometimes we have less.",
+      imageFileName: image41,
+    },
+    {
+      id: 42,
+      cardName: "Six of Pentacles",
+      keyWords: ["Charity", "Sharing", "Resources"],
+      description:
+        "If you've been having money problems, you will soon come out of it. A new job, a hand out or some other sort of monetary compensation may be on the way. Continue to use your money managing skills for now.",
+      imageFileName: image42,
+    },
+    {
+      id: 43,
+      cardName: "Seven of Pentacles",
+      keyWords: ["Assessment", "Evaluation", "Rewards"],
+      description:
+        "You've been patiently waiting for something and the Seven of Pentacles is likely pointing to some sort of financial return. An investment is going to pay off and it will be worth the wait!",
+      imageFileName: image43,
+    },
+    {
+      id: 44,
+      cardName: "Eight of Pentacles",
+      keyWords: ["Knowledge", "Detail", "Skill"],
+      description:
+        "You're going to be working very hard and if the Eight of Pentacles it is a sign that you are on the right track and your time spent will pay off. This card can also be a sign to start something that will help you work on your skills.",
+      imageFileName: image44,
+    },
+    {
+      id: 45,
+      cardName: "Nine of Pentacles",
+      keyWords: ["Luxury", "Material Possession"],
+      description:
+        "You're ontop of your fiances and if theres something you've wanted to purchase; now is the time to go ahead with it. Its a time to feel hopeful.",
+      imageFileName: image45,
+    },
+    {
+      id: 46,
+      cardName: "Ten of Pentacles",
+      keyWords: ["Abundance", "Wealth", "Success"],
+      description:
+        "Everything is falling into place for you; especially in your professional or financial life. Don't get swept away though, remain humble and stay true to yourself while enjoying the success.",
+      imageFileName: image46,
+    },
+    {
+      id: 47,
+      cardName: "Daughter of Pentacles",
+      keyWords: ["Practicality", "Growth", "Learning"],
+      description:
+        "You may be in a place where you are seeking knowledge in some way. You've recently become a student again. Maybe you are learning a new craft or picking up a new school. You feel excited and inspired by this new adventure.",
+      imageFileName: image47,
+    },
+    {
+      id: 48,
+      cardName: "Son of Pentacles",
+      keyWords: ["Caution", "Focus", "Sensibility"],
+      description:
+        "You're going to receive good news about money, but it wont be a life changing amount. Use this towards something sensible.",
+      imageFileName: image48,
+    },
+    {
+      id: 49,
+      cardName: "Mother of Pentacles",
+      keyWords: ["Generosity", "Nesting", "Propserity"],
+      description:
+        "You may be feeling like you'd like to put roots down and start settling in somewhere. The mother of pentacles is maternal and grounded which can represent the way you're feeling or a person in your life..",
+      imageFileName: image49,
+    },
+    {
+      id: 50,
+      cardName: "Father of Pentacles",
+      keyWords: ["Stability", "Comfort", "Dependability"],
+      description:
+        "This card represents the comfort and joys of life that can be enjoyed with money. It is a card that warns to keep an eye on finances yet still enjoy the comfort that money can bring.",
+      imageFileName: image50,
+    },
+    {
+      id: 51,
+      cardName: "Ace of Swords",
+      keyWords: ["Logic", "Confrontation", "Choices"],
+      description:
+        "Ace of swords encourages bravery. You might be holding back on something difficult. You know in your heart what needs to happen, now is the time to commit.",
+      imageFileName: image51,
+    },
+    {
+      id: 52,
+      cardName: "Two of Swords",
+      keyWords: ["Denial", "Debate", "Truce"],
+      description:
+        "The Two of Swords can indicate there is a decision in your life that you'll need to make. Reach out to your parnters and seek help to make this decison.",
+      imageFileName: image52,
+    },
+    {
+      id: 53,
+      cardName: "Three of Swords",
+      keyWords: ["Heartache", "Rejection", "Loneliness"],
+      description:
+        "You may be going through a betrayal, heartbreak or an embarrassment. Take this time to evaluate what is serving you in your life. Things are inevitably going to get better. ",
+      imageFileName: image53,
+    },
+    {
+      id: 54,
+      cardName: "Four of Swords",
+      keyWords: ["Meditation", "Rest", "Healing"],
+      description:
+        "Take a break. You need it. To be able to be your best self, you must be able to recharge your batteries.",
+      imageFileName: image54,
+    },
+    {
+      id: 55,
+      cardName: "Five of Swords",
+      keyWords: ["Selfishness", "Immaturity", "Self Interest"],
+      description:
+        "You might feel more on edge lately. Try to navigate what is is that's bothering you and do your best to not take things out on people who mean well. Also be on guard for those who may be untrustworthy.",
+      imageFileName: image55,
+    },
+    {
+      id: 56,
+      cardName: "Six of Swords",
+      keyWords: ["Travelling", "Breaking Free"],
+      description:
+        "Six of Swords is a card that urges the reader to take a rest. Specifically this card is related to travel and retreat. Could be a good time to think about taking a trip.",
+      imageFileName: image56,
+    },
+    {
+      id: 57,
+      cardName: "Seven of Swords",
+      keyWords: ["Disohonesty", "Assumption", "Betrayal"],
+      description:
+        "The Seven of Swords can be about a betrayal. Someone has or will hurt you. resist the urge to hurt this person back. Walk away and be the bigger person, you will be happy with the decision made to take the high road.",
+      imageFileName: image57,
+    },
+    {
+      id: 58,
+      cardName: "Eight of Swords",
+      keyWords: ["Helplessness", "Restriction", "Suffocation"],
+      description:
+        "Eight of Swords can point to feeling suffocated and confused. You're feeling a bit lost, stuck or understimulated. As difficult as it may be right now, try to find inspiration and attempt to emerge from this mindset you're in right now.",
+      imageFileName: image58,
+    },
+    {
+      id: 59,
+      cardName: "Nine of Swords",
+      keyWords: ["Worries", "Fear", "Restlessness"],
+      description:
+        "This card can represent fear, anxiety and sleep issues. Don't sit in these feelings alone. Reach out to ",
+      imageFileName: image59,
+    },
+    {
+      id: 60,
+      cardName: "Ten of Swords",
+      keyWords: ["Sadness", "Exhaustion", "Anger"],
+      description:
+        "This card is directing you to be on guard right now. It can indicate someone untrustworthy in your life; be aware of who you trust and confide in.",
+      imageFileName: image60,
+    },
+    {
+      id: 61,
+      cardName: "Daughter of Swords",
+      keyWords: ["Seeking Information", "Learning"],
+      description:
+        "You might be feeling a lot of emotions right now and although it is tempting to act on them, approaching life this way isn't always well reeived. Feel your feelings but be sure to approach every situation in a mature way. Don't let your emotions control.",
+      imageFileName: image61,
+    },
+    {
+      id: 62,
+      cardName: "Son of Swords",
+      keyWords: ["Intelligence", "Contentment"],
+      description:
+        "The son of swords is one of my most positive cards you can pull. It speaks to the fact that things are going relatively well for your ight now and there is a positive balance among all things. You feel happy about where things are headed.",
+      imageFileName: image62,
+    },
+    {
+      id: 63,
+      cardName: "Mother of Swords",
+      keyWords: ["Grace", "Skill", "Charm"],
+      description:
+        "The Mother of Words is level headed, knows what she wants and communicates it clearly. The Mother can tell you to follow your instincts as the are guiding you in the right direction.",
+      imageFileName: image63,
+    },
+    {
+      id: 64,
+      cardName: "Father of Swords",
+      keyWords: ["Stubbornness", "Intelligence", "Knowledge"],
+      description:
+        "This card can indicate a smart but controlling presence in your life. They mean well but can overstep. It is still appropriate to set boundaries.",
+      imageFileName: image64,
+    },
+    {
+      id: 65,
+      cardName: "Ace of Wands",
+      keyWords: ["Goals", "Opportunity", "Vision"],
+      description:
+        "Ace of Wands means the start of something big. A big project or new vision of something. It's time to set a goal for yourself and focus in on what you really want.",
+      imageFileName: image65,
+    },
+    {
+      id: 66,
+      cardName: "Two of Wands",
+      keyWords: ["Conflict", "Decision", "Individuality"],
+      description:
+        "You have a big choice ahead of you and you have all the information to make decision; you just have to set time aside to make it. you also may be feeling the need to multi task right now with everything that is going on. Be careful not to overload yourself.",
+      imageFileName: image66,
+    },
+    {
+      id: 67,
+      cardName: "Three of Wands",
+      keyWords: ["Action", "Exploration", "Leadership"],
+      description:
+        "This is the card you might pull if you need to take a first step towards something. If nothing comes to mind this card encourages the reader to think about trying something new.",
+      imageFileName: image67,
+    },
+    {
+      id: 68,
+      cardName: "Four of Wands",
+      keyWords: ["Celebration", "Teamwork", "Community"],
+      description:
+        "Celebration! Something good has come to light in your personal circle. This card is all about community. It is time to celebrate with those around you. This card can also encourage the reader to ask their community for support.",
+      imageFileName: image68,
+    },
+    {
+      id: 69,
+      cardName: "Five of Wands",
+      keyWords: ["Disagreement", "Confrontation", "Disruption"],
+      description:
+        "This card can indicate a smart but controlling presence in your life. They mean well but can overstep. It is still appropriate to set boundaries.",
+      imageFileName: image69,
     },
   ],
 };
