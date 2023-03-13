@@ -1,4 +1,5 @@
 import { useState } from "react";
+import reactLogo from "./assets/react.svg";
 import "./App.css";
 import TarotCard from "./components/TarotCard";
 import Button from "./components/Button";
@@ -7,18 +8,11 @@ import "@fontsource/merriweather";
 import TarotBack from "./components/TarotBack";
 import TarotFront from "./components/TarotFront";
 import React from "react";
-import cats from "./data/cats";
-import CatInfoCard from "./components/CatInfoCard";
 
-console.log(data);
+// SssnakePliskin: is there a card cleansing button?
+// :-)
 
-let tarotData = data.tarotDeck.map((card) => {
-  return <TarotCard key={card.id} data={card} />;
-});
-
-let catData = cats.cats.map((card) => {
-  return <CatInfoCard key={card.id} data={card} />;
-});
+// linxdoom: yep you can create some form of an overlay over the card when you click them so it just occupies the space above it. so you can click multiple cards and it would still be visible
 
 function App() {
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
@@ -49,6 +43,7 @@ function App() {
     setShowHide(!showHide);
     setShowNumber(random);
   }
+
   return (
     <div className="static">
       <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
@@ -66,7 +61,6 @@ function App() {
           imageSrc={data.tarotDeck[randomTarotNumber2].imageFileName}
         />
       </div>
-      {catData}
 
       {showHide && randomTarotNumber0 !== 0 && (
         <div className=" flex mx-auto justify-center  ">

@@ -75,12 +75,48 @@ import image74 from "../artwork/74.jpg";
 import image75 from "../artwork/75.jpg";
 import image76 from "../artwork/76.jpg";
 import image77 from "../artwork/77.jpg";
-import image78 from "../artwork/78.jpg";
+import image78 from "../artwork/78new.jpg";
 import back from "../artwork/back.jpg";
 
 import Phaedra from "../images/Cats/Phaedra.jpg";
 import MyGal from "../images/Cats/MyGal.jpg";
-
+import BenBen from "../images/Cats/BenBen.jpg";
+import Norman from "../images/Cats/Norman.jpg";
+import Bibbie from "../images/Cats/Bibbie.jpg";
+import Butters from "../images/Cats/Butters.jpg";
+import Beamer from "../images/Cats/Beamer.jpg";
+import Charis from "../images/Cats/Charis.jpg";
+import Chloe from "../images/Cats/Chloe.jpg";
+import Crumb from "../images/Cats/Crumb.jpg";
+import Doogie from "../images/Cats/Doogie.jpg";
+import Eddie from "../images/Cats/Eddie.jpg";
+import Finn from "../images/Cats/Finn.jpg";
+import Gibbs from "../images/Cats/Gibbs.jpg";
+import Gizmo from "../images/Cats/Gizmo.jpg";
+import Gracie from "../images/Cats/Gracie.jpg";
+import Hank from "../images/Cats/Hank.jpg";
+import Heidi from "../images/Cats/Heidi.jpg";
+import Jiao from "../images/Cats/Jiao.jpg";
+import Lua from "../images/Cats/Lua.jpg";
+import Milo from "../images/Cats/Milo.jpg";
+import Molly from "../images/Cats/Molly.jpg";
+import Mygal from "../images/Cats/Mygal.jpg";
+import Mystery from "../images/Cats/Mystery.jpg";
+import Rams from "../images/Cats/Rams.jpg";
+import Robot from "../images/Cats/Robot.jpg";
+import Ruther from "../images/Cats/Ruther.jpg";
+import Scrappy from "../images/Cats/Scrappy.jpg";
+import Wendy from "../images/Cats/Wendy.jpg";
+import Shy from "../images/Cats/Shy.jpg";
+import Otitis from "../images/Cats/Otitis.jpg";
+import Mustard from "../images/Cats/Mustard.jpg";
+import Meg from "../images/Cats/Meg.jpg";
+import Charlie from "../images/Cats/Charlie.jpg";
+import Daisy from "../images/Cats/Daisy.jpg";
+import Gigi from "../images/Cats/Gigi.jpg";
+import Alice from "../images/Cats/Alice.jpg";
+import Abe from "../images/Cats/Abe.jpg";
+import Cricket from "../images/Cats/Cricket.jpg";
 const tarotDeck = {
   tarotDeck: [
     {
@@ -108,6 +144,7 @@ const tarotDeck = {
         "Your intuition is strong right now. Listen to what you're feeling an dtrust the direction it's sending you.",
       imageFileName: image2,
       suit: "Major",
+      catImage: [Mystery],
     },
     {
       id: 3,
@@ -135,6 +172,7 @@ const tarotDeck = {
         "Opposite to many cards, this card tells you that you should listen to reason and facts rather than your intuition or gut.",
       imageFileName: image5,
       suit: "Major",
+      catImage: [BenBen, Norman],
     },
     {
       id: 6,
@@ -144,7 +182,7 @@ const tarotDeck = {
         "This card can represent a teacher or someone who feels strongly about rules and expectations.",
       imageFileName: image6,
       suit: "Major",
-      catImage: MyGal,
+      catImage: [MyGal],
     },
     {
       id: 7,
@@ -172,6 +210,7 @@ const tarotDeck = {
         "You're a strong person and are constantly showing strength in the face of difficult situations.",
       imageFileName: image9,
       suit: "Major",
+      catImage: [Butters],
     },
     {
       id: 10,
@@ -190,6 +229,7 @@ const tarotDeck = {
         "Everything in life is fleeting and will eventually move on. It is good to remember in difficult times that this too shall pass. Enjoy the good and ride out the bad.",
       imageFileName: image11,
       suit: "Major",
+      catImage: [Gibbs],
     },
     {
       id: 12,
@@ -199,6 +239,7 @@ const tarotDeck = {
         "Trust the universe will find a balance and justice will be served appropriately. Big or small; the problems in your life will come to a fair close.",
       imageFileName: image12,
       suit: "Major",
+      catImage: [BenBen, Butters, Phaedra, Eddie, Chloe, Hank, Scrappy, Beamer],
     },
     {
       id: 13,
@@ -225,7 +266,7 @@ const tarotDeck = {
       description:
         "This card represents balance. Your have struck a balance in your life that is allowing you to feel peaceful. Show gratitude for this time and the balance will remain.",
       imageFileName: image15,
-      catImage: Phaedra,
+      catImage: [Phaedra],
       suit: "Major",
     },
     {
@@ -292,6 +333,7 @@ const tarotDeck = {
         "You are finally done something that you've spent a lot of time and energy on. This card can indicate the end of something- but ultimately it will lead to new and positive beginnings.",
       imageFileName: image22,
       suit: "Major",
+      catImage: [Lua],
     },
     {
       id: 23,
@@ -308,6 +350,7 @@ const tarotDeck = {
       description:
         "You are on the same page with many of the important people in your life. Your relationships feel supportive and equal and you're being respected and appreciated in your work life..",
       imageFileName: image24,
+      catImage: [Charlie, Daisy],
     },
     // {
     //   id: 25,
@@ -324,6 +367,7 @@ const tarotDeck = {
       description:
         "This card represents peace and relaxation. This is a good time to meditate, show gratitude and reconnect with yourself.",
       imageFileName: image26,
+      catImage: [Jiao],
     },
     {
       id: 27,
@@ -340,6 +384,7 @@ const tarotDeck = {
       description:
         "Feelings of childhood and 'the good old days' might be coming up for you lately. Right now is a good time to journal and reflect on the past. Remember that the past is the past and thinking too much about it can pull you away from the present.",
       imageFileName: image28,
+      catImage: [Bibbie],
     },
     {
       id: 29,
@@ -348,6 +393,7 @@ const tarotDeck = {
       description:
         "You have a choice to make and it may be overwhelming you. There are many options, outcomes and possibilities ahead of you. Visualize what it is that you want and see yourself with each one. Which one feels right?",
       imageFileName: image29,
+      catImage: [Cricket],
     },
     {
       id: 30,
@@ -380,6 +426,7 @@ const tarotDeck = {
       description:
         "You've gone through a period where you've had to be strict or serious with yourself. It's now time to loosen up a bit; be free and playful. Let others see your fun side.",
       imageFileName: image33,
+      catImage: [Molly],
     },
     {
       id: 34,
@@ -388,6 +435,7 @@ const tarotDeck = {
       description:
         "Your life has been filled with posive energy and you're ready to take on any task! If you've been waiting for good news- it's on the way.",
       imageFileName: image34,
+      catImage: [Gizmo],
     },
     {
       id: 35,
@@ -396,6 +444,7 @@ const tarotDeck = {
       description:
         "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
       imageFileName: image35,
+      catImage: [Charis],
     },
     {
       id: 36,
@@ -404,6 +453,7 @@ const tarotDeck = {
       description:
         "The Father of Cups represents someone who is compassionate, kind, supportive and in touch with his feminine side. This is a supportive card about helping others and receiving help in return.",
       imageFileName: image36,
+      catImage: [Milo],
     },
     {
       id: 37,
@@ -420,6 +470,7 @@ const tarotDeck = {
       description:
         "You're working very hard to keep a balanced lifestyle, whatever that means for you. When this car id pulled, it's an encouragement to say you're succeding at your goal to maintain balance",
       imageFileName: image38,
+      catImage: [Chloe, Doogie],
     },
     {
       id: 39,
@@ -428,6 +479,7 @@ const tarotDeck = {
       description:
         "You are ready to take on a new and creative challenge. you have a new skill at the ready and you're eager to put them to the test. Perhaps you've just finished a course or graduated from a prgoram and your'e excited to put all your hard work into play.",
       imageFileName: image39,
+      catImage: [Butters, Phaedra],
     },
     {
       id: 40,
@@ -436,6 +488,7 @@ const tarotDeck = {
       description:
         "Are you holding onto something that is no longer serving you? This could be a person, object or even a thought. These things all make us feel safe and comfortable but if you are no longer feeling joy in the presence it's time to let go.",
       imageFileName: image40,
+      catImage: [Hank],
     },
     {
       id: 41,
@@ -444,6 +497,7 @@ const tarotDeck = {
       description:
         "Money troubles might be on the horizon but know that these things are always part of an ebb and flow. Sometimes we have more and sometimes we have less.",
       imageFileName: image41,
+      catImage: [Scrappy],
     },
     {
       id: 42,
@@ -452,6 +506,7 @@ const tarotDeck = {
       description:
         "If you've been having money problems, you will soon come out of it. A new job, a hand out or some other sort of monetary compensation may be on the way. Continue to use your money managing skills for now.",
       imageFileName: image42,
+      catImage: [Robot],
     },
     {
       id: 43,
@@ -468,6 +523,7 @@ const tarotDeck = {
       description:
         "You're going to be working very hard and if the Eight of Pentacles it is a sign that you are on the right track and your time spent will pay off. This card can also be a sign to start something that will help you work on your skills.",
       imageFileName: image44,
+      catImage: [Gigi],
     },
     {
       id: 45,
@@ -484,6 +540,7 @@ const tarotDeck = {
       description:
         "Everything is falling into place for you; especially in your professional or financial life. Don't get swept away though, remain humble and stay true to yourself while enjoying the success.",
       imageFileName: image46,
+      catImage: [Crumb],
     },
     {
       id: 47,
@@ -524,6 +581,7 @@ const tarotDeck = {
       description:
         "Ace of swords encourages bravery. You might be holding back on something difficult. You know in your heart what needs to happen, now is the time to commit.",
       imageFileName: image51,
+      catImage: [Rams],
     },
     {
       id: 52,
@@ -532,6 +590,7 @@ const tarotDeck = {
       description:
         "The Two of Swords can indicate there is a decision in your life that you'll need to make. Reach out to your parnters and seek help to make this decison.",
       imageFileName: image52,
+      catImage: [Alice, Abe],
     },
     {
       id: 53,
@@ -548,6 +607,7 @@ const tarotDeck = {
       description:
         "Take a break. You need it. To be able to be your best self, you must be able to recharge your batteries.",
       imageFileName: image54,
+      catImage: [Finn],
     },
     {
       id: 55,
@@ -564,6 +624,7 @@ const tarotDeck = {
       description:
         "Six of Swords is a card that urges the reader to take a rest. Specifically this card is related to travel and retreat. Could be a good time to think about taking a trip.",
       imageFileName: image56,
+      catImage: [Shy],
     },
     {
       id: 57,
@@ -580,6 +641,7 @@ const tarotDeck = {
       description:
         "Eight of Swords can point to feeling suffocated and confused. You're feeling a bit lost, stuck or understimulated. As difficult as it may be right now, try to find inspiration and attempt to emerge from this mindset you're in right now.",
       imageFileName: image58,
+      catImage: [Butters],
     },
     {
       id: 59,
@@ -612,6 +674,7 @@ const tarotDeck = {
       description:
         "The son of swords is one of my most positive cards you can pull. It speaks to the fact that things are going relatively well for your ight now and there is a positive balance among all things. You feel happy about where things are headed.",
       imageFileName: image62,
+      catImage: [Otitis],
     },
     {
       id: 63,
@@ -620,6 +683,7 @@ const tarotDeck = {
       description:
         "The Mother of Words is level headed, knows what she wants and communicates it clearly. The Mother can tell you to follow your instincts as the are guiding you in the right direction.",
       imageFileName: image63,
+      catImage: [Mustard],
     },
     {
       id: 64,
@@ -644,6 +708,7 @@ const tarotDeck = {
       description:
         "You have a big choice ahead of you and you have all the information to make decision; you just have to set time aside to make it. you also may be feeling the need to multi task right now with everything that is going on. Be careful not to overload yourself.",
       imageFileName: image66,
+      catImage: [Meg],
     },
     {
       id: 67,
@@ -668,6 +733,80 @@ const tarotDeck = {
       description:
         "This card can indicate a smart but controlling presence in your life. They mean well but can overstep. It is still appropriate to set boundaries.",
       imageFileName: image69,
+    },
+    {
+      id: 70,
+      cardName: "Six of Wands",
+      keyWords: ["Victory", "Acheivement", "Pride"],
+      description:
+        "You or someone know you will have recently expereinced a victory- enjoy the feeling and bask in the hard work that has finally paid off. This card can also indicate that you need to awknowledge your friends more. ",
+      imageFileName: image70,
+    },
+    {
+      id: 71,
+      cardName: "Seven of Wands",
+      keyWords: ["Aggression", "Bravery", "Determined"],
+      description:
+        "If there is somoene in your life that is making you feel badly; it's time to stand up to that person. Healthy relationships build eachother up, they don't tear eachother down. If you need to walk away, it will be better in the long run.",
+      imageFileName: image71,
+    },
+    {
+      id: 72,
+      cardName: "Eight of Wands",
+      keyWords: ["Speed", "Change", "Conclusion"],
+      description:
+        "Eith of wands is about fast movements but also about patience. You might be trying to force something that isn't quite ready yet; you'll need to have patience even if things are moving quickly.",
+      imageFileName: image72,
+    },
+    {
+      id: 73,
+      cardName: "Nine of Wands",
+      keyWords: ["Toughness", "Persistence", "Pessimism"],
+      description:
+        "You might be feeling overwhelmed by something. Perhaps you've tried and failed at something important to you several times now and you're starting to feel like giving up. Take a break and tyr again. It's not a failur; you just need to approach it from a new angle.",
+      imageFileName: image73,
+    },
+    {
+      id: 74,
+      cardName: "Ten of Wands",
+      keyWords: ["Burdens", "Feeling Overwhelmed", "Exhaustion"],
+      description:
+        "You  have a lot on your plate and are feeling overwhelmed. You might also feel like these are your responsibilities and you can't share that burden. This is never true, help is always available. Use your circle to lighten your load.",
+      imageFileName: image74,
+    },
+    {
+      id: 75,
+      cardName: "Daughter of Wands",
+      keyWords: ["Enthusiasm", "Confidence", "Excitement"],
+      description:
+        "You've recently discovered a new passion or have been inpsired to work hard. You're excited and isnpired to be creative and work hard.",
+      imageFileName: image75,
+      catImage: [Wendy],
+    },
+    {
+      id: 76,
+      cardName: "Son of Wands",
+      keyWords: ["Boldness", "Passion", "Adventure"],
+      description:
+        "The son of wands is an adventure card, it's time to dream big and follow those dreams. A young spirited individual might enter your life to inspire you to do extraordinary things. You'll be searching for travel and adventure.",
+      imageFileName: image76,
+    },
+    {
+      id: 77,
+      cardName: "Mother of Wands",
+      keyWords: ["Attraction", "Attention", "Confidence"],
+      description:
+        "Mother of wands represents fertility and feminine confidence. If this represents a person in your life she is a good and loyal friend and always there for you when you most need her. This card can tell you that you'll need the women in your life in the close future.",
+      imageFileName: image77,
+    },
+    {
+      id: 78,
+      cardName: "Five of Wands",
+      keyWords: ["Career Focus", "Creativity", "Guidance"],
+      description:
+        "The Father of Wands can indicate an actual person in your life who is career focused, mature and supportive. If one person does not come to mind it could be a general air of support from the men around you.",
+      imageFileName: image78,
+      catImage: [Milo],
     },
   ],
 };
