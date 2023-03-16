@@ -1,3 +1,7 @@
+import { useState } from "react";
+import SelectedCatInfo from "./SelectedCatinfo";
+import catData from "../data/cats";
+
 interface MyTarotProps {
   data: {
     cardName: string;
@@ -10,6 +14,10 @@ interface MyTarotProps {
 }
 
 function TarotCard(props: MyTarotProps) {
+  const [showCatInfo, setShowCatInfo] = useState(false);
+  function handleShowCatInfo() {
+    setShowCatInfo(!showCatInfo);
+  }
 
   return (
     <div className=" bg-orange-200 max-w-[500px] p-4 m-2 rounded-md ">
@@ -26,14 +34,20 @@ function TarotCard(props: MyTarotProps) {
           {props.data.catImage && (
             <p className="mt-4 text-sm">Cats Present: </p>
           )}
+
           <div className="flex">
             {props.data.catImage &&
               props.data.catImage.map((image) => (
-                <img className=" w-16 mr-2 rounded-lg" src={image}></img>
+                <img
+                  onClick={handleShowCatInfo}
+                  className=" w-16 mr-2 rounded-lg"
+                  src={image}
+                ></img>
               ))}
           </div>
         </div>
       </div>
+      {showCatInfo && <SelectedCatInfo data={catData.cats[0]} />}
     </div>
   );
 }
