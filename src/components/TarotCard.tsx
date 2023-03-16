@@ -5,16 +5,12 @@ interface MyTarotProps {
     imageFileName: string;
     description: string;
     catImage?: string[] | undefined;
-    suit: string;
+    suit?: string;
   };
 }
 
 function TarotCard(props: MyTarotProps) {
-  // console.log(
-  //   props.data.catImage.map((items) => {
-  //     return <img src={items} />;
-  //   })
-  // );
+
   return (
     <div className=" bg-orange-200 max-w-[500px] p-4 m-2 rounded-md ">
       <h1 className=" text-4xl">{props.data.cardName}</h1>
@@ -30,7 +26,6 @@ function TarotCard(props: MyTarotProps) {
           {props.data.catImage && (
             <p className="mt-4 text-sm">Cats Present: </p>
           )}
-          {/* <p className="m-2">{if(props.data.catImage){"Cat Present"}} </p> */}
           <div className="flex">
             {props.data.catImage &&
               props.data.catImage.map((image) => (
