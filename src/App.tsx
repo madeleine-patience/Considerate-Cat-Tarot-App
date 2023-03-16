@@ -75,11 +75,6 @@ function App() {
           />
         </div>
 
-        <TarotFront
-          onClick={() => displayTarotInfo(15)}
-          imageSrc={data.tarotDeck[15].imageFileName}
-        />
-
         {/* <SelectedCat data={catData.cats[0]} /> */}
 
         {showHide && randomTarotNumber0 !== 0 && (
