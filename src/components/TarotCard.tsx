@@ -27,18 +27,22 @@ interface MyTarotProps {
 
 function TarotCard(props: MyTarotProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
+  const [selectedCatId, setSelectedCatId] = useState(0);
 
-  function handleShowCatInfo(image) {
+  function handleShowCatInfo(image: string) {
+    console.log("hey");
     setShowCatInfo(!showCatInfo);
-    const idOfCard = props.data.id;
-    const findTheCat = catData.cats.find((cat) => image === cat.image);
-
+    // const idOfCard = props.data.id;
+    const findTheCat = catData.cats.find(
+      (cat) =>
+        // cat.relevantCards?.includes(idOfCard)
+        image === cat.image
+    );
+    if (findTheCat) {
+      setSelectedCatId(findTheCat.id);
+    }
     console.log(findTheCat);
-    const theIdOfTheCat = findTheCat.id;
-    console.log(findTheCat);
-    // console.log(findTheCat);
   }
-
   // console.log(props.data.id);
   // if (catData.cats[props.data.id].relevantCards.includes(props.data.id)) {
   //   console.log("hi");
@@ -63,12 +67,13 @@ function TarotCard(props: MyTarotProps) {
               {props.data.catImage && (
                 <p className="mt-4 text-sm">Cats Present: </p>
               )}
-              {console.log(props.data.catImage)}
               <div className="flex">
                 {props.data.catImage &&
                   props.data.catImage.map((image) => (
                     <img
-                      onClick={() => {
+                      key={image}
+                      onClick={(event) => {
+                        // event.preventDefault();
                         handleShowCatInfo(image);
                       }}
                       className=" w-16 mr-2 rounded-lg"
@@ -84,7 +89,7 @@ function TarotCard(props: MyTarotProps) {
         <div>
           <button onClick={handleShowCatInfo}> Back </button>
 
-          {<SelectedCatInfo data={catData.cats[theIdOfTheCat]} />}
+          {<SelectedCatInfo data={catData.cats[selectedCatId]} />}
         </div>
       )}
     </div>
