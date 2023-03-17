@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
-import tarotData from "../data/tarotCardData";
 
 interface MyTarotProps {
   data: {
@@ -10,44 +9,24 @@ interface MyTarotProps {
     keyWords: string[];
     imageFileName: string;
     description: string;
-    catImage?: string[] | undefined;
+    catImage?: string[];
     suit?: string;
   };
 }
-// but seems your tying the cat images to the tarot card, why not tie the cat Id to the tarot cards?
-
-// console.log(catData.cats[0]);
-// function FindProperCat(catInfo: any, tarotInfo: any) {
-//   const indexOfCard = tarotInfo.tarotDeck[0].id;
-//   const findTheCat = catInfo.cats.find((cat) => cat.id === indexOfCard);
-//   return findTheCat;
-// }
-
-// console.log(FindProperCat(catData, tarotData));
 
 function TarotCard(props: MyTarotProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
   const [selectedCatId, setSelectedCatId] = useState(0);
 
-  function handleShowCatInfo(image: string) {
-    console.log("hey");
+  function handleShowCatInfo(image: any) {
+    console.log(image);
     setShowCatInfo(!showCatInfo);
-    // const idOfCard = props.data.id;
-    const findTheCat = catData.cats.find(
-      (cat) =>
-        // cat.relevantCards?.includes(idOfCard)
-        image === cat.image
-    );
+    const findTheCat = catData.cats.find((cat) => image === cat.image);
     if (findTheCat) {
       setSelectedCatId(findTheCat.id);
     }
-    console.log(findTheCat);
   }
-  // console.log(props.data.id);
-  // if (catData.cats[props.data.id].relevantCards.includes(props.data.id)) {
-  //   console.log("hi");
-  // }
-
+  console.log(selectedCatId);
   return (
     <div>
       {!showCatInfo && (
@@ -73,7 +52,6 @@ function TarotCard(props: MyTarotProps) {
                     <img
                       key={image}
                       onClick={(event) => {
-                        // event.preventDefault();
                         handleShowCatInfo(image);
                       }}
                       className=" w-16 mr-2 rounded-lg"
@@ -87,9 +65,12 @@ function TarotCard(props: MyTarotProps) {
       )}
       {showCatInfo && (
         <div>
-          <button onClick={handleShowCatInfo}> Back </button>
-
+          <button onClick={() => handleShowCatInfo(props.data.catImage)}>
+            Back
+          </button>
           {<SelectedCatInfo data={catData.cats[selectedCatId]} />}
+          {/* 
+          two_eight: by using the {handleMethod} syntax instead of {() => handleMethod()} it's expected that your handleMethod function accept a MouseEvents argument */}
         </div>
       )}
     </div>
