@@ -60,7 +60,7 @@ function App() {
           <Link to="/selectedCat"> HI </Link>{" "}
         </button>
         <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
-        <div className=" flex justify-center ">
+        {/* <div className=" flex justify-center ">
           <TarotFront
             onClick={() => displayTarotInfo(randomTarotNumber0)}
             imageSrc={data.tarotDeck[randomTarotNumber0].imageFileName}
@@ -73,7 +73,7 @@ function App() {
             onClick={() => displayTarotInfo(randomTarotNumber2)}
             imageSrc={data.tarotDeck[randomTarotNumber2].imageFileName}
           />
-        </div>
+        </div> */}
 
         {/* <SelectedCat data={catData.cats[0]} /> */}
         <TarotFront
@@ -83,6 +83,10 @@ function App() {
         <TarotFront
           onClick={() => displayTarotInfo(15)}
           imageSrc={data.tarotDeck[15].imageFileName}
+        />
+        <TarotFront
+          onClick={() => displayTarotInfo(39)}
+          imageSrc={data.tarotDeck[39].imageFileName}
         />
         {showHide && randomTarotNumber0 !== 0 && (
           <div className=" flex mx-auto justify-center  ">

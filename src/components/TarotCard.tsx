@@ -14,6 +14,8 @@ interface MyTarotProps {
     suit?: string;
   };
 }
+// but seems your tying the cat images to the tarot card, why not tie the cat Id to the tarot cards?
+
 // console.log(catData.cats[0]);
 // function FindProperCat(catInfo: any, tarotInfo: any) {
 //   const indexOfCard = tarotInfo.tarotDeck[0].id;
@@ -25,22 +27,22 @@ interface MyTarotProps {
 
 function TarotCard(props: MyTarotProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
-  function handleShowCatInfo() {
+
+  function handleShowCatInfo(image) {
     setShowCatInfo(!showCatInfo);
+    const idOfCard = props.data.id;
+    const findTheCat = catData.cats.find((cat) => image === cat.image);
+
+    console.log(findTheCat);
+    const theIdOfTheCat = findTheCat.id;
+    console.log(findTheCat);
+    // console.log(findTheCat);
   }
+
   // console.log(props.data.id);
   // if (catData.cats[props.data.id].relevantCards.includes(props.data.id)) {
   //   console.log("hi");
   // }
-
-  // console.log(catData.cats[1].relevantCards?.includes(9));
-  const idOfCard = props.data.id;
-  const findTheCat = catData.cats.find((cat) =>
-    cat.relevantCards?.includes(idOfCard)
-  );
-  const theIdOfTheCat = findTheCat.id;
-  console.log(theIdOfTheCat);
-  // console.log(findTheCat);
 
   return (
     <div>
@@ -61,12 +63,14 @@ function TarotCard(props: MyTarotProps) {
               {props.data.catImage && (
                 <p className="mt-4 text-sm">Cats Present: </p>
               )}
-
+              {console.log(props.data.catImage)}
               <div className="flex">
                 {props.data.catImage &&
                   props.data.catImage.map((image) => (
                     <img
-                      onClick={handleShowCatInfo}
+                      onClick={() => {
+                        handleShowCatInfo(image);
+                      }}
                       className=" w-16 mr-2 rounded-lg"
                       src={image}
                     ></img>

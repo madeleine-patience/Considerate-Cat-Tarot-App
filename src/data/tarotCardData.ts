@@ -352,14 +352,14 @@ const tarotDeck = {
       imageFileName: image24,
       catImage: [Charlie, Daisy],
     },
-    // {
-    //   id: 25,
-    //   cardName: "Three of Cups",
-    //   keyWords: ["Friendship", "Laughter", "Celebration"],
-    //   description:
-    //     "This is a card of friendship. The people in your life are supportive, caring, kind and loving. There is many events and opportunities to celebrate and your heart will be full from being around family and friends.",
-    //   imageFileName: image25,
-    // },
+    {
+      id: 25,
+      cardName: "Three of Cups",
+      keyWords: ["Friendship", "Laughter", "Celebration"],
+      description:
+        "This is a card of friendship. The people in your life are supportive, caring, kind and loving. There is many events and opportunities to celebrate and your heart will be full from being around family and friends.",
+      imageFileName: image25,
+    },
     {
       id: 26,
       cardName: "Four of Cups",
