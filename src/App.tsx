@@ -76,7 +76,14 @@ function App() {
         </div>
 
         {/* <SelectedCat data={catData.cats[0]} /> */}
-
+        <TarotFront
+          onClick={() => displayTarotInfo(9)}
+          imageSrc={data.tarotDeck[9].imageFileName}
+        />
+        <TarotFront
+          onClick={() => displayTarotInfo(15)}
+          imageSrc={data.tarotDeck[15].imageFileName}
+        />
         {showHide && randomTarotNumber0 !== 0 && (
           <div className=" flex mx-auto justify-center  ">
             <TarotCard data={data.tarotDeck[showNumber]} />

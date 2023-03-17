@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
+import tarotData from "../data/tarotCardData";
 
 interface MyTarotProps {
   data: {
+    id: number;
     cardName: string;
     keyWords: string[];
     imageFileName: string;
@@ -12,12 +14,33 @@ interface MyTarotProps {
     suit?: string;
   };
 }
+// console.log(catData.cats[0]);
+// function FindProperCat(catInfo: any, tarotInfo: any) {
+//   const indexOfCard = tarotInfo.tarotDeck[0].id;
+//   const findTheCat = catInfo.cats.find((cat) => cat.id === indexOfCard);
+//   return findTheCat;
+// }
+
+// console.log(FindProperCat(catData, tarotData));
 
 function TarotCard(props: MyTarotProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
   function handleShowCatInfo() {
     setShowCatInfo(!showCatInfo);
   }
+  // console.log(props.data.id);
+  // if (catData.cats[props.data.id].relevantCards.includes(props.data.id)) {
+  //   console.log("hi");
+  // }
+
+  // console.log(catData.cats[1].relevantCards?.includes(9));
+  const idOfCard = props.data.id;
+  const findTheCat = catData.cats.find((cat) =>
+    cat.relevantCards?.includes(idOfCard)
+  );
+  const theIdOfTheCat = findTheCat.id;
+  console.log(theIdOfTheCat);
+  // console.log(findTheCat);
 
   return (
     <div>
@@ -53,11 +76,13 @@ function TarotCard(props: MyTarotProps) {
           </div>
         </div>
       )}
-      <div>
-        <button onClick={handleShowCatInfo}> Back </button>
+      {showCatInfo && (
+        <div>
+          <button onClick={handleShowCatInfo}> Back </button>
 
-        {showCatInfo && <SelectedCatInfo data={catData.cats[0]} />}
-      </div>
+          {<SelectedCatInfo data={catData.cats[theIdOfTheCat]} />}
+        </div>
+      )}
     </div>
   );
 }
