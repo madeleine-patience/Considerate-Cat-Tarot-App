@@ -1,5 +1,4 @@
 import Phaedra from "../images/Cats/Phaedra.jpg";
-import Butters from "../images/Cats/Butters.jpg";
 import Gigi from "../images/Cats/Gigi.jpg";
 import Benben from "../images/Cats/BenBen.jpg";
 const catData = {
@@ -8,31 +7,49 @@ const catData = {
       id: 0,
       name: "BenBen",
       description:
-        "BenBen the cat was once known as the saddest cat on the internet due to his down-turned eyes and worried expression. He was just a day away from being euthanized when he was rescued in April 2016. BenBen had been brought to the Vancouver Animal Emergency and Referral Centre by a BC SPCA officer and required immediate medical attention due to puncture wounds, infected lacerations, a crushed spine, and a damaged ear. Although there were many people interested in adopting him, his medical conditions and need for constant care made him deemed unadoptable. Fortunately, veterinarian technician Sandy Windover stepped in to save BenBen. She works at the Vancouver ER Animal Centre and had met BenBen before. She messaged her partner, Adam, to see if they could bring BenBen home and he agreed. Windover and Adam have since given BenBen a loving home where he's made tremendous progress. He went from barely being able to take a few steps without falling over to being able to run and jump.",
-      buddies: "Butters",
-      image: Benben,
+        "Benben's story is one of true grit and determination. Rescued just in time, he went through several surgeries before finding a loving home. Despite his rough start, Benben's tenacity has inspired many, and he now shares his home with brother Norman and four other cats. Benben's journey serves as a reminder that even when faced with obstacles, we can overcome them and live a fulfilling life with the love and support of family and friends.",
+      buddies: "Norman",
+      buddyIds: [1],
+      image: "/Cats/BenBen.jpg",
     },
     {
       id: 1,
-      name: "Butters",
-      description: "He is Orange",
-      buddyIds: [2, 3],
-      image: Butters,
+      name: "Norman",
+      description:
+        "Norman is a true survivor. Rescued from a tough situation, he overcame several health issues and found a forever home with his brother Benben and four other feline siblings. Despite his difficult past, Norman has a heart of gold and brings joy to everyone he meets. His unwavering spirit and positive attitude have inspired many, and he continues to thrive in his loving home. Norman's story is a testament to the resilience of the feline spirit and a reminder that no matter what life throws our way, we can overcome it with determination and love.",
+      buddyIds: [0],
+      image: "/Cats/Norman.jpg",
     },
-
     {
       id: 2,
-      name: "Gigi",
-      description: "Cute.",
-      image: Gigi,
+      name: "Butters",
+      description: "He is Orange",
+      buddyIds: [4],
+      image: "/Cats/Butters.jpg",
     },
 
     {
       id: 3,
+      name: "Gigi",
+      description:
+        "Gigi was a foster cat who lived in a college dorm room, bringing joy and comfort to students. Her affectionate nature and playful antics quickly won over the hearts of everyone she met. Despite being a foster cat, Gigi never lacked for love or attention, and her presence in the dorm room brought a sense of calm and happiness. Thankfully, her stay was short-lived, as she was adopted quickly after entering foster care. Gigi's time in the dorm room was a reminder that even in unexpected places, there is always room for love and companionship.",
+      image: "/Cats/Gigi.jpg",
+    },
+
+    {
+      id: 4,
       name: "Phaedra",
-      description: "Lovely cat, bit mean sometimes if provoked.",
-      buddyIds: [1],
-      image: Phaedra,
+      description:
+        "Phaedra, a rescued cat from Vokra, was once known for her wicked behavior. However, her life took a turn for the better when she was introduced to her adopted brother Butters. The two cats formed a bond and soon became inseparable. With Butters by her side, Phaedra's demeanor transformed from malicious to kind, and she finally found the love and companionship she had been missing. The two were adopted together and now look after their human baby brother.",
+      buddyIds: [2],
+      image: "/Cats/Phaedra.jpg",
+    },
+    {
+      id: 5,
+      name: "Crumb",
+      description:
+        "Crumb was a mischievous feline who loved to play pranks on his family. He would hide their socks, steal food from their plates, and even turn off the TV during important moments of their favorite shows. Despite his naughty behavior, his family couldn't help but adore him for his playful and entertaining antics. One day, he even managed to sneak into the neighbor's house and came back with a stolen sock. Crumb's curious and adventurous spirit always kept his family on their toes, and they loved him all the more for it.",
+      image: "/Cats/Crumb.jpg",
     },
   ],
 };

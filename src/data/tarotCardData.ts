@@ -117,6 +117,8 @@ import Gigi from "../images/Cats/Gigi.jpg";
 import Alice from "../images/Cats/Alice.jpg";
 import Abe from "../images/Cats/Abe.jpg";
 import Cricket from "../images/Cats/Cricket.jpg";
+// clean this up, use the public folder instead of SRC.
+
 const tarotDeck = {
   tarotDeck: [
     {
@@ -144,7 +146,7 @@ const tarotDeck = {
         "Your intuition is strong right now. Listen to what you're feeling an dtrust the direction it's sending you.",
       imageFileName: image2,
       suit: "Major",
-      catImage: [Mystery],
+      catImage: ["/Cats/Mystery.jpg"],
     },
     {
       id: 3,
@@ -172,7 +174,7 @@ const tarotDeck = {
         "Opposite to many cards, this card tells you that you should listen to reason and facts rather than your intuition or gut.",
       imageFileName: image5,
       suit: "Major",
-      catImage: [BenBen, Norman],
+      catImage: ["/Cats/BenBen.jpg", Norman],
     },
     {
       id: 6,
@@ -210,7 +212,7 @@ const tarotDeck = {
         "You're a strong person and are constantly showing strength in the face of difficult situations.",
       imageFileName: image9,
       suit: "Major",
-      catImage: [Butters],
+      catImage: ["/Cats/Butters.jpg"],
     },
     {
       id: 10,
@@ -239,7 +241,16 @@ const tarotDeck = {
         "Trust the universe will find a balance and justice will be served appropriately. Big or small; the problems in your life will come to a fair close.",
       imageFileName: image12,
       suit: "Major",
-      catImage: [BenBen, Butters, Phaedra, Eddie, Chloe, Hank, Scrappy, Beamer],
+      catImage: [
+        "/Cats/BenBen.jpg",
+        "/Cats/Butters.jpg",
+        "/Cats/Phaedra.jpg",
+        "/Cats/Eddie.jpg",
+        "/Cats/Chloe.jpg",
+        "/Cats/Hank.jpg",
+        "/Cats/Scrappy.jpg",
+        "/Cats/Beamer.jpg",
+      ],
     },
     {
       id: 13,
@@ -479,7 +490,7 @@ const tarotDeck = {
       description:
         "You are ready to take on a new and creative challenge. you have a new skill at the ready and you're eager to put them to the test. Perhaps you've just finished a course or graduated from a prgoram and your'e excited to put all your hard work into play.",
       imageFileName: image39,
-      catImage: [Butters, Phaedra],
+      catImage: ["/Cats/Butters.jpg", "/Cats/Phaedra.jpg"],
     },
     {
       id: 40,
@@ -523,7 +534,7 @@ const tarotDeck = {
       description:
         "You're going to be working very hard and if the Eight of Pentacles it is a sign that you are on the right track and your time spent will pay off. This card can also be a sign to start something that will help you work on your skills.",
       imageFileName: image44,
-      catImage: [Gigi],
+      catImage: ["/Cats/Gigi.jpg"],
     },
     {
       id: 45,
@@ -540,7 +551,7 @@ const tarotDeck = {
       description:
         "Everything is falling into place for you; especially in your professional or financial life. Don't get swept away though, remain humble and stay true to yourself while enjoying the success.",
       imageFileName: image46,
-      catImage: [Crumb],
+      catImage: ["/Cats/Crumb.jpg"],
     },
     {
       id: 47,
@@ -641,7 +652,7 @@ const tarotDeck = {
       description:
         "Eight of Swords can point to feeling suffocated and confused. You're feeling a bit lost, stuck or understimulated. As difficult as it may be right now, try to find inspiration and attempt to emerge from this mindset you're in right now.",
       imageFileName: image58,
-      catImage: [Butters],
+      catImage: ["/Cats/Butters.jpg"],
     },
     {
       id: 59,

@@ -17,16 +17,15 @@ interface MyTarotProps {
 function TarotCard(props: MyTarotProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
   const [selectedCatId, setSelectedCatId] = useState(0);
-
+  // function is not working because images no longer line up, so nothing to find!
   function handleShowCatInfo(image: any) {
-    console.log(image);
     setShowCatInfo(!showCatInfo);
-    const findTheCat = catData.cats.find((cat) => image === cat.image);
+    const findTheCat = catData.cats.find((cat) => cat.image === image);
+    console.log(findTheCat);
     if (findTheCat) {
       setSelectedCatId(findTheCat.id);
     }
   }
-  console.log(selectedCatId);
   return (
     <div>
       {!showCatInfo && (
@@ -47,6 +46,7 @@ function TarotCard(props: MyTarotProps) {
                 <p className="mt-4 text-sm">Cats Present: </p>
               )}
               <div className="flex">
+                {/* {console.log(props.data.catImage)} */}
                 {props.data.catImage &&
                   props.data.catImage.map((image) => (
                     <img

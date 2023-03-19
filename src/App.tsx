@@ -15,8 +15,7 @@ function App() {
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
-  const randomNumbers: number[] = [];
-
+  let randomNumbers: number[] = [];
   // random number generator for tarot read
   function getOneCard() {
     setShowHide(false);
@@ -32,6 +31,11 @@ function App() {
       setRandomTarotNumber2(randomNumbers[2]);
     }
   }
+  const randomNums = [
+    randomTarotNumber0,
+    randomTarotNumber1,
+    randomTarotNumber2,
+  ];
   const [showHide, setShowHide] = React.useState(false);
   const [showNumber, setShowNumber] = React.useState(0);
   const [typeOfRandom, setTypeOfRandom] = React.useState(randomTarotNumber0);
@@ -40,6 +44,14 @@ function App() {
     setShowHide(!showHide);
     setShowNumber(random);
   }
+  const mappedTarotFront = randomNums.map((tarotFront, index) => {
+    return (
+      <TarotFront
+        onClick={() => displayTarotInfo(tarotFront)}
+        imageSrc={data.tarotDeck[tarotFront].imageFileName}
+      ></TarotFront>
+    );
+  });
   return (
     <div>
       <div className="static">
@@ -47,20 +59,7 @@ function App() {
           <Link to="/selectedCat"> HI </Link>{" "}
         </button>
         <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
-        <div className=" flex justify-center ">
-          <TarotFront
-            onClick={() => displayTarotInfo(12)}
-            imageSrc={data.tarotDeck[12].imageFileName}
-          />
-          <TarotFront
-            onClick={() => displayTarotInfo(randomTarotNumber1)}
-            imageSrc={data.tarotDeck[randomTarotNumber1].imageFileName}
-          />
-          <TarotFront
-            onClick={() => displayTarotInfo(randomTarotNumber2)}
-            imageSrc={data.tarotDeck[randomTarotNumber2].imageFileName}
-          />
-        </div>
+        <div className=" flex justify-center ">{mappedTarotFront}</div>
 
         {showHide && randomTarotNumber0 !== 0 && (
           <div className=" flex mx-auto justify-center  ">

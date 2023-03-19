@@ -13,19 +13,27 @@ interface ICatProps {
 function SelectedCat(props: ICatProps) {
   const buddyLinks = props.data.buddyIds;
   return (
-    <div className=" w-[100%] flex items-center  ">
-      <div>
-        <img className="w-[95%]" src={props.data.image} />
+    <div>
+      <div className="w-[650px] flex justify-center m-4 mx-auto flex-col lg:flex-row ">
+        <div className="flex items-center">
+          <img
+            className=" mh-[350px] w-[350px] rounded-lg items-center "
+            src={props.data.image}
+          />
+        </div>
+        <div className="w-[60%]  ml-4">
+          <h2 className=" text-4xl pb-4"> {props.data.name}</h2>
+          <p className=" pb-4"> {props.data.description}</p>
+        </div>
       </div>
-      <div className="m-2">
-        <h2 className=" text-4xl"> {props.data.name}</h2>
-        <p className="mt-2 mb-2"> {props.data.description}</p>
-        {props.data.buddyIds && <h3 className="text-xl">Buddies</h3>}
-        {buddyLinks &&
-          buddyLinks.map((buddyNumber) => (
-            <img src={catData.cats[buddyNumber].image}></img>
-          ))}
-      </div>
+      {props.data.buddyIds && <h3 className="">Buddies :</h3>}
+      {buddyLinks &&
+        buddyLinks.map((buddyNumber) => (
+          <img
+            className=" w-20 mr-2 rounded-lg"
+            src={catData.cats[buddyNumber].image}
+          ></img>
+        ))}
     </div>
   );
 }
