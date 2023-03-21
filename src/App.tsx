@@ -7,9 +7,6 @@ import "@fontsource/merriweather";
 import TarotFront from "./components/TarotFront";
 import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
-import CatInfoCard from "./components/CatInfoCard";
-import SelectedCat from "./components/SelectedCatinfo";
-import catData from "./data/cats";
 
 function App() {
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
@@ -53,17 +50,26 @@ function App() {
     );
   });
   return (
-    <div>
-      <div className="static">
-        <button>
-          <Link to="/selectedCat"> HI </Link>{" "}
-        </button>
-        <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
+    <div className="h-[1000px] flex flex-col justify-center items-center">
+      <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
+
+      <div className=" ">
+        <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
+
         <div className=" flex justify-center ">{mappedTarotFront}</div>
 
         {showHide && randomTarotNumber0 !== 0 && (
-          <div className=" flex mx-auto justify-center  ">
-            <TarotCard data={data.tarotDeck[showNumber]} />
+          <div>
+            <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
+              <TarotCard data={data.tarotDeck[showNumber]} />
+            </div>
+            <div className="m-10">
+              {" "}
+              <Button
+                buttonName="Close"
+                onClick={() => displayTarotInfo(0)}
+              ></Button>
+            </div>
           </div>
         )}
       </div>

@@ -601,7 +601,7 @@ const tarotDeck = {
       description:
         "The Two of Swords can indicate there is a decision in your life that you'll need to make. Reach out to your parnters and seek help to make this decison.",
       imageFileName: image52,
-      catImage: [Alice, Abe],
+      catImage: ["/Cats/Alice.jpg", "/Cats/Abe.jpg"],
     },
     {
       id: 53,
