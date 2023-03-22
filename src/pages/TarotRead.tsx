@@ -1,9 +1,9 @@
 import { useState } from "react";
-import TarotCard from "../components/TarotCard";
+import TarotCard from "../components/TarotCardDetails";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
-import TarotFront from "../components/TarotFront";
+import TarotFront from "../components/TarotCard";
 import React from "react";
 
 function TarotRead() {

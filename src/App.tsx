@@ -3,7 +3,7 @@ import "./App.css";
 import "@fontsource/merriweather";
 import TarotRead from "./pages/TarotRead";
 import Home from "./pages/Home";
-import AllTarotCards from "./pages/AllTarotCards";
+import { Deck } from "./pages/Deck";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/tarotRead" element={<TarotRead />} />
-      <Route path="/AllTarotCards" element={<AllTarotCards />} />
+      <Route path="/Deck" element={<Deck />} />
     </Routes>
   );
 }
