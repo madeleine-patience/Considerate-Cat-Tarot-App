@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import TarotCard from "../components/TarotCard";
 import Button from "../components/Button";
@@ -7,14 +6,11 @@ import "@fontsource/merriweather";
 import TarotFront from "../components/TarotFront";
 import React from "react";
 
-
-
 function TarotRead() {
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
   let randomNumbers: number[] = [];
-  // random number generator for tarot read
   function getOneCard() {
     setShowHide(false);
     const arrayLength = data.tarotDeck.length;

@@ -14,7 +14,7 @@ function SelectedCat(props: ICatProps) {
   const buddyLinks = props.data.buddyIds;
   return (
     <div className=" bg-red-200 rounded-lg p-4 ">
-      <div className=" p-2  w-[720px] h-[300px] rounded-lg flex justify-center  mx-auto flex-col lg:flex-row ">
+      <div className=" p-2  w-[700px] h-[300px] rounded-lg flex justify-center  mx-auto flex-col lg:flex-row ">
         <div className="flex items-center m-8">
           <img
             className=" mh-[350px] w-[350px] rounded-lg items-center "
