@@ -1,11 +1,35 @@
 import tarotCardData from "../data/tarotCardData";
 import TarotCard from "../components/TarotCard";
-console.log(tarotCardData.tarotDeck);
+import MyTarotProps from "../types/Tarot.type";
+import { useState } from "react";
+import Button from "../components/Button";
 
-const onlyTarotFronts = tarotCardData.tarotDeck.slice(1);
-const tarotDeck = onlyTarotFronts.map((tarotCard, index) => {
-  return <TarotCard imageSrc={tarotCard.imageFileName} onClick={() => {}} />;
-});
 export const Deck = () => {
-  return <div>{tarotDeck}</div>;
+  const [selectedSuit, setSelectedState] = useState("Major");
+  console.log(selectedSuit);
+  function filterBySuit(data: MyTarotProps[]) {
+    return data.filter((card) => card.suit === selectedSuit);
+  }
+
+  const removeFirstCard = tarotCardData.tarotDeck.slice(1);
+  const tarotDeck = removeFirstCard.map((tarotCard, index) => {
+    return <TarotCard imageSrc={tarotCard.imageFileName} onClick={() => {}} />;
+  });
+
+  const majors = filterBySuit(removeFirstCard).map((tarotCard, index) => {
+    return <TarotCard imageSrc={tarotCard.imageFileName} onClick={() => {}} />;
+  });
+
+  return (
+    <div>
+      <Button
+        buttonName="Major"
+        onClick={() => console.log(filterBySuit(tarotCardData.tarotDeck))}
+      ></Button>
+      {/* <div>{tarotDeck}</div> */}
+      {majors}
+    </div>
+  );
 };
+
+// arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state

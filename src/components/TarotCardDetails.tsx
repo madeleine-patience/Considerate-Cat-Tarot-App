@@ -2,20 +2,9 @@ import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
 import Button from "./Button";
+import { TarotCardProps } from "../types/Tarot.type";
 
-interface MyTarotProps {
-  data: {
-    id: number;
-    cardName: string;
-    keyWords: string[];
-    imageFileName: string;
-    description: string;
-    catImage?: string[];
-    suit?: string;
-  };
-}
-
-function TarotCard(props: MyTarotProps) {
+function TarotCard(props: TarotCardProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
   const [selectedCatId, setSelectedCatId] = useState(0);
   function handleShowCatInfo(image: any) {

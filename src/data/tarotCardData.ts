@@ -1,4 +1,3 @@
-
 import Phaedra from "../images/Cats/Phaedra.jpg";
 import MyGal from "../images/Cats/MyGal.jpg";
 import BenBen from "../images/Cats/BenBen.jpg";
@@ -75,7 +74,7 @@ const tarotDeck = {
       keyWords: ["Instinct", "Intuition", "Purity"],
       description:
         "You have a powerful intuition. Listen to what you are feeling and have trust you are being led in the right direction.",
-      imageFileName:"/artwork/3.jpg",
+      imageFileName: "/artwork/3.jpg",
       suit: "Major",
     },
     {
