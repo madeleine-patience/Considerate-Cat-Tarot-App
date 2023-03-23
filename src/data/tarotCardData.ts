@@ -273,6 +273,8 @@ const tarotDeck = {
       description:
         "You're a strong person and are constantly showing strength in the face of difficult situations.",
       imageFileName: "/artwork/23.jpg",
+      suit: "Cups",
+
     },
     {
       id: 24,
