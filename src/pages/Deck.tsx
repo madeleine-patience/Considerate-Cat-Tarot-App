@@ -38,22 +38,12 @@ function grabSelectedSuit(button:any){
     <div>
       <button
         buttonName="Major"
-        onClick={grabSelectedSuit}>Click Me
+        onClick={grabSelectedSuit}>Major Cards
       </button>
-      {/* <Button
+      <button
         buttonName="Cups"
-        onClick={() => console.log(filterBySuit(tarotCardData.tarotDeck))}
-      ></Button>      <Button
-        buttonName="Pentacles"
-        onClick={() => console.log(filterBySuit(tarotCardData.tarotDeck))}
-      ></Button>      <Button
-        buttonName="Swords"
-        onClick={() => console.log(filterBySuit(tarotCardData.tarotDeck))}
-      ></Button>
-      <Button
-        buttonName="Wands"
-        onClick={() => console.log(filterBySuit(tarotCardData.tarotDeck))}
-      ></Button> */}
+        onClick={grabSelectedSuit}>Cups Cards
+      </button>
       {/* <div>{tarotDeck}</div> */}
      <div className="grid grid-cols-7 gap-4"> {majors} </div>
     </div>
