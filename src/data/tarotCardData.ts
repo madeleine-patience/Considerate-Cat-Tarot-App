@@ -283,6 +283,7 @@ const tarotDeck = {
       description:
         "You are on the same page with many of the important people in your life. Your relationships feel supportive and equal and you're being respected and appreciated in your work life..",
       imageFileName: "/artwork/24.jpg",
+      suit: "Cups",
       catImage: [Charlie, Daisy],
     },
     {

@@ -1,19 +1,16 @@
-interface MyButtonProps {
-  buttonName: string;
-  onClick: () => void;
-}
+import  MyButtonProps  from "../types/Button.type";
 
-function Button(props: MyButtonProps) {
-  return (
-    <div className="flex justify-content">
-      <button
-        onClick={props.onClick}
-        className="mx-auto bg-[#fcdeea] hover:bg-gray-400 text-gray-800 py-2 px-4 rounded "
+const Button = ({ buttonName, ...rest }: MyButtonProps) => {
+  return ( 
+
+  <div className=" bg-pink-100 w-40 text-center p-2 m-2">
+     <button
+      {...rest}
+      data-button-name={buttonName}
       >
-        {props.buttonName}
-      </button>
-    </div>
-  );
-}
+       {buttonName}
+      </button>     
+  </div>)
+};
 
 export default Button;

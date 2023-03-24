@@ -36,7 +36,7 @@ function TarotCard(props: TarotCardProps) {
               )}
               <div className="flex">
                 {props.data.catImage &&
-                  props.data.catImage.map((image) => (
+                  props.data.catImage.map((image:string) => (
                     <img
                       key={image}
                       onClick={(event) => {

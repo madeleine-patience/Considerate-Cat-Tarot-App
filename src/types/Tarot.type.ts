@@ -1,4 +1,4 @@
-interface TarotCard {
+interface TarotCardProps {
   id: number;
   cardName: string;
   keyWords: string[];
@@ -8,4 +8,4 @@ interface TarotCard {
   suit?: string;
 }
 
-export default TarotCard;
+export default TarotCardProps;
