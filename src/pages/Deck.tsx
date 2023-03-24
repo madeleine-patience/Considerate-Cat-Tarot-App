@@ -24,12 +24,6 @@ function grabSelectedSuit(button:any){
 // This removes the first card from the data structure as we don't need it for this page.
   const removeFirstCard = tarotCardData.tarotDeck.slice(1);
 
-//THis is mapping through the cards and slotting in props.
-  const tarotDeck = removeFirstCard.map((tarotCard, index) => {
-    return <TarotCard imageSrc={tarotCard.imageFileName} onClick={() => {}} />;
-  });
-
-
 //This is doing the same as above but for just majors. we can refactor to make it less lines.
   const majors = filterBySuit(removeFirstCard).map((tarotCard, index) => {
     return <TarotCard imageSrc={tarotCard.imageFileName} onClick={() => {}} />;

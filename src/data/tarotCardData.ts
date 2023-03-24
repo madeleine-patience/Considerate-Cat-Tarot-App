@@ -292,6 +292,7 @@ const tarotDeck = {
       keyWords: ["Friendship", "Laughter", "Celebration"],
       description:
         "This is a card of friendship. The people in your life are supportive, caring, kind and loving. There is many events and opportunities to celebrate and your heart will be full from being around family and friends.",
+      suit: "Cups",
       imageFileName: "/artwork/25.jpg",
     },
     {
@@ -301,6 +302,7 @@ const tarotDeck = {
       description:
         "This card represents peace and relaxation. This is a good time to meditate, show gratitude and reconnect with yourself.",
       imageFileName: "/artwork/26.jpg",
+      suit: "Cups",
       catImage: [Jiao],
     },
     {
@@ -309,6 +311,7 @@ const tarotDeck = {
       keyWords: ["Negativity", "Ungratefulness", "Loss"],
       description:
         "You may be in a headspace where everything is feeling very negative right now. Focus on gratitude and the positives to get yourself out of this funk.",
+      suit: "Cups",
       imageFileName: "/artwork/27.jpg",
     },
     {
@@ -318,6 +321,7 @@ const tarotDeck = {
       description:
         "Feelings of childhood and 'the good old days' might be coming up for you lately. Right now is a good time to journal and reflect on the past. Remember that the past is the past and thinking too much about it can pull you away from the present.",
       imageFileName: "/artwork/28.jpg",
+      suit: "Cups",
       catImage: [Bibbie],
     },
     {
@@ -327,6 +331,8 @@ const tarotDeck = {
       description:
         "You have a choice to make and it may be overwhelming you. There are many options, outcomes and possibilities ahead of you. Visualize what it is that you want and see yourself with each one. Which one feels right?",
       imageFileName: "/artwork/29.jpg",
+      suit: "Cups",
+
       catImage: [Cricket],
     },
     {
@@ -335,6 +341,8 @@ const tarotDeck = {
       keyWords: ["Walking Away", "Searching For Meaning"],
       description:
         "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
+      suit: "Cups",
+
       imageFileName: "/artwork/30.jpg",
     },
     {
@@ -343,6 +351,8 @@ const tarotDeck = {
       keyWords: ["Indulging", "Treating Yourself", "Luxury"],
       description:
         "Nine of cups is all about treating yourself. Something that you've been waiting for will soon come. Your hard work is about to pay off! If you're asking a question, the answer is yes.",
+      suit: "Cups",
+
       imageFileName: "/artwork/31.jpg",
     },
     {
@@ -351,6 +361,8 @@ const tarotDeck = {
       keyWords: ["Bliss", "Happiness", "Made Dreams"],
       description:
         "Everything is good; ten of cups is one of the happiest cards in the deck. All the parts of life seem to be working out the way you like and you feel content. Enjoy.",
+      suit: "Cups",
+
       imageFileName: "/artwork/32.jpg",
     },
     {
@@ -360,6 +372,8 @@ const tarotDeck = {
       description:
         "You've gone through a period where you've had to be strict or serious with yourself. It's now time to loosen up a bit; be free and playful. Let others see your fun side.",
       imageFileName: "/artwork/33new.jpg",
+      suit: "Cups",
+
       catImage: [Molly],
     },
     {
@@ -369,6 +383,8 @@ const tarotDeck = {
       description:
         "Your life has been filled with posive energy and you're ready to take on any task! If you've been waiting for good news- it's on the way.",
       imageFileName: "/artwork/34new.jpg",
+      suit: "Cups",
+
       catImage: [Gizmo],
     },
     {
@@ -378,6 +394,8 @@ const tarotDeck = {
       description:
         "Have you been working hard at something that doesn't feel right? It may be time to search for something better. This card can clearly indicate that you should walk away temporarily and re-evaluate.",
       imageFileName: "/artwork/35.jpg",
+      suit: "Cups",
+
       catImage: [Charis],
     },
     {
@@ -387,6 +405,8 @@ const tarotDeck = {
       description:
         "The Father of Cups represents someone who is compassionate, kind, supportive and in touch with his feminine side. This is a supportive card about helping others and receiving help in return.",
       imageFileName: "/artwork/36.jpg",
+      suit: "Cups",
+
       catImage: [Milo],
     },
     {
@@ -395,6 +415,8 @@ const tarotDeck = {
       keyWords: ["Prosperity", "Opportunity", "Adventure"],
       description:
         "This is the start of something new for you and you have the time and resources to see it through. You may be given support and this card can represent that support in the form of money.",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/37.jpg",
     },
     {
@@ -404,6 +426,8 @@ const tarotDeck = {
       description:
         "You're working very hard to keep a balanced lifestyle, whatever that means for you. When this car id pulled, it's an encouragement to say you're succeding at your goal to maintain balance",
       imageFileName: "/artwork/38.jpg",
+      suit: "Pentacles",
+
       catImage: [Chloe, Doogie],
     },
     {
@@ -413,6 +437,8 @@ const tarotDeck = {
       description:
         "You are ready to take on a new and creative challenge. you have a new skill at the ready and you're eager to put them to the test. Perhaps you've just finished a course or graduated from a prgoram and your'e excited to put all your hard work into play.",
       imageFileName: "/artwork/39.jpg",
+      suit: "Pentacles",
+
       catImage: ["/Cats/Butters.jpg", "/Cats/Phaedra.jpg"],
     },
     {
@@ -422,6 +448,8 @@ const tarotDeck = {
       description:
         "Are you holding onto something that is no longer serving you? This could be a person, object or even a thought. These things all make us feel safe and comfortable but if you are no longer feeling joy in the presence it's time to let go.",
       imageFileName: "/artwork/40.jpg",
+      suit: "Pentacles",
+
       catImage: [Hank],
     },
     {
@@ -431,6 +459,8 @@ const tarotDeck = {
       description:
         "Money troubles might be on the horizon but know that these things are always part of an ebb and flow. Sometimes we have more and sometimes we have less.",
       imageFileName: "/artwork/41.jpg",
+      suit: "Pentacles",
+
       catImage: [Scrappy],
     },
     {
@@ -440,6 +470,8 @@ const tarotDeck = {
       description:
         "If you've been having money problems, you will soon come out of it. A new job, a hand out or some other sort of monetary compensation may be on the way. Continue to use your money managing skills for now.",
       imageFileName: "/artwork/42.jpg",
+      suit: "Pentacles",
+
       catImage: [Robot],
     },
     {
@@ -448,6 +480,8 @@ const tarotDeck = {
       keyWords: ["Assessment", "Evaluation", "Rewards"],
       description:
         "You've been patiently waiting for something and the Seven of Pentacles is likely pointing to some sort of financial return. An investment is going to pay off and it will be worth the wait!",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/43.jpg",
     },
     {
@@ -457,6 +491,8 @@ const tarotDeck = {
       description:
         "You're going to be working very hard and if the Eight of Pentacles it is a sign that you are on the right track and your time spent will pay off. This card can also be a sign to start something that will help you work on your skills.",
       imageFileName: "/artwork/44.jpg",
+      suit: "Pentacles",
+
       catImage: ["/Cats/Gigi.jpg"],
     },
     {
@@ -465,6 +501,8 @@ const tarotDeck = {
       keyWords: ["Luxury", "Material Possession"],
       description:
         "You're ontop of your fiances and if theres something you've wanted to purchase; now is the time to go ahead with it. Its a time to feel hopeful.",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/45.jpg",
     },
     {
@@ -474,6 +512,8 @@ const tarotDeck = {
       description:
         "Everything is falling into place for you; especially in your professional or financial life. Don't get swept away though, remain humble and stay true to yourself while enjoying the success.",
       imageFileName: "/artwork/46.jpg",
+      suit: "Pentacles",
+
       catImage: ["/Cats/Crumb.jpg"],
     },
     {
@@ -482,6 +522,8 @@ const tarotDeck = {
       keyWords: ["Practicality", "Growth", "Learning"],
       description:
         "You may be in a place where you are seeking knowledge in some way. You've recently become a student again. Maybe you are learning a new craft or picking up a new school. You feel excited and inspired by this new adventure.",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/47.jpg",
     },
     {
@@ -490,6 +532,8 @@ const tarotDeck = {
       keyWords: ["Caution", "Focus", "Sensibility"],
       description:
         "You're going to receive good news about money, but it wont be a life changing amount. Use this towards something sensible.",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/48.jpg",
     },
     {
@@ -498,6 +542,8 @@ const tarotDeck = {
       keyWords: ["Generosity", "Nesting", "Propserity"],
       description:
         "You may be feeling like you'd like to put roots down and start settling in somewhere. The mother of pentacles is maternal and grounded which can represent the way you're feeling or a person in your life..",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/49.jpg",
     },
     {
@@ -506,6 +552,8 @@ const tarotDeck = {
       keyWords: ["Stability", "Comfort", "Dependability"],
       description:
         "This card represents the comfort and joys of life that can be enjoyed with money. It is a card that warns to keep an eye on finances yet still enjoy the comfort that money can bring.",
+      suit: "Pentacles",
+
       imageFileName: "/artwork/50.jpg",
     },
     {
@@ -515,6 +563,8 @@ const tarotDeck = {
       description:
         "Ace of swords encourages bravery. You might be holding back on something difficult. You know in your heart what needs to happen, now is the time to commit.",
       imageFileName: "/artwork/51.jpg",
+      suit: "Swords",
+
       catImage: [Rams],
     },
     {
@@ -524,6 +574,8 @@ const tarotDeck = {
       description:
         "The Two of Swords can indicate there is a decision in your life that you'll need to make. Reach out to your parnters and seek help to make this decison.",
       imageFileName: "/artwork/52.jpg",
+      suit: "Swords",
+
       catImage: ["/Cats/Alice.jpg", "/Cats/Abe.jpg"],
     },
     {
@@ -532,6 +584,8 @@ const tarotDeck = {
       keyWords: ["Heartache", "Rejection", "Loneliness"],
       description:
         "You may be going through a betrayal, heartbreak or an embarrassment. Take this time to evaluate what is serving you in your life. Things are inevitably going to get better. ",
+        suit: "Swords",
+
       imageFileName: "/artwork/53.jpg",
     },
     {
@@ -541,6 +595,8 @@ const tarotDeck = {
       description:
         "Take a break. You need it. To be able to be your best self, you must be able to recharge your batteries.",
       imageFileName: "/artwork/54.jpg",
+      suit: "Swords",
+
       catImage: [Finn],
     },
     {
@@ -549,6 +605,8 @@ const tarotDeck = {
       keyWords: ["Selfishness", "Immaturity", "Self Interest"],
       description:
         "You might feel more on edge lately. Try to navigate what is is that's bothering you and do your best to not take things out on people who mean well. Also be on guard for those who may be untrustworthy.",
+      suit: "Swords",
+
       imageFileName: "/artwork/55.jpg",
     },
     {
@@ -558,6 +616,8 @@ const tarotDeck = {
       description:
         "Six of Swords is a card that urges the reader to take a rest. Specifically this card is related to travel and retreat. Could be a good time to think about taking a trip.",
       imageFileName: "/artwork/56.jpg",
+      suit: "Swords",
+
       catImage: [Shy],
     },
     {
@@ -567,6 +627,8 @@ const tarotDeck = {
       description:
         "The Seven of Swords can be about a betrayal. Someone has or will hurt you. resist the urge to hurt this person back. Walk away and be the bigger person, you will be happy with the decision made to take the high road.",
       imageFileName: "/artwork/57.jpg",
+      suit: "Swords",
+
     },
     {
       id: 58,
@@ -575,7 +637,10 @@ const tarotDeck = {
       description:
         "Eight of Swords can point to feeling suffocated and confused. You're feeling a bit lost, stuck or understimulated. As difficult as it may be right now, try to find inspiration and attempt to emerge from this mindset you're in right now.",
       imageFileName: "/artwork/58.jpg",
+      suit: "Swords",
+
       catImage: ["/Cats/Butters.jpg"],
+
     },
     {
       id: 59,
@@ -583,6 +648,8 @@ const tarotDeck = {
       keyWords: ["Worries", "Fear", "Restlessness"],
       description:
         "This card can represent fear, anxiety and sleep issues. Don't sit in these feelings alone. Reach out to ",
+      suit: "Swords",
+
       imageFileName: "/artwork/59.jpg",
     },
     {
@@ -591,6 +658,8 @@ const tarotDeck = {
       keyWords: ["Sadness", "Exhaustion", "Anger"],
       description:
         "This card is directing you to be on guard right now. It can indicate someone untrustworthy in your life; be aware of who you trust and confide in.",
+      suit: "Swords",
+
       imageFileName: "/artwork/60.jpg",
     },
     {
@@ -599,6 +668,8 @@ const tarotDeck = {
       keyWords: ["Seeking Information", "Learning"],
       description:
         "You might be feeling a lot of emotions right now and although it is tempting to act on them, approaching life this way isn't always well reeived. Feel your feelings but be sure to approach every situation in a mature way. Don't let your emotions control.",
+      suit: "Swords",
+
       imageFileName: "/artwork/61.jpg",
     },
     {
@@ -608,6 +679,8 @@ const tarotDeck = {
       description:
         "The son of swords is one of my most positive cards you can pull. It speaks to the fact that things are going relatively well for your ight now and there is a positive balance among all things. You feel happy about where things are headed.",
       imageFileName: "/artwork/62.jpg",
+      suit: "Swords",
+
       catImage: [Otitis],
     },
     {
@@ -617,6 +690,8 @@ const tarotDeck = {
       description:
         "The Mother of Words is level headed, knows what she wants and communicates it clearly. The Mother can tell you to follow your instincts as the are guiding you in the right direction.",
       imageFileName: "/artwork/63.jpg",
+      suit: "Swords",
+
       catImage: [Mustard],
     },
     {
@@ -625,6 +700,8 @@ const tarotDeck = {
       keyWords: ["Stubbornness", "Intelligence", "Knowledge"],
       description:
         "This card can indicate a smart but controlling presence in your life. They mean well but can overstep. It is still appropriate to set boundaries.",
+      suit: "Swords",
+
       imageFileName: "/artwork/64.jpg",
     },
     {
@@ -633,6 +710,8 @@ const tarotDeck = {
       keyWords: ["Goals", "Opportunity", "Vision"],
       description:
         "Ace of Wands means the start of something big. A big project or new vision of something. It's time to set a goal for yourself and focus in on what you really want.",
+      suit: "Wands",
+
       imageFileName: "/artwork/65.jpg",
     },
     {
@@ -642,6 +721,8 @@ const tarotDeck = {
       description:
         "You have a big choice ahead of you and you have all the information to make decision; you just have to set time aside to make it. you also may be feeling the need to multi task right now with everything that is going on. Be careful not to overload yourself.",
       imageFileName: "/artwork/66.jpg",
+      suit: "Wands",
+
       catImage: [Meg],
     },
     {
@@ -651,6 +732,8 @@ const tarotDeck = {
       description:
         "This is the card you might pull if you need to take a first step towards something. If nothing comes to mind this card encourages the reader to think about trying something new.",
       imageFileName: "/artwork/67.jpg",
+      suit: "Wands",
+
     },
     {
       id: 68,
@@ -658,6 +741,8 @@ const tarotDeck = {
       keyWords: ["Celebration", "Teamwork", "Community"],
       description:
         "Celebration! Something good has come to light in your personal circle. This card is all about community. It is time to celebrate with those around you. This card can also encourage the reader to ask their community for support.",
+      suit: "Wands",
+
       imageFileName: "/artwork/68.jpg",
     },
     {
@@ -666,6 +751,8 @@ const tarotDeck = {
       keyWords: ["Disagreement", "Confrontation", "Disruption"],
       description:
         "This card can indicate a smart but controlling presence in your life. They mean well but can overstep. It is still appropriate to set boundaries.",
+      suit: "Wands",
+
       imageFileName: "/artwork/69.jpg",
     },
     {
@@ -674,6 +761,8 @@ const tarotDeck = {
       keyWords: ["Victory", "Acheivement", "Pride"],
       description:
         "You or someone know you will have recently expereinced a victory- enjoy the feeling and bask in the hard work that has finally paid off. This card can also indicate that you need to awknowledge your friends more. ",
+      suit: "Wands",
+
       imageFileName: "/artwork/70.jpg",
     },
     {
@@ -682,6 +771,8 @@ const tarotDeck = {
       keyWords: ["Aggression", "Bravery", "Determined"],
       description:
         "If there is somoene in your life that is making you feel badly; it's time to stand up to that person. Healthy relationships build eachother up, they don't tear eachother down. If you need to walk away, it will be better in the long run.",
+      suit: "Wands",
+
       imageFileName: "/artwork/71.jpg",
     },
     {
@@ -690,6 +781,8 @@ const tarotDeck = {
       keyWords: ["Speed", "Change", "Conclusion"],
       description:
         "Eith of wands is about fast movements but also about patience. You might be trying to force something that isn't quite ready yet; you'll need to have patience even if things are moving quickly.",
+      suit: "Wands",
+
       imageFileName: "/artwork/72.jpg",
     },
     {
@@ -698,6 +791,8 @@ const tarotDeck = {
       keyWords: ["Toughness", "Persistence", "Pessimism"],
       description:
         "You might be feeling overwhelmed by something. Perhaps you've tried and failed at something important to you several times now and you're starting to feel like giving up. Take a break and tyr again. It's not a failur; you just need to approach it from a new angle.",
+      suit: "Wands",
+
       imageFileName: "/artwork/73.jpg",
     },
     {
@@ -706,6 +801,8 @@ const tarotDeck = {
       keyWords: ["Burdens", "Feeling Overwhelmed", "Exhaustion"],
       description:
         "You  have a lot on your plate and are feeling overwhelmed. You might also feel like these are your responsibilities and you can't share that burden. This is never true, help is always available. Use your circle to lighten your load.",
+      suit: "Wands",
+
       imageFileName: "/artwork/74.jpg",
     },
     {
@@ -715,6 +812,8 @@ const tarotDeck = {
       description:
         "You've recently discovered a new passion or have been inpsired to work hard. You're excited and isnpired to be creative and work hard.",
       imageFileName: "/artwork/75.jpg",
+      suit: "Wands",
+
       catImage: [Wendy],
     },
     {
@@ -723,6 +822,8 @@ const tarotDeck = {
       keyWords: ["Boldness", "Passion", "Adventure"],
       description:
         "The son of wands is an adventure card, it's time to dream big and follow those dreams. A young spirited individual might enter your life to inspire you to do extraordinary things. You'll be searching for travel and adventure.",
+      suit: "Wands",
+
       imageFileName: "/artwork/76.jpg",
     },
     {
@@ -732,6 +833,8 @@ const tarotDeck = {
       description:
         "Mother of wands represents fertility and feminine confidence. If this represents a person in your life she is a good and loyal friend and always there for you when you most need her. This card can tell you that you'll need the women in your life in the close future.",
       imageFileName: "/artwork/77.jpg",
+      suit: "Wands",
+ 
     },
     {
       id: 78,
@@ -740,6 +843,8 @@ const tarotDeck = {
       description:
         "The Father of Wands can indicate an actual person in your life who is career focused, mature and supportive. If one person does not come to mind it could be a general air of support from the men around you.",
       imageFileName: "/artwork/78new.jpg",
+      suit: "Wands",
+
       catImage: [Milo],
     },
   ],
