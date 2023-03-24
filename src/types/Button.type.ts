@@ -1,10 +1,7 @@
-import {ButtonHTMLAttributes} from 'react'
+import { ButtonHTMLAttributes } from "react";
 
-
-interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> { 
- buttonName: string; 
-
+interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  buttonName: string;
 }
 
-
-export default MyButtonProps
+export default MyButtonProps;

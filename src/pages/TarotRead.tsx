@@ -5,13 +5,23 @@ import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
 import TarotFront from "../components/TarotCard";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function TarotRead() {
+  const navigate = useNavigate();
+
+  // setting the getters and the setters for the tarot spread,.
+
+  // TODO: Change these below to one single line.
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
+
+  // array that the three numbers go into
   let randomNumbers: number[] = [];
+
   function getOneCard() {
+    console.log("Hi Chat!");
     setShowHide(false);
     const arrayLength = data.tarotDeck.length;
 
@@ -48,6 +58,8 @@ function TarotRead() {
   });
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
+      <Button buttonName="Home" onClick={() => navigate("/")}></Button>
+
       <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
 
       <div className=" ">
