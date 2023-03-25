@@ -4,6 +4,7 @@ import MyTarotProps from "../types/Tarot.type";
 import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import useRandomNumber from "../components/displayTarotInfo";
 
 export const Deck = () => {
   // selected suit is a variable that will change based on the click of the buttons at the top of the page. Selected state is the "setter" that will update it.
@@ -32,7 +33,6 @@ export const Deck = () => {
   return (
     <div>
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
-
       <Button value="Major" buttonName="Major" onClick={grabSelectedSuit}>
         Major Cards
       </Button>

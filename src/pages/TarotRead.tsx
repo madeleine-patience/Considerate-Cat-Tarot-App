@@ -6,6 +6,7 @@ import "@fontsource/merriweather";
 import TarotFront from "../components/TarotCard";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useRandomNumber from "../components/displayTarotInfo";
 
 function TarotRead() {
   const navigate = useNavigate();
@@ -16,9 +17,14 @@ function TarotRead() {
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
-
+  const [showNumber2, showHide2, setTarotInfo] = useRandomNumber(2);
   // array that the three numbers go into
   let randomNumbers: number[] = [];
+
+  //Pulls one single card, sets showHide to false
+  /**
+   *
+   */
 
   function getOneCard() {
     console.log("Hi Chat!");
