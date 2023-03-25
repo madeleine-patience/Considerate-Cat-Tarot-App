@@ -29,3 +29,5 @@ Move this todo to the right spot
 Find out if we can change colors of commented code
 
 not_your_bf: For your Todo file: Check heading "Extracting your own custom Hook from a component" https://react.dev/learn/reusing-logic-with-custom-hooks
+
+Research resusable compents.
