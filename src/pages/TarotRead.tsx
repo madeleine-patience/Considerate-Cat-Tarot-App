@@ -3,31 +3,23 @@ import TarotCard from "../components/TarotCardDetails";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
-import TarotFront from "../components/TarotCard";
+import TarotFront from "../components/TarotCard"
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useRandomNumber from "../components/displayTarotInfo";
+import useDisplayTarotInfo from "../components/displayTarotInfo";
 
 function TarotRead() {
   const navigate = useNavigate();
 
-  // setting the getters and the setters for the tarot spread,.
-
-  // TODO: Change these below to one single line.
   const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
   const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
   const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
-  const [showNumber2, showHide2, setTarotInfo] = useRandomNumber(2);
-  // array that the three numbers go into
-  let randomNumbers: number[] = [];
 
-  //Pulls one single card, sets showHide to false
-  /**
-   *
-   */
+  const [showNumber, showHide1, setTarotInfo] = useDisplayTarotInfo(0);
+  const [showNumber2, setShowNumber2] = React.useState(0);
+  const randomNumbers: number[] = [];
 
   function getOneCard() {
-    console.log("Hi Chat!");
     setShowHide(false);
     const arrayLength = data.tarotDeck.length;
 
@@ -41,48 +33,47 @@ function TarotRead() {
       setRandomTarotNumber2(randomNumbers[2]);
     }
   }
-  const randomNums = [
-    randomTarotNumber0,
-    randomTarotNumber1,
-    randomTarotNumber2,
-  ];
-  const [showHide, setShowHide] = React.useState(false);
-  const [showNumber, setShowNumber] = React.useState(0);
-  const [typeOfRandom, setTypeOfRandom] = React.useState(randomTarotNumber0);
 
-  function displayTarotInfo(random: number) {
-    setShowHide(!showHide);
-    setShowNumber(random);
-  }
-  const mappedTarotFront = randomNums.map((tarotFront, index) => {
-    return (
-      <TarotFront
-        onClick={() => displayTarotInfo(tarotFront)}
-        imageSrc={data.tarotDeck[tarotFront].imageFileName}
-      ></TarotFront>
-    );
-  });
+  const randomNums = [randomTarotNumber0, randomTarotNumber1, randomTarotNumber2];
+  const [showHide, setShowHide] = React.useState(false);
+
+function handleTarotFrontClick(cardNumber: number, index: number) {
+  setTarotInfo();
+  setShowNumber2(cardNumber);
+}
+
+// ...
+
+const pullThreeCards = randomNums.map((tarotFront, index) => {
+  return (
+    <TarotFront
+      onClick={() => handleTarotFrontClick(data.tarotDeck[tarotFront].id,index)}
+      imageSrc={data.tarotDeck[tarotFront].imageFileName}
+    />
+  );
+});
+
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
 
-      <Button onClick={() => getOneCard()} buttonName="Generate Tarot Read" />
+      <Button onClick={getOneCard} buttonName="Generate Tarot Read" />
 
       <div className=" ">
         <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
 
-        <div className=" flex justify-center ">{mappedTarotFront}</div>
+        <div className=" flex justify-center ">{pullThreeCards}</div>
 
-        {showHide && randomTarotNumber0 !== 0 && (
+        {showHide1 && randomTarotNumber0 !== 0 && (
           <div>
             <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
-              <TarotCard data={data.tarotDeck[showNumber]} />
+              <TarotCard data={data.tarotDeck[showNumber2]} />
             </div>
             <div className="m-10">
               {" "}
               <Button
                 buttonName="Close"
-                onClick={() => displayTarotInfo(0)}
+                onClick={ setTarotInfo}
               ></Button>
             </div>
           </div>
