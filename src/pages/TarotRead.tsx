@@ -9,45 +9,39 @@ import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../components/displayTarotInfo";
 
 function TarotRead() {
+// Allows navigation to other pages.
   const navigate = useNavigate();
 
-  const [randomTarotNumber0, setRandomTarotNumber0] = useState(0);
-  const [randomTarotNumber1, setRandomTarotNumber1] = useState(0);
-  const [randomTarotNumber2, setRandomTarotNumber2] = useState(0);
+// These three variables are for setting the state of each card when a read is generated.
+  const [randomTarotNumbers, setRandomTarotNumbers]= useState([0,0,0])
 
-  const [showNumber, showHide1, setTarotInfo] = useDisplayTarotInfo(0);
+// this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
+  const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
   const [showNumber2, setShowNumber2] = React.useState(0);
   const randomNumbers: number[] = [];
 
   function getOneCard() {
-    setShowHide(false);
+// Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
-
+// creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
     while (randomNumbers.length < 3) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
         randomNumbers.push(randomNum);
       }
-      setRandomTarotNumber0(randomNumbers[0]);
-      setRandomTarotNumber1(randomNumbers[1]);
-      setRandomTarotNumber2(randomNumbers[2]);
+      setRandomTarotNumbers([randomNumbers[0],randomNumbers[1],randomNumbers[2]])
     }
   }
-
-  const randomNums = [randomTarotNumber0, randomTarotNumber1, randomTarotNumber2];
-  const [showHide, setShowHide] = React.useState(false);
-
-function handleTarotFrontClick(cardNumber: number, index: number) {
+// Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
+function revealTarotInformation(cardNumber: number) {
   setTarotInfo();
   setShowNumber2(cardNumber);
 }
-
-// ...
-
-const pullThreeCards = randomNums.map((tarotFront, index) => {
+console.log(showNumber2)
+const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
   return (
     <TarotFront
-      onClick={() => handleTarotFrontClick(data.tarotDeck[tarotFront].id,index)}
+      onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
       imageSrc={data.tarotDeck[tarotFront].imageFileName}
     />
   );
@@ -64,7 +58,7 @@ const pullThreeCards = randomNums.map((tarotFront, index) => {
 
         <div className=" flex justify-center ">{pullThreeCards}</div>
 
-        {showHide1 && randomTarotNumber0 !== 0 && (
+        {showHide && randomTarotNumbers[0] !== 0 && (
           <div>
             <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
               <TarotCard data={data.tarotDeck[showNumber2]} />
