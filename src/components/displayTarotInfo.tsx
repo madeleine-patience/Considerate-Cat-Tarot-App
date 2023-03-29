@@ -7,6 +7,7 @@ function useDisplayTarotInfo(cardNumber: number) {
   function setTarotInfo(cardNumber: number) {
     setShowHide(!showHide);
     setShowNumber(cardNumber);
+
     console.log("right function");
     console.log(showNumber);
   }
