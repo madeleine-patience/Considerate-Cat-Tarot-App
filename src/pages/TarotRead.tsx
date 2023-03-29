@@ -8,6 +8,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../components/displayTarotInfo";
 
+// One thing I noticed that you are using both state variables (from hooks and otherwise):
+
+// const [showNumber, showHide, setTarotInfo]= useDisplayTarotInfo(0)
+// const [showNumber2, setShowNumber2]= useState(0)
+
+
+// Seems only one of those are required (in this case seems showNumber (1st one). When we are using custom hooks, you "transfer" existing state variables to that hook and use them instead.
+
+// Great to know you are seeing the pattern. Did you get a chance to read that article tho?
+
+
 function TarotRead() {
 // Allows navigation to other pages.
   const navigate = useNavigate();
