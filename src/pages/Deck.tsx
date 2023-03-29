@@ -40,6 +40,7 @@ export const Deck = () => {
     (tarotCard, index) => {
       return (
         <TarotCard
+          key={index}
           imageSrc={tarotCard.imageFileName}
           onClick={() =>
             revealTarotInformation(data.tarotDeck[tarotCard.id].id)

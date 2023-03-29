@@ -51,12 +51,12 @@ function TarotRead() {
   const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
+        key={tarotFront}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
       />
     );
   });
-
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
