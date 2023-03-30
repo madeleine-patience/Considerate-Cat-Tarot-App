@@ -6,6 +6,7 @@ interface ICatProps {
     buddyIds?: number[];
     image: string;
   };
+  handleClick: (cat: any) => void;
 }
 
 export default ICatProps;

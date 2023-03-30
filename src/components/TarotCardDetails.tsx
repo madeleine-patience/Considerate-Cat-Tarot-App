@@ -8,9 +8,9 @@ function TarotCard(props: TarotCardProps) {
   const [showCatInfo, setShowCatInfo] = useState(false);
   const [selectedCatId, setSelectedCatId] = useState(0);
   function handleShowCatInfo(image: any) {
-    console.log("Hi chat you are the bomb");
     setShowCatInfo(!showCatInfo);
     const findTheCat = catData.cats.find((cat) => cat.image === image);
+    console.log(findTheCat);
     if (findTheCat) {
       setSelectedCatId(findTheCat.id);
     }

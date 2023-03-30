@@ -4,7 +4,6 @@ import MyTarotProps from "../types/Tarot.type";
 import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import useRandomNumber from "../components/displayTarotInfo";
 import useDisplayTarotInfo from "../components/displayTarotInfo";
 import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
@@ -13,7 +12,6 @@ import Menu from "../components/Menu";
 export const Deck = () => {
   // Bringing in the hook of useDisplayTarotInfo here, show number is 0, showHIde is false and getTarotInfo is a function that allows us to show and hide the information about the selected card.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
-  console.log(showNumber);
   // selected suit is a variable that will change based on the click of the buttons at the top of the page. Selected state is the "setter" that will update it.
 
   // VerifiedCodingGarden: Oh okay you need to set your useState type useState<string | null>(null)
