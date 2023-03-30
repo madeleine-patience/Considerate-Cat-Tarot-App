@@ -39,7 +39,6 @@ function TarotRead() {
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
   }
-  console.log(data.tarotDeck[15].id)
   const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
@@ -75,7 +74,7 @@ function TarotRead() {
           </div>
         )}
       </div>
-  <Menu/>
+      <Menu />
     </div>
   );
 }

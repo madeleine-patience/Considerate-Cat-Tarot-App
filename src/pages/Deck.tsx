@@ -10,7 +10,6 @@ import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 
-
 export const Deck = () => {
   // Bringing in the hook of useDisplayTarotInfo here, show number is 0, showHIde is false and getTarotInfo is a function that allows us to show and hide the information about the selected card.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
@@ -53,7 +52,6 @@ export const Deck = () => {
     }
   );
 
-  console.log(data.tarotDeck[25]);
   return (
     <div>
       <div>
@@ -93,7 +91,7 @@ export const Deck = () => {
           </div>
         </div>
       )}
-    <Menu/>
+      <Menu />
     </div>
   );
 };
