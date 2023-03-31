@@ -4,9 +4,8 @@ import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
 import TarotFront from "../components/TarotCard";
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import useDisplayTarotInfo from "../components/displayTarotInfo";
+import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
 
 function TarotRead() {

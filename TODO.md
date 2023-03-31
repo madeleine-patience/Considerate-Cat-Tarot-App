@@ -31,3 +31,7 @@ Find out if we can change colors of commented code
 not_your_bf: For your Todo file: Check heading "Extracting your own custom Hook from a component" https://react.dev/learn/reusing-logic-with-custom-hooks
 
 Research resusable compents.
+
+// Figure out the types- maybe I need a entirely NEW type for Purraroid!
+
+not_your_bf: create a new type like `type Cat = { //define all types }` (tip: pick from console log)

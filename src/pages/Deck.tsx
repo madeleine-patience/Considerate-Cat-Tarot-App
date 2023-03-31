@@ -4,7 +4,7 @@ import MyTarotProps from "../types/Tarot.type";
 import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import useDisplayTarotInfo from "../components/displayTarotInfo";
+import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";

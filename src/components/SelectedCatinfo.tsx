@@ -1,16 +1,8 @@
 import catData from "../data/cats";
-
-interface ICatProps {
-  data: {
-    id: number;
-    name: string;
-    description: string;
-    buddyIds?: number[];
-    image: string;
-  };
-}
+import ICatProps from "../types/CatProps";
 
 function SelectedCat(props: ICatProps) {
+  console.log("Hi chat, !HONK if you love fridays");
   const buddyLinks = props.data.buddyIds;
   return (
     <div className=" bg-red-200 rounded-lg p-4 ">
