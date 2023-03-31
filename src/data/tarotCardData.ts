@@ -197,7 +197,7 @@ const tarotDeck = {
       description:
         "This card represents balance. Your have struck a balance in your life that is allowing you to feel peaceful. Show gratitude for this time and the balance will remain.",
       imageFileName: "/artwork/15.jpg",
-      catImage: [Phaedra],
+      catImage: ["/Cats/Phaedra.jpg"],
       suit: "Major",
     },
     {
@@ -274,7 +274,6 @@ const tarotDeck = {
         "You're a strong person and are constantly showing strength in the face of difficult situations.",
       imageFileName: "/artwork/23.jpg",
       suit: "Cups",
-
     },
     {
       id: 24,
@@ -584,7 +583,7 @@ const tarotDeck = {
       keyWords: ["Heartache", "Rejection", "Loneliness"],
       description:
         "You may be going through a betrayal, heartbreak or an embarrassment. Take this time to evaluate what is serving you in your life. Things are inevitably going to get better. ",
-        suit: "Swords",
+      suit: "Swords",
 
       imageFileName: "/artwork/53.jpg",
     },
@@ -628,7 +627,6 @@ const tarotDeck = {
         "The Seven of Swords can be about a betrayal. Someone has or will hurt you. resist the urge to hurt this person back. Walk away and be the bigger person, you will be happy with the decision made to take the high road.",
       imageFileName: "/artwork/57.jpg",
       suit: "Swords",
-
     },
     {
       id: 58,
@@ -640,7 +638,6 @@ const tarotDeck = {
       suit: "Swords",
 
       catImage: ["/Cats/Butters.jpg"],
-
     },
     {
       id: 59,
@@ -733,7 +730,6 @@ const tarotDeck = {
         "This is the card you might pull if you need to take a first step towards something. If nothing comes to mind this card encourages the reader to think about trying something new.",
       imageFileName: "/artwork/67.jpg",
       suit: "Wands",
-
     },
     {
       id: 68,
@@ -834,7 +830,6 @@ const tarotDeck = {
         "Mother of wands represents fertility and feminine confidence. If this represents a person in your life she is a good and loyal friend and always there for you when you most need her. This card can tell you that you'll need the women in your life in the close future.",
       imageFileName: "/artwork/77.jpg",
       suit: "Wands",
- 
     },
     {
       id: 78,

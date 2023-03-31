@@ -9,6 +9,9 @@ function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
   function catLookup(image: any) {
+    console.log(catData.cats);
+    console.log(image);
+
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     console.log(["This one hi madie"], { findTheCat });
     handleShowCatInfo(findTheCat);
@@ -40,6 +43,7 @@ function TarotCard(props: TarotCardProps) {
                       key={image}
                       onClick={(event) => {
                         catLookup(image);
+                        console.log(image);
                       }}
                       className=" w-16 mr-2 rounded-lg"
                       src={image}
@@ -50,6 +54,7 @@ function TarotCard(props: TarotCardProps) {
           </div>
         </div>
       )}
+      {console.log("[component]: ", { selectedCatId })}
       {showCatInfo && (
         <div className="flex flex-col">
           {<SelectedCatInfo data={catData.cats[selectedCatId]} />}

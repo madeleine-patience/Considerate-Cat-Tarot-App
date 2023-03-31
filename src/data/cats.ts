@@ -1,6 +1,3 @@
-import Phaedra from "../images/Cats/Phaedra.jpg";
-import Gigi from "../images/Cats/Gigi.jpg";
-import Benben from "../images/Cats/BenBen.jpg";
 const catData = {
   cats: [
     {
