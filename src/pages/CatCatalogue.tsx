@@ -22,12 +22,7 @@ const CatCatalogue = () => {
       <div className="grid grid-cols-4 gap-4">{allPurrlaroids}</div>
       {showCatInfo && (
         <div className="flex flex-col">
-          {
-            <SelectedCatInfo
-              handleClick={() => {}}
-              data={catData.cats[selectedCatId]}
-            />
-          }
+          <SelectedCatInfo data={catData.cats[selectedCatId]} />
           {/* 
           two_eight: by using the {handleMethod} syntax instead of {() => handleMethod()} it's expected that your handleMethod function accept a MouseEvents argument */}
         </div>

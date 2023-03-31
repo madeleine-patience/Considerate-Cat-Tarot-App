@@ -3,18 +3,17 @@ import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
 import Button from "./Button";
 import { TarotCardProps } from "../types/Tarot.type";
+import useDisplayCatInfo from "../hooks/displayCatInfo";
 
 function TarotCard(props: TarotCardProps) {
-  const [showCatInfo, setShowCatInfo] = useState(false);
-  const [selectedCatId, setSelectedCatId] = useState(0);
-  function handleShowCatInfo(image: any) {
-    setShowCatInfo(!showCatInfo);
+  const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
+
+  function catLookup(image: any) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
-    console.log(findTheCat);
-    if (findTheCat) {
-      setSelectedCatId(findTheCat.id);
-    }
+    console.log(["This one hi madie"], { findTheCat });
+    handleShowCatInfo(findTheCat);
   }
+
   return (
     <div className=" flex">
       {!showCatInfo && (
@@ -40,7 +39,7 @@ function TarotCard(props: TarotCardProps) {
                     <img
                       key={image}
                       onClick={(event) => {
-                        handleShowCatInfo(image);
+                        catLookup(image);
                       }}
                       className=" w-16 mr-2 rounded-lg"
                       src={image}

@@ -16,7 +16,6 @@ const Menu = () => {
   const [showHide, setShowHide] = React.useState(false);
   const showHideMenuButton = () => {
     setShowHide(!showHide);
-    console.log("Hi madie!");
   };
 
   const menuButtons = buttonInfo.map((button, index) => {

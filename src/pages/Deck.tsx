@@ -23,7 +23,6 @@ export const Deck = () => {
   }
   function grabSelectedSuit(e: React.MouseEvent<HTMLButtonElement>) {
     setSelectedState(e.currentTarget.value);
-    console.log(selectedSuit);
   }
 
   function revealTarotInformation(cardNumber: number) {
