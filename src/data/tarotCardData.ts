@@ -94,7 +94,7 @@ const tarotDeck = {
         "Opposite to many cards, this card tells you that you should listen to reason and facts rather than your intuition or gut.",
       imageFileName: "/artwork/5.jpg",
       suit: "Major",
-      catImage: ["/Cats/BenBen.jpg", Norman],
+      catImage: ["/Cats/BenBen.jpg", "/Cats/Norman.jpg"],
     },
     {
       id: 6,
@@ -104,7 +104,7 @@ const tarotDeck = {
         "This card can represent a teacher or someone who feels strongly about rules and expectations.",
       imageFileName: "/artwork/6.jpg",
       suit: "Major",
-      catImage: [MyGal],
+      catImage: ["/Cats/Mygal.jpg"],
     },
     {
       id: 7,
@@ -283,7 +283,7 @@ const tarotDeck = {
         "You are on the same page with many of the important people in your life. Your relationships feel supportive and equal and you're being respected and appreciated in your work life..",
       imageFileName: "/artwork/24.jpg",
       suit: "Cups",
-      catImage: [Charlie, Daisy],
+      catImage: ["/Cats/Charlie.jpg", "/Cats/Daisy.jpg"],
     },
     {
       id: 25,
@@ -293,6 +293,8 @@ const tarotDeck = {
         "This is a card of friendship. The people in your life are supportive, caring, kind and loving. There is many events and opportunities to celebrate and your heart will be full from being around family and friends.",
       suit: "Cups",
       imageFileName: "/artwork/25.jpg",
+      catImage: ["/Cats/Cole.jpg", "/Cats/Elmer.jpg"],
+
     },
     {
       id: 26,
@@ -406,7 +408,7 @@ const tarotDeck = {
       imageFileName: "/artwork/36.jpg",
       suit: "Cups",
 
-      catImage: [Milo],
+      catImage: "/Cats/Eddie.jpg",
     },
     {
       id: 37,
@@ -427,7 +429,7 @@ const tarotDeck = {
       imageFileName: "/artwork/38.jpg",
       suit: "Pentacles",
 
-      catImage: [Chloe, Doogie],
+      catImage: ["/Cats/Doogie.jpg", "/Cats/Chloe.jpg" ],
     },
     {
       id: 39,
@@ -449,7 +451,7 @@ const tarotDeck = {
       imageFileName: "/artwork/40.jpg",
       suit: "Pentacles",
 
-      catImage: [Hank],
+      catImage: ["/Cats/Hank.jpg"],
     },
     {
       id: 41,
@@ -460,7 +462,7 @@ const tarotDeck = {
       imageFileName: "/artwork/41.jpg",
       suit: "Pentacles",
 
-      catImage: [Scrappy],
+      catImage: ["/Cats/Scrappy.jpg"],
     },
     {
       id: 42,

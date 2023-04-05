@@ -4,13 +4,21 @@ import Menu from "../components/Menu";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import SelectedCatInfo from "../components/SelectedCatinfo";
 const CatCatalogue = () => {
+
+// Bring in hook from useDisplayCatInfo
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
+
+// Modifies the array and sorts the cats into alphabetical order. 
+  const sortByAlphabetical= catData.cats.sort((cat1,cat2)=> (cat1.name<cat2.name)?-1:(cat1.name>cat2.name)?1:0)
+//Map data throughout purrlaroid component
 
   const allPurrlaroids = catData.cats.map((cat, index) => {
     return (
       <Purrlaroid
+// Data is entire catData object, component is set up to take in all data as props.
         data={cat}
         key={cat.id}
+//Handle click is the function we use from our handleShowCatInfo. It takes in the catdata that we are mapping through and runs it through the handleShowCatInfo function. It updates selected cat ID in the hook and allows us to get the proper cat.
         handleClick={() => handleShowCatInfo(cat)}
       />
     );

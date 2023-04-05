@@ -8,7 +8,12 @@ function useDisplayCatInfo() {
   function handleShowCatInfo(data: any) {
     setShowCatInfo(!showCatInfo);
     setSelectedCatId(data.id);
+    console.log("HI")
   }
+
+    console.log(selectedCatId)
+    console.log(showCatInfo)
+
   return [showCatInfo, selectedCatId, handleShowCatInfo] as const;
 }
 

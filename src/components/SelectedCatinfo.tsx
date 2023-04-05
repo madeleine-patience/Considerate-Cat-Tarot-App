@@ -1,7 +1,11 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
+import useDisplayCatInfo from "../hooks/displayCatInfo";
+
 
 function SelectedCat(props: ICatProps) {
+    const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
+
   const buddyLinks = props.data.buddyIds;
   return (
     <div className=" bg-red-200 rounded-lg p-4 ">
