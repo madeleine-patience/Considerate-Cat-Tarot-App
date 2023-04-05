@@ -1,14 +1,15 @@
 import React from "react";
 import Button from "../components/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const Menu = () => {
   const navigate = useNavigate();
   const buttonInfo = [
     { buttonName: "Home", urlRedirect: "/" },
-    { buttonName: "Get a Tarot Read", urlRedirect: "./tarotRead" },
-    { buttonName: "View All Cards", urlRedirect: "./Deck" },
-    { buttonName: "View All Cats", urlRedirect: "./CatCatalogue" },
+    { buttonName: "Get a Tarot Read", urlRedirect: "/tarotRead" },
+    { buttonName: "View All Cards", urlRedirect: "/Deck" },
+    { buttonName: "View All Cats", urlRedirect: "/CatCatalogue" },
     { buttonName: "Shop", urlRedirect: "" },
     { buttonName: "Learn About Tarot", urlRedirect: "" },
     { buttonName: "About", urlRedirect: "" },
@@ -22,7 +23,7 @@ const Menu = () => {
     return (
       <div>
         <Button
-          key={index}
+          key={uuidv4()}
           buttonName={button.buttonName}
           onClick={() => {
             navigate(button.urlRedirect);

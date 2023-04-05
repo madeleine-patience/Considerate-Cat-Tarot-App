@@ -4,6 +4,7 @@ import catData from "../data/cats";
 import Button from "./Button";
 import { TarotCardProps } from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
+import { v4 as uuidv4 } from "uuid";
 
 function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
@@ -40,7 +41,7 @@ function TarotCard(props: TarotCardProps) {
                 {props.data.catImage &&
                   props.data.catImage.map((image: string) => (
                     <img
-                      key={image}
+                      key={uuidv4()}
                       onClick={(event) => {
                         catLookup(image);
                         console.log(image);
@@ -54,7 +55,6 @@ function TarotCard(props: TarotCardProps) {
           </div>
         </div>
       )}
-      {console.log("[component]: ", { selectedCatId })}
       {showCatInfo && (
         <div className="flex flex-col">
           {<SelectedCatInfo data={catData.cats[selectedCatId]} />}

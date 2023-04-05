@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import ICatProps from "../types/CatProps";
 function useDisplayCatInfo() {
   const [showCatInfo, setShowCatInfo] = useState(false);
   const [selectedCatId, setSelectedCatId] = useState(0);
@@ -8,11 +7,7 @@ function useDisplayCatInfo() {
   function handleShowCatInfo(data: any) {
     setShowCatInfo(!showCatInfo);
     setSelectedCatId(data.id);
-    console.log("HI")
   }
-
-    console.log(selectedCatId)
-    console.log(showCatInfo)
 
   return [showCatInfo, selectedCatId, handleShowCatInfo] as const;
 }

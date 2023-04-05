@@ -1,11 +1,10 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
-
+import { v4 as uuidv4 } from "uuid";
 
 function SelectedCat(props: ICatProps) {
-    const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
-
+  const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
   const buddyLinks = props.data.buddyIds;
   return (
     <div className=" bg-red-200 rounded-lg p-4 ">
@@ -27,6 +26,7 @@ function SelectedCat(props: ICatProps) {
           {buddyLinks &&
             buddyLinks.map((buddyNumber) => (
               <img
+                key={uuidv4()}
                 className="  w-20 rounded-lg"
                 src={catData.cats[buddyNumber].image}
               ></img>

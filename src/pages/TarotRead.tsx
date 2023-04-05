@@ -7,6 +7,7 @@ import TarotFront from "../components/TarotCard";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
+import { v4 as uuidv4 } from "uuid";
 
 function TarotRead() {
   // Allows navigation to other pages.
@@ -41,7 +42,7 @@ function TarotRead() {
   const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
-        key={randomNumbers[index]}
+        key={uuidv4()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
       />

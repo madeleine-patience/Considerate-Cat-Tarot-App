@@ -8,6 +8,7 @@ import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
+import { v4 as uuidv4 } from "uuid";
 
 export const Deck = () => {
   // Bringing in the hook of useDisplayTarotInfo here, show number is 0, showHIde is false and getTarotInfo is a function that allows us to show and hide the information about the selected card.
@@ -39,7 +40,7 @@ export const Deck = () => {
     (tarotCard, index) => {
       return (
         <TarotCard
-          key={index}
+          key={uuidv4()}
           imageSrc={tarotCard.imageFileName}
           onClick={() =>
             revealTarotInformation(data.tarotDeck[tarotCard.id].id)
