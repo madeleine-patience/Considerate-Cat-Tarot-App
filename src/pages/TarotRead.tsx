@@ -39,7 +39,7 @@ function TarotRead() {
     }
     setRandomTarotNumbers(randomNumbers);
   }
-
+  //test
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
