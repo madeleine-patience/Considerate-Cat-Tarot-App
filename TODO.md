@@ -39,3 +39,4 @@ not_your_bf: create a new type like `type Cat = { //define all types }` (tip: pi
 make an option for major cards ONLY
 make a happy pull option- mess with the fates.
 Upside down cards?
+Don't bad cards for when you REALLY want to feel shitty about yoursef.

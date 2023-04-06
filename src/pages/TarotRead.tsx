@@ -27,11 +27,12 @@ function TarotRead() {
   const [lengthOfTarotRead, getLengthOfTarotRead] = useState(0);
 
   const randomNumbers: number[] = [];
-  function getOneCard() {
+  function getOneCard(lengthOfRead: number) {
+    getLengthOfTarotRead(lengthOfRead);
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
-    while (randomNumbers.length < 10) {
+    while (randomNumbers.length < lengthOfTarotRead) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
         randomNumbers.push(randomNum);
@@ -39,7 +40,6 @@ function TarotRead() {
     }
     setRandomTarotNumbers(randomNumbers);
   }
-  //test
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
@@ -53,17 +53,37 @@ function TarotRead() {
       />
     );
   });
+
+  // const buttonInfo = [
+  //   { buttonName: "Home", urlRedirect: "/" },
+  //   { buttonName: "Get a Tarot Read", urlRedirect: "/tarotRead" },
+  //   { buttonName: "View All Cards", urlRedirect: "/Deck" },
+
+  // const cardReadButtons = [1, 3, 5, 9];
+  const buttonInfo = [
+    { buttonname: "Pull One card", cardreadLength: 1 },
+    { buttonname: "Three Card Read", cardreadLength: 3 },
+    { buttonname: "Five Card Read", cardreadLength: 5 },
+    { buttonname: "Nine Card Read", cardreadLength: 9 },
+  ];
+  const tarotReadButtons = buttonInfo.map((cardRead) => {
+    return (
+      <Button
+        buttonName={cardRead.buttonname}
+        onClick={() => getOneCard(cardRead.cardreadLength)}
+      ></Button>
+    );
+  });
+
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
 
-      <Button onClick={getOneCard} buttonName="Generate Tarot Read" />
-
+      <Button onClick={() => getOneCard} buttonName="Generate Tarot Read" />
+      {tarotReadButtons}
       <div className=" ">
         <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
-
         <div className=" flex justify-center ">{pullThreeCards}</div>
-
         {showHide && randomTarotNumbers[0] !== 0 && (
           <div>
             <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
