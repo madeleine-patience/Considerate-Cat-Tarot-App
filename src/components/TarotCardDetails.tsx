@@ -10,9 +10,6 @@ function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
   function catLookup(image: any) {
-    console.log(catData.cats);
-    console.log(image);
-
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     console.log(["This one hi madie"], { findTheCat });
     handleShowCatInfo(findTheCat);

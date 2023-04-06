@@ -7,7 +7,7 @@ const Purrlaroid = (props: ICatProps) => {
       <div className=" w-96 bg-yellow-100 rounded-lg">
         <img
           className=" w-72 mx-auto p-5"
-          onClick={() => props.handleClick(props.data)}
+          onClick={() => props.handleClick?.(props.data)}
           src={props.data.image}
         />
         <h3 className=" text-[30px] text-center">{props.data.name}</h3>

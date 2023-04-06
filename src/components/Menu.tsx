@@ -21,9 +21,8 @@ const Menu = () => {
 
   const menuButtons = buttonInfo.map((button, index) => {
     return (
-      <div>
+      <div key={uuidv4()}>
         <Button
-          key={uuidv4()}
           buttonName={button.buttonName}
           onClick={() => {
             navigate(button.urlRedirect);

@@ -14,27 +14,32 @@ function TarotRead() {
   const navigate = useNavigate();
 
   // These three variables are for setting the state of each card when a read is generated.
-  const [randomTarotNumbers, setRandomTarotNumbers] = useState([0, 0, 0]);
+
+  //** IDEA FOR TONIGHT- Possible make array as big as biggest option of card pull? */
+
+  const [randomTarotNumbers, setRandomTarotNumbers] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
 
   // this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
+
+  const [lengthOfTarotRead, getLengthOfTarotRead] = useState(0);
+
   const randomNumbers: number[] = [];
   function getOneCard() {
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
-    while (randomNumbers.length < 3) {
+    while (randomNumbers.length < 10) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
         randomNumbers.push(randomNum);
       }
-      setRandomTarotNumbers([
-        randomNumbers[0],
-        randomNumbers[1],
-        randomNumbers[2],
-      ]);
     }
+    setRandomTarotNumbers(randomNumbers);
   }
+
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
