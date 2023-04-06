@@ -6,7 +6,7 @@ function TarotFront({
   onClick: () => void;
 }) {
   return (
-    <div onClick={onClick} className="w-[200px] m-2">
+    <div onClick={onClick} className="w-[150px] h-10 m-2 cursor-pointer">
       <img className="rounded-md shadow-md" src={imageSrc} />
     </div>
   );
