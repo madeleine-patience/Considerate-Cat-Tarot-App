@@ -69,6 +69,7 @@ function TarotRead() {
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
       <Button
+      key={cardRead.buttonname}
         buttonName={cardRead.buttonname}
         onClick={() => getOneCard(cardRead.cardreadLength)}
       ></Button>
@@ -78,12 +79,11 @@ function TarotRead() {
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
-
       <Button onClick={() => getOneCard} buttonName="Generate Tarot Read" />
       {tarotReadButtons}
-      <div className=" ">
+      <div className="w-9/12 contents">
         <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
-        <div className=" flex justify-center ">{pullThreeCards}</div>
+        <div className=" flex justify-center  max-w-6xl mt-12 ">{pullThreeCards}</div>
         {showHide && randomTarotNumbers[0] !== 0 && (
           <div>
             <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
