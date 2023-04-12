@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect, useCallback } from "react";
 import TarotCard from "../components/TarotCardDetails";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
@@ -20,14 +20,21 @@ function TarotRead() {
   const [randomTarotNumbers, setRandomTarotNumbers] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
-
+const [shouldBe, setShouldBe] = useState(false);
   // this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
 
   const [lengthOfTarotRead, getLengthOfTarotRead] = useState(0);
+  console.log(randomTarotNumbers,"should be", lengthOfTarotRead);
 
+   useEffect(() => {
+      if (shouldBe) {
+        getOneCard(lengthOfTarotRead);
+      }
+  }, [lengthOfTarotRead]);
   const randomNumbers: number[] = [];
   function getOneCard(lengthOfRead: number) {
+    setShouldBe(true);
     getLengthOfTarotRead(lengthOfRead);
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
