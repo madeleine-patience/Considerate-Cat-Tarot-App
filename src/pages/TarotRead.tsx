@@ -25,9 +25,11 @@ const [shouldBe, setShouldBe] = useState(false);
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
 
   const [lengthOfTarotRead, getLengthOfTarotRead] = useState(0);
-  console.log(randomTarotNumbers,"should be", lengthOfTarotRead);
+//this ussEffect is use to be depend on whe you selecte the lenght of read otherwise it will 
+  // it always lag by one 
 
    useEffect(() => {
+     //this state is to make sure  that when you first start there back of the card are set to zero and not fire the function
       if (shouldBe) {
         getOneCard(lengthOfTarotRead);
       }
