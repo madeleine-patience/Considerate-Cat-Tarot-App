@@ -13,53 +13,57 @@ function TarotRead() {
   // Allows navigation to other pages.
   const navigate = useNavigate();
 
-  // These three variables are for setting the state of each card when a read is generated.
-
-  //** IDEA FOR TONIGHT- Possible make array as big as biggest option of card pull? */
-
-  const [randomTarotNumbers, setRandomTarotNumbers] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+  // Getter and setter of 10 numbers all set at 0
+  const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
 
   // this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
 
-  const [lengthOfTarotRead, getLengthOfTarotRead] = useState(0);
+  const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
 
   const randomNumbers: number[] = [];
-  function getOneCard(lengthOfRead: number) {
-    getLengthOfTarotRead(lengthOfRead);
+  function getCards(lengthOfRead: number) {
+    setLengthOfTarotRead(lengthOfRead);
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
-    while (randomNumbers.length < lengthOfTarotRead) {
+    console.log(randomNumbers, lengthOfRead);
+    while (randomNumbers.length < lengthOfRead) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
         randomNumbers.push(randomNum);
       }
     }
+    console.log(randomNumbers);
     setRandomTarotNumbers(randomNumbers);
   }
+
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
   }
-  const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
+
+  // a function to pull the right about of cards but only display them cardback face up.
+
+  const displayTarotCardBacks = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
         key={uuidv4()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-        imageSrc={data.tarotDeck[tarotFront].imageFileName}
+        imageSrc={data.tarotDeck[0].imageFileName}
       />
     );
   });
+  // const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
+  //   return (
+  //     <TarotFront
+  //       key={uuidv4()}
+  //       onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
+  //       imageSrc={data.tarotDeck[tarotFront].imageFileName}
+  //     />
+  //   );
+  // });
 
-  // const buttonInfo = [
-  //   { buttonName: "Home", urlRedirect: "/" },
-  //   { buttonName: "Get a Tarot Read", urlRedirect: "/tarotRead" },
-  //   { buttonName: "View All Cards", urlRedirect: "/Deck" },
-
-  // const cardReadButtons = [1, 3, 5, 9];
   const buttonInfo = [
     { buttonname: "Pull One card", cardreadLength: 1 },
     { buttonname: "Three Card Read", cardreadLength: 3 },
@@ -69,9 +73,11 @@ function TarotRead() {
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
       <Button
-      key={cardRead.buttonname}
+        key={cardRead.buttonname}
         buttonName={cardRead.buttonname}
-        onClick={() => getOneCard(cardRead.cardreadLength)}
+        onClick={() => {
+          getCards(cardRead.cardreadLength);
+        }}
       ></Button>
     );
   });
@@ -79,11 +85,14 @@ function TarotRead() {
   return (
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
-      <Button onClick={() => getOneCard} buttonName="Generate Tarot Read" />
       {tarotReadButtons}
       <div className="w-9/12 contents">
         <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
-        <div className=" flex justify-center  max-w-6xl mt-12 ">{pullThreeCards}</div>
+        <div className=" flex justify-center  max-w-6xl mt-12 ">
+          {displayTarotCardBacks}
+        </div>
+
+        {/* Below is the showtarot info section         */}
         {showHide && randomTarotNumbers[0] !== 0 && (
           <div>
             <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">

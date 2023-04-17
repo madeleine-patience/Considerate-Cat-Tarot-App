@@ -40,3 +40,15 @@ make an option for major cards ONLY
 make a happy pull option- mess with the fates.
 Upside down cards?
 Don't bad cards for when you REALLY want to feel shitty about yoursef.
+
+
+
+VIP4-Month Subscriber (3-Month Badge)bensonk42: I want to see a function that reveals each card that you can either call with a button that will reveal them all one at a time, or you can call by clicking on each card.
+
+
+First Time Chat
+
+dumstick: You can invoke two callbacks onClick with just using an anonymous function
+pylang: correct: she love popcorn
+pylang: correction*
+dumstick: () => {func1(); func2();}
