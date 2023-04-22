@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
 import { v4 as uuidv4 } from "uuid";
+import TarotBack from "../components/TarotBack";
+import FlippableCard from "../components/FlippableCard";
 
 function TarotRead() {
   // Allows navigation to other pages.
@@ -15,7 +17,6 @@ function TarotRead() {
 
   // Getter and setter of 10 numbers all set at 0
   const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
-
   // this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
 
@@ -27,17 +28,14 @@ function TarotRead() {
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
-    console.log(randomNumbers, lengthOfRead);
     while (randomNumbers.length < lengthOfRead) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
         randomNumbers.push(randomNum);
       }
     }
-    console.log(randomNumbers);
     setRandomTarotNumbers(randomNumbers);
   }
-
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
@@ -45,24 +43,25 @@ function TarotRead() {
 
   // a function to pull the right about of cards but only display them cardback face up.
 
+  // Founder, 3-Month SubscriberVioletbunny: You can do something like { isFlipped && tarotFront } { !isFlipped && tarotBack } but I would do a ternary { isFlipped ? (<TarotFront>) : (<TarotBack>)
   const displayTarotCardBacks = randomTarotNumbers.map((tarotFront, index) => {
-    return (
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    return isFlipped ? (
       <TarotFront
         key={uuidv4()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[0].imageFileName}
       />
+    ) : (
+      <TarotBack
+        key={uuidv4()}
+        onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
+      />
     );
   });
-  // const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
-  //   return (
-  //     <TarotFront
-  //       key={uuidv4()}
-  //       onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-  //       imageSrc={data.tarotDeck[tarotFront].imageFileName}
-  //     />
-  //   );
-  // });
+
+  // I think you should create a .tsx file that holds TarotFront and TarotBack and then the parent will map the new Component
 
   const buttonInfo = [
     { buttonname: "Pull One card", cardreadLength: 1 },
@@ -86,6 +85,17 @@ function TarotRead() {
     <div className="h-[1000px] flex flex-col justify-center items-center">
       <Button buttonName="Home" onClick={() => navigate("/")}></Button>
       {tarotReadButtons}
+      <FlippableCard
+        message="Hello chat@!"
+        pets={[
+          { id: 1, name: "cat" },
+          { id: 2, name: "turtle" },
+          { id: 3, name: "fish" },
+          { id: 4, name: "platapus" },
+          { id: 5, name: "racoon" },
+          { id: 6, name: "lizard" },
+        ]}
+      />
       <div className="w-9/12 contents">
         <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
         <div className=" flex justify-center  max-w-6xl mt-12 ">
