@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../components/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import homepageImage from "/Art/titlePage.jpg";
@@ -13,7 +12,6 @@ export const Home = () => {
   return (
     <div>
       <img className=" max-w-5xl mx-auto rounded-lg m-2" src={homepageImage} />
-
       <div className=" flex flex-box justify-center">
         <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
         <Button buttonName="View All Cards" onClick={() => navigate("/Deck")} />

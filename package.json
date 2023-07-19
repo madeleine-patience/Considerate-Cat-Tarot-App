@@ -9,12 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fontsource/merriweather": "^4.5.14",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.2",
-    "@mui/styles": "^5.12.0",
+    "@mui/material": "^5.14.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
