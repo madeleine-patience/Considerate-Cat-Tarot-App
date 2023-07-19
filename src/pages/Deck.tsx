@@ -42,20 +42,49 @@ const SuitDescription = styled("div")(({ theme }) => ({
   margin: "0 50px ",
   fontStyle: "italic",
 }));
+
 export const Deck = () => {
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
-
   const [selectedSuit, setSelectedState] = useState<string | null>(null);
   const [descriptionOfSuit, setDescription] = useState("");
 
+  const renderTitle = () => {
+    if (selectedSuit === "Major") {
+      setDescription(
+        "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery."
+      );
+    }
+    if (selectedSuit === "Cups") {
+      setDescription(
+        "The suit of Cups represents emotions, relationships, intuition, and creativity. It signifies matters of the heart, love, compassion, and the exploration of one's feelings and inner world."
+      );
+    }
+    if (selectedSuit === "Pentacles") {
+      setDescription(
+        "The suit of Pentacles relates to material wealth, abundance, practicality, and the physical realm. It signifies financial matters, career, physical well-being, and the tangible aspects of life."
+      );
+    }
+    if (selectedSuit === "Swords") {
+      setDescription(
+        "The suit of Swords represents intellect, thoughts, communication, and challenges. It signifies mental clarity, conflicts, decision-making, and the power of the mind to cut through illusions and gain insight."
+      );
+    }
+    if (selectedSuit === "Wands") {
+      setDescription(
+        "The suit of Wands symbolizes energy, ambition, passion, and personal growth. It signifies creativity, inspiration, willpower, and the pursuit of goals, often related to career or personal projects."
+      );
+    }
+  };
   function filterBySuit(data: MyTarotProps[]) {
     return data.filter((card) => card.suit === selectedSuit);
   }
+
   function grabSelectedSuit(e: React.MouseEvent<HTMLButtonElement>) {
     const selectedSuit = e.currentTarget.value;
-    setDescription(selectedSuit);
     setSelectedState(selectedSuit);
+    renderTitle();
   }
+
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
   }
@@ -76,36 +105,39 @@ export const Deck = () => {
       );
     }
   );
+  const buttonVals = [
+    {
+      value: "Major",
+      buttonName: "Major",
+    },
+    {
+      value: "Cups",
+      buttonName: "Cups",
+    },
+    {
+      value: "Wands",
+      buttonName: "Wands",
+    },
+    {
+      value: "Pentacles",
+      buttonName: "Pentacles",
+    },
+    {
+      value: "Swords",
+      buttonName: "Swords",
+    },
+  ];
+  const mappedButtons = buttonVals.map((button) => (
+    <Button
+      value={button.value}
+      buttonName={button.buttonName}
+      onClick={grabSelectedSuit}
+    />
+  ));
 
   return (
     <div>
-      <ButtonContainer>
-        <Button
-          value="Major"
-          buttonName="Major"
-          onClick={grabSelectedSuit}
-        ></Button>
-        <Button
-          value="Cups"
-          buttonName="Cups"
-          onClick={grabSelectedSuit}
-        ></Button>
-        <Button
-          value="Pentacles"
-          buttonName="Pentacles"
-          onClick={grabSelectedSuit}
-        ></Button>
-        <Button
-          value="Swords"
-          buttonName="Swords"
-          onClick={grabSelectedSuit}
-        ></Button>
-        <Button
-          value="Wands"
-          buttonName="Wands"
-          onClick={grabSelectedSuit}
-        ></Button>
-      </ButtonContainer>
+      <ButtonContainer>{mappedButtons}</ButtonContainer>
       <SuitDescription>{descriptionOfSuit}</SuitDescription>
       <StyledPurrlaroide> {selectedCards} </StyledPurrlaroide>
 
