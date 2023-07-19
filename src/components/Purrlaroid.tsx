@@ -1,18 +1,35 @@
-import React from "react";
+import shadows from '@mui/material/styles/shadows';
+import { styled } from '@mui/system';
 import ICatProps from "../types/CatProps";
+
+const StyledPurrlaroide = styled('div')({
+  display: 'flex',
+  borderRadius:"5px",
+  textAlign:'center',
+  justifyContent: 'center',
+  backgroundColor: 'lightYellow',
+  width: '300px',
+  margin: '10px',
+  boxShadow: "12px 12px 2px 1px rgba(0, 0, 255, .1)"
+});
+
+const PurrlaroidImage= styled ('img')({
+  width: "300px",
+  padding: "20px"
+})
+
 
 const Purrlaroid = (props: ICatProps) => {
   return (
-    <div className="flex m-4 w-96 h-96">
-      <div className=" w-96 bg-yellow-100 rounded-lg">
-        <img
-          className=" w-72 mx-auto p-5"
+    <StyledPurrlaroide>
+      <div className="">
+        <PurrlaroidImage
           onClick={() => props.handleClick?.(props.data)}
           src={props.data.image}
         />
-        <h3 className=" text-[30px] text-center">{props.data.name}</h3>
+        <h3 className="">{props.data.name}</h3>
       </div>
-    </div>
+    </StyledPurrlaroide>
   );
 };
 
