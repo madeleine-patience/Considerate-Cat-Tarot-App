@@ -9,23 +9,53 @@ import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 import { v4 as uuidv4 } from "uuid";
+import { styled } from "@mui/system";
 
+const StyledPurrlaroide = styled("div")(({ theme }) => ({
+  display: "grid",
+  gap: "50px",
+  padding: "50px",
+  [theme.breakpoints.up("sm")]: {
+    gridTemplateColumns: "auto auto",
+  },
+  [theme.breakpoints.up("md")]: {
+    gridTemplateColumns: "auto auto auto",
+  },
+  [theme.breakpoints.up("lg")]: {
+    gridTemplateColumns: "auto auto auto auto",
+  },
+}));
+
+const ButtonContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  margin: "auto",
+  gap: "10px",
+  width: "90%",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+}));
+
+const SuitDescription = styled("div")(({ theme }) => ({
+  margin: "0 50px ",
+  fontStyle: "italic",
+}));
 export const Deck = () => {
-  // Bringing in the hook of useDisplayTarotInfo here, show number is 0, showHIde is false and getTarotInfo is a function that allows us to show and hide the information about the selected card.
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
-  // selected suit is a variable that will change based on the click of the buttons at the top of the page. Selected state is the "setter" that will update it.
 
-  // VerifiedCodingGarden: Oh okay you need to set your useState type useState<string | null>(null)
   const [selectedSuit, setSelectedState] = useState<string | null>(null);
+  const [descriptionOfSuit, setDescription] = useState("");
 
-  // filter by suit is the function that sorts the tarotCardData according to what selected suit from above is. It checks the data and filtesr out what card.suit matches selected suit.
   function filterBySuit(data: MyTarotProps[]) {
     return data.filter((card) => card.suit === selectedSuit);
   }
   function grabSelectedSuit(e: React.MouseEvent<HTMLButtonElement>) {
-    setSelectedState(e.currentTarget.value);
+    const selectedSuit = e.currentTarget.value;
+    setDescription(selectedSuit);
+    setSelectedState(selectedSuit);
   }
-
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
   }
@@ -33,9 +63,6 @@ export const Deck = () => {
 
   const navigate = useNavigate();
 
-  //This is doing the same as above but for just majors. we can refactor to make it less lines.
-
-  // Below function is not currently working, something for another day.
   const selectedCards = filterBySuit(removeFirstCard).map(
     (tarotCard, index) => {
       return (
@@ -52,36 +79,42 @@ export const Deck = () => {
 
   return (
     <div>
-      <div>
-        <Button buttonName="Home" onClick={() => navigate("/")}></Button>
-        <Button value="Major" buttonName="Major" onClick={grabSelectedSuit}>
-          Major Cards
-        </Button>
-        <Button value="Cups" buttonName="Cups" onClick={grabSelectedSuit}>
-          Cups Cards
-        </Button>
+      <ButtonContainer>
+        <Button
+          value="Major"
+          buttonName="Major"
+          onClick={grabSelectedSuit}
+        ></Button>
+        <Button
+          value="Cups"
+          buttonName="Cups"
+          onClick={grabSelectedSuit}
+        ></Button>
         <Button
           value="Pentacles"
           buttonName="Pentacles"
           onClick={grabSelectedSuit}
-        >
-          Cups Cards
-        </Button>
-        <Button value="Swords" buttonName="Swords" onClick={grabSelectedSuit}>
-          Cups Cards
-        </Button>
-        <Button value="Wands" buttonName="Wands" onClick={grabSelectedSuit}>
-          Cups Cards
-        </Button>
-        <div className="grid grid-cols-7 gap-4"> {selectedCards} </div>
-      </div>
+        ></Button>
+        <Button
+          value="Swords"
+          buttonName="Swords"
+          onClick={grabSelectedSuit}
+        ></Button>
+        <Button
+          value="Wands"
+          buttonName="Wands"
+          onClick={grabSelectedSuit}
+        ></Button>
+      </ButtonContainer>
+      <SuitDescription>{descriptionOfSuit}</SuitDescription>
+      <StyledPurrlaroide> {selectedCards} </StyledPurrlaroide>
 
       {showHide && (
         <div>
-          <div className="# ">
+          <div>
             <TarotCardDetails data={data.tarotDeck[showNumber]} />
           </div>
-          <div className="">
+          <div>
             <Button
               buttonName="Close"
               onClick={() => setTarotInfo(showNumber)}

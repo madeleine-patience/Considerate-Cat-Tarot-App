@@ -11,8 +11,8 @@ export const Home = () => {
 
   return (
     <div>
-      <img className=" max-w-5xl mx-auto rounded-lg m-2" src={homepageImage} />
-      <div className=" flex flex-box justify-center">
+      <img className="#" src={homepageImage} />
+      <div className="#">
         <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
         <Button buttonName="View All Cards" onClick={() => navigate("/Deck")} />
       </div>

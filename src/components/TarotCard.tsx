@@ -1,3 +1,9 @@
+import { styled } from "@mui/system";
+
+const StyledTarotCard = styled("img")(({ theme }) => ({
+  borderRadius: "20px",
+}));
+
 function TarotFront({
   imageSrc,
   onClick,
@@ -6,8 +12,8 @@ function TarotFront({
   onClick: () => void;
 }) {
   return (
-    <div onClick={onClick} className="w-[150px] h-10 m-2 cursor-pointer">
-      <img className="rounded-md shadow-md" src={imageSrc} />
+    <div onClick={onClick} className="#">
+      <StyledTarotCard src={imageSrc} />
     </div>
   );
 }
