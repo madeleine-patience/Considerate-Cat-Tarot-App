@@ -3,7 +3,6 @@ import { styled } from "@mui/system";
 
 const StyledButton = styled("div")(({ theme }) => ({
   background: "pink",
-  minWidth: "150px",
   textAlign: "center",
   padding: "10px",
   borderRadius: "10px",
