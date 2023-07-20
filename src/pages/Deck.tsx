@@ -10,11 +10,25 @@ import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
+import TarotFront from "../components/TarotCard";
 
-const StyledPurrlaroide = styled("div")(({ theme }) => ({
+const PageContainer = styled("div")(({ theme }) => ({
+  margin: "50px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "50px",
+}));
+
+const CardSpreadContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  width: "500px",
+  margin: "auto",
+}));
+
+const TarotCardContainer = styled("div")(({ theme }) => ({
   display: "grid",
   gap: "50px",
-  padding: "50px",
   [theme.breakpoints.up("sm")]: {
     gridTemplateColumns: "auto auto",
   },
@@ -24,6 +38,13 @@ const StyledPurrlaroide = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     gridTemplateColumns: "auto auto auto auto",
   },
+}));
+
+const TarotCardStyled1 = styled("div")(({ theme }) => ({
+  transform: "rotate(-0.1turn)",
+}));
+const TarotCardStyled2 = styled("div")(({ theme }) => ({
+  transform: "rotate(0.03turn)",
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -39,14 +60,18 @@ const ButtonContainer = styled("div")(({ theme }) => ({
 }));
 
 const SuitDescription = styled("div")(({ theme }) => ({
-  margin: "0 50px ",
   fontStyle: "italic",
+  maxWidth: "800px",
+  margin: "auto",
+  textAlign: "center",
 }));
 
 export const Deck = () => {
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
   const [selectedSuit, setSelectedState] = useState<string | null>(null);
-  const [descriptionOfSuit, setDescription] = useState("");
+  const [descriptionOfSuit, setDescription] = useState(
+    " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
+  );
 
   const renderTitle = () => {
     if (selectedSuit === "Major") {
@@ -91,7 +116,7 @@ export const Deck = () => {
   const removeFirstCard = tarotCardData.tarotDeck.slice(1);
 
   const navigate = useNavigate();
-
+  console.log(selectedSuit);
   const selectedCards = filterBySuit(removeFirstCard).map(
     (tarotCard, index) => {
       return (
@@ -136,10 +161,22 @@ export const Deck = () => {
   ));
 
   return (
-    <div>
+    <PageContainer>
       <ButtonContainer>{mappedButtons}</ButtonContainer>
       <SuitDescription>{descriptionOfSuit}</SuitDescription>
-      <StyledPurrlaroide> {selectedCards} </StyledPurrlaroide>
+
+      {!selectedSuit && (
+        <CardSpreadContainer>
+          <TarotCardStyled1>
+            <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+          </TarotCardStyled1>
+          <TarotCardStyled2>
+            <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+          </TarotCardStyled2>
+        </CardSpreadContainer>
+      )}
+
+      <TarotCardContainer> {selectedCards} </TarotCardContainer>
 
       {showHide && (
         <div>
@@ -155,7 +192,7 @@ export const Deck = () => {
         </div>
       )}
       <Menu />
-    </div>
+    </PageContainer>
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state
