@@ -161,38 +161,40 @@ export const Deck = () => {
   ));
 
   return (
-    <PageContainer>
-      <ButtonContainer>{mappedButtons}</ButtonContainer>
-      <SuitDescription>{descriptionOfSuit}</SuitDescription>
-
-      {!selectedSuit && (
-        <CardSpreadContainer>
-          <TarotCardStyled1>
-            <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
-          </TarotCardStyled1>
-          <TarotCardStyled2>
-            <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
-          </TarotCardStyled2>
-        </CardSpreadContainer>
-      )}
-
-      <TarotCardContainer> {selectedCards} </TarotCardContainer>
-
-      {showHide && (
-        <div>
-          <div>
-            <TarotCardDetails data={data.tarotDeck[showNumber]} />
-          </div>
-          <div>
-            <Button
-              buttonName="Close"
-              onClick={() => setTarotInfo(showNumber)}
-            ></Button>
-          </div>
-        </div>
-      )}
+    <>
       <Menu />
-    </PageContainer>
+      <PageContainer>
+        <ButtonContainer>{mappedButtons}</ButtonContainer>
+        <SuitDescription>{descriptionOfSuit}</SuitDescription>
+
+        {!selectedSuit && (
+          <CardSpreadContainer>
+            <TarotCardStyled1>
+              <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+            </TarotCardStyled1>
+            <TarotCardStyled2>
+              <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+            </TarotCardStyled2>
+          </CardSpreadContainer>
+        )}
+
+        <TarotCardContainer> {selectedCards} </TarotCardContainer>
+
+        {showHide && (
+          <div>
+            <div>
+              <TarotCardDetails data={data.tarotDeck[showNumber]} />
+            </div>
+            <div>
+              <Button
+                buttonName="Close"
+                onClick={() => setTarotInfo(showNumber)}
+              ></Button>
+            </div>
+          </div>
+        )}
+      </PageContainer>
+    </>
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state
