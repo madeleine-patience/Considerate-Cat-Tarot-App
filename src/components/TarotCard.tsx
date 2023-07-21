@@ -10,7 +10,7 @@ function TarotFront({
   onClick,
 }: {
   imageSrc: string;
-  onClick: () => void;
+  onClick?: () => void;
 }) {
   return (
     <div onClick={onClick} className="#">
