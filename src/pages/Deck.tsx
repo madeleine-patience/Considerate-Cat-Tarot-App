@@ -73,7 +73,8 @@ export const Deck = () => {
     " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
   );
 
-  const renderTitle = () => {
+  const renderTitle = (selectedSuit: any) => {
+    console.log("from renderTitle", selectedSuit);
     if (selectedSuit === "Major") {
       setDescription(
         "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery."
@@ -99,15 +100,17 @@ export const Deck = () => {
         "The suit of Wands symbolizes energy, ambition, passion, and personal growth. It signifies creativity, inspiration, willpower, and the pursuit of goals, often related to career or personal projects."
       );
     }
+
+    setSelectedState(selectedSuit);
   };
+
   function filterBySuit(data: MyTarotProps[]) {
     return data.filter((card) => card.suit === selectedSuit);
   }
 
   function grabSelectedSuit(e: React.MouseEvent<HTMLButtonElement>) {
     const selectedSuit = e.currentTarget.value;
-    setSelectedState(selectedSuit);
-    renderTitle();
+    renderTitle(selectedSuit);
   }
 
   function revealTarotInformation(cardNumber: number) {
@@ -116,7 +119,6 @@ export const Deck = () => {
   const removeFirstCard = tarotCardData.tarotDeck.slice(1);
 
   const navigate = useNavigate();
-  console.log(selectedSuit);
   const selectedCards = filterBySuit(removeFirstCard).map(
     (tarotCard, index) => {
       return (
@@ -154,6 +156,7 @@ export const Deck = () => {
   ];
   const mappedButtons = buttonVals.map((button) => (
     <Button
+      key={`button-${button}`}
       value={button.value}
       buttonName={button.buttonName}
       onClick={grabSelectedSuit}
@@ -166,7 +169,6 @@ export const Deck = () => {
       <PageContainer>
         <ButtonContainer>{mappedButtons}</ButtonContainer>
         <SuitDescription>{descriptionOfSuit}</SuitDescription>
-
         {!selectedSuit && (
           <CardSpreadContainer>
             <TarotCardStyled1>
@@ -177,9 +179,7 @@ export const Deck = () => {
             </TarotCardStyled2>
           </CardSpreadContainer>
         )}
-
         <TarotCardContainer> {selectedCards} </TarotCardContainer>
-
         {showHide && (
           <div>
             <div>
@@ -198,3 +198,5 @@ export const Deck = () => {
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state
+
+// VIP2-Month Subscriber (2-Month Badge)cheer 1arthvadrr: I'd say figure out when your state is being updated and you'll find the issue

@@ -4,7 +4,7 @@ interface TarotCardProps {
   keyWords: string[];
   imageFileName: string;
   description: string;
-  catImage?: string[];
+  catImage?: string[] | string;
   suit?: string;
 }
 
