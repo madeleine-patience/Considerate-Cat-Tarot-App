@@ -11,11 +11,14 @@ const HomeContainer = styled("div")(({ theme }) => ({
   gap: "15px",
 }));
 const HomeButtonContainer = styled("div")(({ theme }) => ({
-  width: "100%",
-  margin: "auto",
   display: "flex",
+  justifyContent: "center",
   flexDirection: "column",
   gap: "15px",
+  margin: "auto",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+  },
 }));
 
 export const Home = () => {
@@ -25,14 +28,20 @@ export const Home = () => {
   };
 
   return (
-    <HomeContainer>
-      <img className="#" src={homepageImage} />
-      <HomeButtonContainer>
-        <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
-        <Button buttonName="View All Cards" onClick={() => navigate("/Deck")} />
-      </HomeButtonContainer>
+    <>
+      {" "}
       <Menu />
-    </HomeContainer>
+      <HomeContainer>
+        <img className="#" src={homepageImage} />
+        <HomeButtonContainer>
+          <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
+          <Button
+            buttonName="View All Cards"
+            onClick={() => navigate("/Deck")}
+          />
+        </HomeButtonContainer>
+      </HomeContainer>
+    </>
   );
 };
 

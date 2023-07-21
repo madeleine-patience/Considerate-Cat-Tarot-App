@@ -2,6 +2,16 @@ import React from "react";
 import Button from "../components/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { styled } from "@mui/system";
+
+const MenuDropDown = styled("div")(({ theme }) => ({
+  width: "100%",
+  background: "lightBlue",
+  height: "50px",
+  display: "flex",
+  justifyContent: "Center",
+  alignItems: "Center",
+}));
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -27,24 +37,20 @@ const Menu = () => {
           onClick={() => {
             navigate(button.urlRedirect);
           }}
+          style={{ borderRadius: "0", width: "100%" }}
         />
       </div>
     );
   });
 
   return (
-    <div className="fixed right-0 top-64 bg-green-100 rounded-lg ">
-      <div className="flex flex-col ">
-        <div
-          className="w-20 h-8 bg-indigo-200 mx-auto text-center align-middle"
-          onClick={showHideMenuButton}
-        >
-          {" "}
-          {showHide ? "Hide" : "Menu"}{" "}
-        </div>
-        {showHide && <div>{menuButtons}</div>}
-      </div>
-    </div>
+    <>
+      <MenuDropDown>
+        {" "}
+        <div onClick={showHideMenuButton}> {showHide ? "Hide" : "Menu"} </div>
+      </MenuDropDown>
+      {showHide && <div>{menuButtons}</div>}
+    </>
   );
 };
 
