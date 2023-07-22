@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "../components/Button";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
@@ -13,6 +13,12 @@ const MenuDropDown = styled("div")(({ theme }) => ({
   alignItems: "Center",
 }));
 
+const ButtonContainer = styled("div")(({ theme }) => ({
+  position: "absolute",
+  width: "100%",
+  zIndex: "1",
+}));
+
 const Menu = () => {
   const navigate = useNavigate();
   const buttonInfo = [
@@ -24,10 +30,25 @@ const Menu = () => {
     { buttonName: "Learn About Tarot", urlRedirect: "" },
     { buttonName: "About", urlRedirect: "" },
   ];
+
   const [showHide, setShowHide] = React.useState(false);
   const showHideMenuButton = () => {
     setShowHide(!showHide);
   };
+
+  // document.addEventListener('mousedown', () => { showHide(false) });
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const myEvent = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setShowHide(false);
+      }
+    };
+    document.addEventListener("mousedown", myEvent);
+    return () => {
+      document.removeEventListener("mousedown", myEvent);
+    };
+  }, []);
 
   const menuButtons = buttonInfo.map((button, index) => {
     return (
@@ -44,13 +65,13 @@ const Menu = () => {
   });
 
   return (
-    <>
+    <div ref={ref}>
       <MenuDropDown>
         {" "}
         <div onClick={showHideMenuButton}> {showHide ? "Hide" : "Menu"} </div>
       </MenuDropDown>
-      {showHide && <div>{menuButtons}</div>}
-    </>
+      {showHide && <ButtonContainer>{menuButtons}</ButtonContainer>}
+    </div>
   );
 };
 
