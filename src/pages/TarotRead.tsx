@@ -8,6 +8,25 @@ import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
 import { v4 as uuidv4 } from "uuid";
+import { styled } from "@mui/system";
+
+const ButtonContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: "15px",
+  margin: "15px",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
+}));
+
+const TarotCardContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  margin: "15px",
+  gap: "15px",
+  justifyContent: "center",
+}));
 
 function TarotRead() {
   // Allows navigation to other pages.
@@ -27,7 +46,7 @@ function TarotRead() {
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
-    console.log(randomNumbers, lengthOfRead);
+
     while (randomNumbers.length < lengthOfRead) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
       if (!randomNumbers.includes(randomNum) && randomNum !== 0) {
@@ -48,6 +67,7 @@ function TarotRead() {
   const displayTarotCardBacks = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
+        style={{ width: 200 }}
         key={uuidv4()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[0].imageFileName}
@@ -83,33 +103,30 @@ function TarotRead() {
   });
 
   return (
-    <div className="h-[1000px] flex flex-col justify-center items-center">
-      <Button buttonName="Home" onClick={() => navigate("/")}></Button>
-      {tarotReadButtons}
-      <div className="w-9/12 contents">
-        <img className=" max-w-6xl mb-[-600px] mr-6" src="/Art/matt.png"></img>
-        <div className=" flex justify-center  max-w-6xl mt-12 ">
-          {displayTarotCardBacks}
-        </div>
-
-        {/* Below is the showtarot info section         */}
-        {showHide && randomTarotNumbers[0] !== 0 && (
-          <div>
-            <div className="mt-[-450px] flex flex-row mx-auto justify-center  ">
-              <TarotCard data={data.tarotDeck[showNumber]} />
-            </div>
-            <div className="m-10">
-              {" "}
-              <Button
-                buttonName="Close"
-                onClick={() => setTarotInfo(showNumber)}
-              ></Button>
-            </div>
-          </div>
-        )}
-      </div>
+    <>
       <Menu />
-    </div>
+      <div>
+        {/* <Button buttonName="Home" onClick={() => navigate("/")}></Button> */}
+        <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+        <div>
+          <img></img>
+          <TarotCardContainer>{displayTarotCardBacks}</TarotCardContainer>
+          {showHide && randomTarotNumbers[0] !== 0 && (
+            <div>
+              <div>
+                <TarotCard data={data.tarotDeck[showNumber]} />
+              </div>
+              <div className="m-10">
+                <Button
+                  buttonName="Close"
+                  onClick={() => setTarotInfo(showNumber)}
+                ></Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 

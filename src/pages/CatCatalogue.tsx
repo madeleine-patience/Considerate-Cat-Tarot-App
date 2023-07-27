@@ -3,15 +3,24 @@ import Purrlaroid from "../components/Purrlaroid";
 import Menu from "../components/Menu";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import SelectedCatInfo from "../components/SelectedCatinfo";
-import { styled } from '@mui/system';
+import { styled } from "@mui/system";
 
-
-const StyledCatalogue = styled('div')({
-  display: 'grid',
-  gridTemplateColumns: 'auto auto auto auto',
-  gap: '10px',
-});
-
+const StyledCatalogue = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "auto auto auto auto ",
+  gap: "10px",
+  margin: "auto",
+  justifyContent: "center",
+  [theme.breakpoints.down("lg")]: {
+    gridTemplateColumns: "auto auto auto ",
+  },
+  [theme.breakpoints.down("md")]: {
+    gridTemplateColumns: "auto auto  ",
+  },
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "auto   ",
+  },
+}));
 
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();

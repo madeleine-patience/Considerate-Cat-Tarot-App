@@ -50,6 +50,7 @@ const TarotCardStyled2 = styled("div")(({ theme }) => ({
 const ButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  alignItems: "center",
   margin: "auto",
   gap: "10px",
   width: "90%",
@@ -65,6 +66,19 @@ const SuitDescription = styled("div")(({ theme }) => ({
   margin: "auto",
   textAlign: "center",
 }));
+
+const DialogContainer = styled("dialog")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  backgroundColor: "transparent",
+  backdropFilter: "blur(5px)",
+}));
+
+const DialogContent = styled("div")(({ theme }) => ({}));
 
 export const Deck = () => {
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
@@ -165,6 +179,21 @@ export const Deck = () => {
 
   return (
     <>
+      {showHide && (
+        <DialogContainer open>
+          <DialogContent>
+            <div>
+              <TarotCardDetails data={data.tarotDeck[showNumber]} />
+            </div>
+            <div>
+              <Button
+                buttonName="Close"
+                onClick={() => setTarotInfo(showNumber)}
+              ></Button>
+            </div>
+          </DialogContent>
+        </DialogContainer>
+      )}
       <Menu />
       <PageContainer>
         <ButtonContainer>{mappedButtons}</ButtonContainer>
@@ -180,19 +209,8 @@ export const Deck = () => {
           </CardSpreadContainer>
         )}
         <TarotCardContainer> {selectedCards} </TarotCardContainer>
-        {showHide && (
-          <div>
-            <div>
-              <TarotCardDetails data={data.tarotDeck[showNumber]} />
-            </div>
-            <div>
-              <Button
-                buttonName="Close"
-                onClick={() => setTarotInfo(showNumber)}
-              ></Button>
-            </div>
-          </div>
-        )}
+
+        {/* What were working on  */}
       </PageContainer>
     </>
   );

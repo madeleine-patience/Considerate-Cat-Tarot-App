@@ -1,65 +1,97 @@
 import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
-import Button from "./Button";
 import { TarotCardProps } from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { v4 as uuidv4 } from "uuid";
+
+import { styled } from "@mui/system";
+
+const ModalContainer = styled("div")(({ theme }) => ({
+  width: "650px",
+  borderRadius: "100px",
+  outline: "2px solid red",
+}));
+const StyledPurrlaroide = styled("div")({
+  width: "100%",
+  justifyContent: "center",
+  backgroundColor: "lightYellow",
+  textAlign: "left",
+  padding: "30px",
+});
+const TitleText = styled("h1")({
+  fontSize: "20px",
+});
+const SuitText = styled("h2")({
+  fontSize: "18px",
+});
+const KeywordsText = styled("p")({
+  fontSize: "18px",
+});
+const TarotImg = styled("img")({
+  width: "300px",
+});
+
+const RightContainer = styled("div")({
+  display: "flex",
+  padding: "15px",
+});
+const CatContainer = styled("div")({ display: "flex", gap: "10px" });
+const CatImages = styled("img")({
+  width: "100px",
+  borderRadius: "10px",
+  margin: "10px 0",
+});
+
+const MainContent = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
 
 function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
   function catLookup(image: any) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
-    console.log(["This one hi madie"], { findTheCat });
     handleShowCatInfo(findTheCat);
   }
 
   return (
-    <div className=" flex">
+    <ModalContainer>
       {!showCatInfo && (
-        <div className=" bg-orange-200 max-w-[500px] p-4 m-2 rounded-md ">
-          <h1 className=" text-4xl">{props.data.cardName}</h1>
-          <h2 className="  pt-2">Suit: {props.data.suit} </h2>
-          <p className="italic mt-2">
+        <StyledPurrlaroide>
+          <TitleText>{props.data.cardName}</TitleText>
+          <SuitText>Suit: {props.data.suit} </SuitText>
+          <KeywordsText>
             Keywords: {props.data.keyWords.join(", ")}
-          </p>
-          <div className="flex pt-2 items-center justify-center ">
-            <img
-              className="w-[45%] rounded-md shadow-lg"
-              src={props.data.imageFileName}
-            />
-            <div className="flex-row m-4">
-              <p className="#">{props.data.description}</p>
-              {props.data.catImage && (
-                <p className="mt-4 text-sm">Cats Present: </p>
-              )}
-              <div className="flex">
-                {props.data.catImage &&
-                  props.data.catImage.map((image: string) => (
-                    <img
-                      key={uuidv4()}
-                      onClick={(event) => {
-                        catLookup(image);
-                        console.log(image);
-                      }}
-                      className=" w-16 mr-2 rounded-lg"
-                      src={image}
-                    ></img>
-                  ))}
+          </KeywordsText>
+          <MainContent>
+            <TarotImg src={props.data.imageFileName} />
+            <RightContainer>
+              <div>
+                <p>{props.data.description}</p>
+                {props.data.catImage && <p>Cats Present: </p>}
+                <CatContainer>
+                  {props.data.catImage &&
+                    props.data.catImage.map((image: string) => (
+                      <CatImages
+                        key={uuidv4()}
+                        onClick={(event) => {
+                          catLookup(image);
+                        }}
+                        src={image}
+                      ></CatImages>
+                    ))}
+                </CatContainer>
               </div>
-            </div>
-          </div>
-        </div>
+            </RightContainer>
+          </MainContent>
+        </StyledPurrlaroide>
       )}
       {showCatInfo && (
-        <div className="flex flex-col">
-          {<SelectedCatInfo data={catData.cats[selectedCatId]} />}
-          {/* 
-          two_eight: by using the {handleMethod} syntax instead of {() => handleMethod()} it's expected that your handleMethod function accept a MouseEvents argument */}
-        </div>
+        <div>{<SelectedCatInfo data={catData.cats[selectedCatId]} />}</div>
       )}
-    </div>
+    </ModalContainer>
   );
 }
 

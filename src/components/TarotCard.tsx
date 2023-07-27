@@ -1,4 +1,5 @@
 import { styled } from "@mui/system";
+import { CSSProperties } from "react";
 
 const StyledTarotCard = styled("img")(({ theme }) => ({
   borderRadius: "20px",
@@ -8,12 +9,14 @@ const StyledTarotCard = styled("img")(({ theme }) => ({
 function TarotFront({
   imageSrc,
   onClick,
+  style,
 }: {
   imageSrc: string;
   onClick?: () => void;
+  style?: CSSProperties;
 }) {
   return (
-    <div onClick={onClick} className="#">
+    <div onClick={onClick} style={style}>
       <StyledTarotCard src={imageSrc} />
     </div>
   );
