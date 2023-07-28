@@ -61,10 +61,7 @@ const ButtonContainer = styled("div")(({ theme }) => ({
     justifyContent: "center",
   },
 }));
-const ButtonHolder = styled("div")(({ theme }) => ({
-
-
-}));
+const ButtonHolder = styled("div")(({ theme }) => ({}));
 const SuitDescription = styled("div")(({ theme }) => ({
   fontStyle: "italic",
   maxWidth: "800px",
@@ -83,7 +80,9 @@ const DialogContainer = styled("dialog")(({ theme }) => ({
   backdropFilter: "blur(5px)",
 }));
 
-const DialogContent = styled("div")(({ theme }) => ({position:"relative", right:"0", top:'0'}));
+const DialogContent = styled("div")(({ theme }) => ({
+  position: "relative",
+}));
 
 export const Deck = () => {
   const [showNumber, showCard, setTarotInfo] = useDisplayTarotInfo(0);
@@ -91,10 +90,10 @@ export const Deck = () => {
   const [descriptionOfSuit, setDescription] = useState(
     " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
   );
-// console.log("setTarotInfo", setTarotInfo)
-// console.log("showCard", showCard)
+  // console.log("setTarotInfo", setTarotInfo)
+  // console.log("showCard", showCard)
 
-// console.log("selectedSuit", setSelectedState)
+  // console.log("selectedSuit", setSelectedState)
 
   const renderTitle = (selectedSuit: any) => {
     // console.log("from renderTitle", selectedSuit);
@@ -179,8 +178,8 @@ export const Deck = () => {
   ];
   const mappedButtons = buttonVals.map((button) => (
     <Button
-    key={uuidv4()}
-    value={button.value}
+      key={uuidv4()}
+      value={button.value}
       buttonName={button.buttonName}
       onClick={grabSelectedSuit}
     />
@@ -198,40 +197,42 @@ export const Deck = () => {
         setTarotInfo(0);
       }
     };
-  
-    document.addEventListener('mousedown', handleClickOutside);
-  
+
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, setTarotInfo]);
-  
 
   return (
-  
-<> {showCard && (
-                <div ref={ref}>
-
-        <DialogContainer open>
-          <DialogContent>
-            <ButtonHolder>
-          <Button
-                buttonName="X"
-                onClick={() => setTarotInfo(showNumber)}
-                style={{borderRadius:"100px" , width: "60px", height:"60px", position: "absolute",
-                right: "350px",
-                top: "119px"}}
-              ></Button>
+    <>
+      {" "}
+      {showCard && (
+        <div ref={ref}>
+          <DialogContainer open>
+            <DialogContent>
+              <ButtonHolder>
+                <Button
+                  buttonName="X"
+                  onClick={() => setTarotInfo(showNumber)}
+                  style={{
+                    borderRadius: "100px",
+                    width: "34px",
+                    height: "34px",
+                    position: "absolute",
+                    right: "-10px",
+                    top: "-10px",
+                  }}
+                ></Button>
               </ButtonHolder>
-            <div>
-              <TarotCardDetails data={data.tarotDeck[showNumber]} />
-            </div>
-            <div>
-            </div>
-          </DialogContent>
-        </DialogContainer>
-            </div>
-
+              <div>
+                <TarotCardDetails data={data.tarotDeck[showNumber]} />
+              </div>
+              <div></div>
+            </DialogContent>
+          </DialogContainer>
+        </div>
       )}
       <Menu />
       <PageContainer>
@@ -251,7 +252,7 @@ export const Deck = () => {
 
         {/* What were working on  */}
       </PageContainer>
-      </>     
+    </>
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state

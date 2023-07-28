@@ -8,10 +8,12 @@ import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
 const ModalContainer = styled("div")(({ theme }) => ({
-  width: "650px",
+  maxWidth: "700px",
+  maxHeight: "700px",
+  backgroundColor: "pink",
 }));
 const StyledPurrlaroide = styled("div")({
-  display:"flex",
+  display: "flex",
   flexDirection: "column",
   width: "100%",
   justifyContent: "center",
@@ -19,7 +21,7 @@ const StyledPurrlaroide = styled("div")({
   textAlign: "left",
   padding: "30px",
   borderRadius: "30px",
-  gap:"20px"
+  gap: "20px",
 });
 const TitleText = styled("h1")({
   fontSize: "35px",
@@ -34,10 +36,7 @@ const TarotImg = styled("img")({
   width: "300px",
 });
 
-const RightContainer = styled("div")({
-  display: "flex",
-  padding: "15px",
-});
+const RightContainer = styled("div")({});
 const CatContainer = styled("div")({ display: "flex", gap: "10px" });
 const CatImages = styled("img")({
   width: "100px",
@@ -48,6 +47,7 @@ const CatImages = styled("img")({
 const MainContent = styled("div")({
   display: "flex",
   alignItems: "center",
+  gap: "15px",
 });
 
 function TarotCard(props: TarotCardProps) {
@@ -59,16 +59,15 @@ function TarotCard(props: TarotCardProps) {
   }
 
   return (
-    
     <ModalContainer>
       {!showCatInfo && (
         <StyledPurrlaroide>
           <div>
-          <TitleText>{props.data.cardName}</TitleText>
-          <SuitText>Suit: {props.data.suit} </SuitText>
-          <KeywordsText>
-            Keywords: {props.data.keyWords.join(", ")}
-          </KeywordsText>
+            <TitleText>{props.data.cardName}</TitleText>
+            <SuitText>Suit: {props.data.suit} </SuitText>
+            <KeywordsText>
+              Keywords: {props.data.keyWords.join(", ")}
+            </KeywordsText>
           </div>
           <MainContent>
             <TarotImg src={props.data.imageFileName} />
@@ -93,9 +92,7 @@ function TarotCard(props: TarotCardProps) {
           </MainContent>
         </StyledPurrlaroide>
       )}
-      {showCatInfo && (
-        <div>{<SelectedCatInfo data={catData.cats[selectedCatId]} />}</div>
-      )}
+      {showCatInfo && <SelectedCatInfo data={catData.cats[selectedCatId]} />}
     </ModalContainer>
   );
 }
