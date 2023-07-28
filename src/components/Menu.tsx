@@ -37,19 +37,6 @@ const Menu = () => {
   };
 
   // document.addEventListener('mousedown', () => { showHide(false) });
-  const ref = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const myEvent = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setShowHide(false);
-      }
-    };
-    document.addEventListener("mousedown", myEvent);
-    return () => {
-      document.removeEventListener("mousedown", myEvent);
-    };
-  }, []);
-
   const menuButtons = buttonInfo.map((button, index) => {
     return (
       <div key={uuidv4()}>
@@ -63,9 +50,22 @@ const Menu = () => {
       </div>
     );
   });
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const myEvent = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setShowHide(false);
+        console.log(showHide)
+      }
+    };
+    document.addEventListener("mousedown", myEvent);
+    return () => {
+      document.removeEventListener("mousedown", myEvent);
+    };
+  }, []);
 
   return (
-    <div ref={ref}>
+    <div style={{position:'relative'}} ref={ref}>
       <MenuDropDown>
         {" "}
         <div onClick={showHideMenuButton}> {showHide ? "Hide" : "Menu"} </div>

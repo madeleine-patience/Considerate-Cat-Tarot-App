@@ -1,3 +1,5 @@
+import React from "react";
+import { useEffect, useRef } from "react";
 import tarotCardData from "../data/tarotCardData";
 import TarotCard from "../components/TarotCard";
 import MyTarotProps from "../types/Tarot.type";
@@ -59,7 +61,10 @@ const ButtonContainer = styled("div")(({ theme }) => ({
     justifyContent: "center",
   },
 }));
+const ButtonHolder = styled("div")(({ theme }) => ({
 
+
+}));
 const SuitDescription = styled("div")(({ theme }) => ({
   fontStyle: "italic",
   maxWidth: "800px",
@@ -78,17 +83,21 @@ const DialogContainer = styled("dialog")(({ theme }) => ({
   backdropFilter: "blur(5px)",
 }));
 
-const DialogContent = styled("div")(({ theme }) => ({}));
+const DialogContent = styled("div")(({ theme }) => ({position:"relative", right:"0", top:'0'}));
 
 export const Deck = () => {
-  const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
+  const [showNumber, showCard, setTarotInfo] = useDisplayTarotInfo(0);
   const [selectedSuit, setSelectedState] = useState<string | null>(null);
   const [descriptionOfSuit, setDescription] = useState(
     " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
   );
+// console.log("setTarotInfo", setTarotInfo)
+// console.log("showCard", showCard)
+
+// console.log("selectedSuit", setSelectedState)
 
   const renderTitle = (selectedSuit: any) => {
-    console.log("from renderTitle", selectedSuit);
+    // console.log("from renderTitle", selectedSuit);
     if (selectedSuit === "Major") {
       setDescription(
         "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery."
@@ -170,29 +179,59 @@ export const Deck = () => {
   ];
   const mappedButtons = buttonVals.map((button) => (
     <Button
-      key={`button-${button}`}
-      value={button.value}
+    key={uuidv4()}
+    value={button.value}
       buttonName={button.buttonName}
       onClick={grabSelectedSuit}
     />
   ));
 
+  const [showHide, setShowHide] = React.useState(false);
+  const showHideMenuButton = () => {
+    setShowHide(!showHide);
+  };
+
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setTarotInfo(0);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+  
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, setTarotInfo]);
+  
+
   return (
-    <>
-      {showHide && (
+  
+<> {showCard && (
+                <div ref={ref}>
+
         <DialogContainer open>
           <DialogContent>
+            <ButtonHolder>
+          <Button
+                buttonName="X"
+                onClick={() => setTarotInfo(showNumber)}
+                style={{borderRadius:"100px" , width: "60px", height:"60px", position: "absolute",
+                right: "350px",
+                top: "119px"}}
+              ></Button>
+              </ButtonHolder>
             <div>
               <TarotCardDetails data={data.tarotDeck[showNumber]} />
             </div>
             <div>
-              <Button
-                buttonName="Close"
-                onClick={() => setTarotInfo(showNumber)}
-              ></Button>
             </div>
           </DialogContent>
         </DialogContainer>
+            </div>
+
       )}
       <Menu />
       <PageContainer>
@@ -212,7 +251,7 @@ export const Deck = () => {
 
         {/* What were working on  */}
       </PageContainer>
-    </>
+      </>     
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state

@@ -9,24 +9,26 @@ import { styled } from "@mui/system";
 
 const ModalContainer = styled("div")(({ theme }) => ({
   width: "650px",
-  borderRadius: "100px",
-  outline: "2px solid red",
 }));
 const StyledPurrlaroide = styled("div")({
+  display:"flex",
+  flexDirection: "column",
   width: "100%",
   justifyContent: "center",
   backgroundColor: "lightYellow",
   textAlign: "left",
   padding: "30px",
+  borderRadius: "30px",
+  gap:"20px"
 });
 const TitleText = styled("h1")({
-  fontSize: "20px",
+  fontSize: "35px",
 });
 const SuitText = styled("h2")({
-  fontSize: "18px",
+  fontSize: "24px",
 });
 const KeywordsText = styled("p")({
-  fontSize: "18px",
+  fontSize: "20px",
 });
 const TarotImg = styled("img")({
   width: "300px",
@@ -57,14 +59,17 @@ function TarotCard(props: TarotCardProps) {
   }
 
   return (
+    
     <ModalContainer>
       {!showCatInfo && (
         <StyledPurrlaroide>
+          <div>
           <TitleText>{props.data.cardName}</TitleText>
           <SuitText>Suit: {props.data.suit} </SuitText>
           <KeywordsText>
             Keywords: {props.data.keyWords.join(", ")}
           </KeywordsText>
+          </div>
           <MainContent>
             <TarotImg src={props.data.imageFileName} />
             <RightContainer>
