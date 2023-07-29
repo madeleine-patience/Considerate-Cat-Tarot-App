@@ -4,62 +4,71 @@ import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
-const ModalContainer = styled("div")(({ theme }) => ({
-  backgroundColor:"#C1FFD5",
+const ModalContainer = styled("div")({
+  backgroundColor: "#C1FFD5",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "Center",
+  height: "100%",
+  padding: "25px",
+  borderRadius: "20px",
+  gap: "15px",
+});
+
+const MainContent = styled("div")({
+  display: "grid",
+  gridTemplateColumns: "auto auto",
+  gap: "20px",
+  height: "350px",
+});
+// First section of Container
+const MainCatContainer = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
+
+const MainCat = styled("img")({
+  borderRadius: "25px",
   width: "100%",
   height: "100%",
-  display:"grid",
-  gridTemplateColumns:"1fr 1fr",
-  padding:"25px",
-  borderRadius: "20px",
-  gap: "15px"
+  objectFit: "cover",
+});
 
-}));
+const TextContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  overflow: "hidden",
+});
 
-const MainContent = styled("div")(({ theme }) => ({
-display:"flex",
-gap: "15px",  
+const TitleText = styled("h1")({
+  fontSize: "32px",
+});
 
-}));
-
-// First section of Container
-const MainCatContainer = styled("div")(({ theme }) => ({
-  width: "50%"
-}));
-
-const MainCat = styled("img")(({ theme }) => ({
-  borderRadius: "25px",
-  
-  }));
-
-const TextContainer = styled("div")(({ theme }) => ({
-display:"flex",
-flexGrow: "1",
-alignItems:"flexStart",
-justifyContent:"center",
-flexDirection:"column",
-gap:"15px",
-width: "50%"
-}));
-
-const TitleText=  styled("h1")(({ theme }) => ({
-  fontSize: "32px"
-
-}));
-
+const DescriptionParagraph = styled("p")({
+  width: "100%",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "normal",
+  display: "-webkit-box",
+  "-webkit-line-clamp": "12",
+  "-webkit-box-orient": "vertical",
+});
 // Second section of Container
 
-const BuddyContainer=  styled("div")({
-width: "100%",
-display:"flex",
-flexDirection:"column",
+const BuddyContainer = styled("div")({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  fontSize: "20px",
+  gap: "10px",
 });
 
 const BuddyImage = styled("img")({
   width: "100px",
   borderRadius: "10px",
 });
-
 
 function SelectedCat(props: ICatProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
@@ -69,20 +78,23 @@ function SelectedCat(props: ICatProps) {
       <MainContent>
         <MainCatContainer>
           <MainCat src={props.data.image} />
-          </MainCatContainer>
+        </MainCatContainer>
         <TextContainer>
           <TitleText> {props.data.name}</TitleText>
-          <p> {props.data.description}</p>
+          <DescriptionParagraph> {props.data.description}</DescriptionParagraph>
         </TextContainer>
       </MainContent>
-        <BuddyContainer>
-          {props.data.buddyIds && <h3>Buddies</h3>}
-          {buddyLinks &&
-            buddyLinks.map((buddyNumber) => (
-              <BuddyImage key={uuidv4()} src={catData.cats[buddyNumber].image}></BuddyImage>
-            ))}
-        </BuddyContainer>
-      </ModalContainer>
+      <BuddyContainer>
+        {props.data.buddyIds && <h3> {props.data.name}'s Buddies</h3>}
+        {buddyLinks &&
+          buddyLinks.map((buddyNumber) => (
+            <BuddyImage
+              key={uuidv4()}
+              src={catData.cats[buddyNumber].image}
+            ></BuddyImage>
+          ))}
+      </BuddyContainer>
+    </ModalContainer>
   );
 }
 
