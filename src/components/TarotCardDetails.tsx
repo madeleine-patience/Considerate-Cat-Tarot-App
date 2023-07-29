@@ -1,9 +1,8 @@
-import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
 import TarotCardProps from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
-import { v4 as uuidv4 } from "uuid";
+import CatButton from "./StyledElements/CatButton"
 
 import { styled } from "@mui/system";
 
@@ -43,12 +42,6 @@ const CatContainer = styled("div")({
   justifyContent: "flex-start",
   flexWrap: "wrap",
 });
-const CatImages = styled("img")({
-  width: "100px",
-  height: "100px",
-  overflow: "cover",
-  borderRadius: "10px",
-});
 
 const MainContent = styled("div")({
   display: "flex",
@@ -56,15 +49,13 @@ const MainContent = styled("div")({
   gap: "15px",
 });
 
-
-
 function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
   function catLookup(image: any) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
-  }
+  }  
 
   return (
     <ModalContainer>
@@ -86,17 +77,7 @@ function TarotCard(props: TarotCardProps) {
                 <CatContainer>
                   {props.data.catImage &&
                     props.data.catImage.map((image: string) => (
-                      <button style={{
-                        backgroundImage: `url(${image})`,
-                        backgroundSize: "cover"
-                        }}>
-                        <CatImages
-                          key={uuidv4()}
-                          onClick={(event) => {
-                            catLookup(image);
-                          }}
-                        ></CatImages>
-                      </button>
+                      <CatButton image={image} catLookup={catLookup}/>
                     ))}
                 </CatContainer>
               </div>
