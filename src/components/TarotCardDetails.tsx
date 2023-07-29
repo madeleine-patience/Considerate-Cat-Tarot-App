@@ -8,9 +8,8 @@ import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
 const ModalContainer = styled("div")(({ theme }) => ({
-  maxWidth: "700px",
-  maxHeight: "700px",
-  backgroundColor: "pink",
+  width: "700px",
+  height: "700px",
 }));
 const StyledPurrlaroide = styled("div")({
   display: "flex",
