@@ -3,6 +3,7 @@ import ICatProps from "../types/CatProps";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
+import { H2Title } from "./TarotCardDetails"
 
 const ModalContainer = styled("div")({
   backgroundColor: "#C1FFD5",
@@ -42,10 +43,6 @@ const TextContainer = styled("div")({
   overflow: "hidden",
 });
 
-const TitleText = styled("h1")({
-  fontSize: "32px",
-});
-
 const DescriptionParagraph = styled("p")({
   width: "100%",
   overflow: "hidden",
@@ -80,7 +77,7 @@ function SelectedCat(props: ICatProps) {
           <MainCat src={props.data.image} />
         </MainCatContainer>
         <TextContainer>
-          <TitleText> {props.data.name}</TitleText>
+          <H2Title> {props.data.name}</H2Title>
           <DescriptionParagraph> {props.data.description}</DescriptionParagraph>
         </TextContainer>
       </MainContent>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
-import { TarotCardProps } from "../types/Tarot.type";
+import TarotCardProps from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { v4 as uuidv4 } from "uuid";
 
@@ -22,7 +22,7 @@ const StyledPurrlaroide = styled("div")({
   borderRadius: "30px",
   gap: "20px",
 });
-const TitleText = styled("h1")({
+export const H2Title = styled("h2")({
   fontSize: "35px",
 });
 const SuitText = styled("h2")({
@@ -56,6 +56,8 @@ const MainContent = styled("div")({
   gap: "15px",
 });
 
+
+
 function TarotCard(props: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
@@ -69,7 +71,7 @@ function TarotCard(props: TarotCardProps) {
       {!showCatInfo && (
         <StyledPurrlaroide>
           <div>
-            <TitleText>{props.data.cardName}</TitleText>
+            <H2Title>{props.data.cardName}</H2Title>
             <SuitText>Suit: {props.data.suit} </SuitText>
             <KeywordsText>
               Keywords: {props.data.keyWords.join(", ")}
@@ -84,13 +86,17 @@ function TarotCard(props: TarotCardProps) {
                 <CatContainer>
                   {props.data.catImage &&
                     props.data.catImage.map((image: string) => (
-                      <CatImages
-                        key={uuidv4()}
-                        onClick={(event) => {
-                          catLookup(image);
-                        }}
-                        src={image}
-                      ></CatImages>
+                      <button style={{
+                        backgroundImage: `url(${image})`,
+                        backgroundSize: "cover"
+                        }}>
+                        <CatImages
+                          key={uuidv4()}
+                          onClick={(event) => {
+                            catLookup(image);
+                          }}
+                        ></CatImages>
+                      </button>
                     ))}
                 </CatContainer>
               </div>
