@@ -36,11 +36,18 @@ const TarotImg = styled("img")({
 });
 
 const RightContainer = styled("div")({});
-const CatContainer = styled("div")({ display: "flex", gap: "10px" });
+const CatContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  gap: "10px",
+  justifyContent: "flex-start",
+  flexWrap: "wrap",
+});
 const CatImages = styled("img")({
   width: "100px",
+  height: "100px",
+  overflow: "cover",
   borderRadius: "10px",
-  margin: "10px 0",
 });
 
 const MainContent = styled("div")({
