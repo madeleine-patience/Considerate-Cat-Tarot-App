@@ -22,7 +22,7 @@ const ButtonContainer = styled("div")(({ theme }) => ({
 const Menu = () => {
   const navigate = useNavigate();
   const buttonInfo = [
-    { buttonName: "Home", urlRedirect: "/" },
+    { buttonName: "Home", urlRedirect: "/LandingPage" },
     { buttonName: "Get a Tarot Read", urlRedirect: "/tarotRead" },
     { buttonName: "View All Cards", urlRedirect: "/Deck" },
     { buttonName: "View All Cats", urlRedirect: "/CatCatalogue" },

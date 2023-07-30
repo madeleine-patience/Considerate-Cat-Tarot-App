@@ -20,8 +20,7 @@ const HomeButtonContainer = styled("div")(({ theme }) => ({
     flexDirection: "row",
   },
 }));
-
-export const Home = () => {
+const Home = () => {
   const navigate = useNavigate();
   const navigateToTarotRead = () => {
     navigate("/tarotRead");
