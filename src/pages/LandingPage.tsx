@@ -1,67 +1,81 @@
-import Button from "../components/Button";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import homepageImage from "/Art/titlePage.jpg";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
-import { borderRadius, display } from "@mui/system";
-import catData from "../data/cats";
-import Purrlaroid from "../components/Purrlaroid";
-import useDisplayCatInfo from "../hooks/displayCatInfo";
-import SelectedCatInfo from "../components/SelectedCatinfo";
+import CatTile from "../components/CatTile";
+import { useNavigate } from "react-router-dom";
 
 const PageContainer = styled("div")({
-    width:"100%",
-    height: "100%",
-    display:"flex",
-    justifyContent: "center",
-    alignItems:"center",
-  })
-  const RowOfOptions = styled("div")(({ theme }) => ({
-    display: "grid",
-    gridTemplateColumns: "auto auto auto auto ",
-    gap: "10px",
-    justifyContent: "center",
-    [theme.breakpoints.down("md")]: {
-      gridTemplateColumns: "auto auto  ",
-    },
-    [theme.breakpoints.down("sm")]: {
-      gridTemplateColumns: "auto   ",
-    },
-  }));
-  
+  width: "100%",
+  minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+});
+const CatContainer = styled("div")(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "auto auto auto auto ",
+  gap: "10px",
+  justifyContent: "center",
+  alignItems: "center",
 
-const Options = styled ('div')({
-    width:"250px",
-    height: "250px",
-    backgroundColor: "pink",
-    borderRadius: "10px",
-    backgroundImage: 'url("/Cats/BenBen.jpg")'
-
-})
-
-
-const RightContainer = styled("div")({
- 
-})
-
+  [theme.breakpoints.down("md")]: {
+    gridTemplateColumns: "auto auto  ",
+  },
+  [theme.breakpoints.down("sm")]: {
+    gridTemplateColumns: "auto   ",
+  },
+}));
 
 export const LandingPage = () => {
+  const navigate = useNavigate();
+  const navigateToCards = () => {
+    navigate("/Deck");
+  };
+  const navigateToRead = () => {
+    navigate("/TarotRead");
+  };
+  const navigateToCats = () => {
+    navigate("/CatCatalogue");
+  };
+  const CatTileInfo = [
+    {
+      image: "/Art/Heidi.jpg",
+      color: "pink",
+      title: "View All Cards",
+      navigation: () => navigateToCards(),
+    },
+    {
+      image: "/Art/Abe.jpg",
+      color: "lightYellow",
+      title: "Get A Tarot Read",
+      navigation: () => navigateToRead(),
+    },
+    {
+      image: "/Art/Elm.jpg",
+      color: "PowderBlue",
+      title: "Meet The Cats",
+      navigation: () => navigateToCats(),
+    },
+    { image: "/Art/Heidi.jpg", color: "Thistle", title: "Learn Tarot" },
+  ];
+
+  const Tiles = CatTileInfo.map((cats) => {
+    return (
+      <CatTile
+        image={cats.image}
+        color={cats.color}
+        title={cats.title}
+        navigation={cats.navigation}
+      />
+    );
+  });
+
   return (
     <>
-    <Menu />
-    <PageContainer>
-      <RowOfOptions>
-        <Options>
-        </Options>
-        <Options>
-        </Options>
-        <Options>
-        </Options>
-        <Options>
-        </Options>
-      </RowOfOptions>
-    </PageContainer>
+      <Menu />
+      <PageContainer>
+        <CatContainer>{Tiles}</CatContainer>
+      </PageContainer>
     </>
   );
 };
-

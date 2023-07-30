@@ -3,7 +3,7 @@ import ICatProps from "../types/CatProps";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
-import { H2Title } from "./TarotCardDetails"
+import { H2Title } from "./TarotCardDetails";
 
 const ModalContainer = styled("div")({
   backgroundColor: "#C1FFD5",
@@ -33,7 +33,7 @@ const MainCat = styled("img")({
   borderRadius: "25px",
   width: "100%",
   height: "100%",
-  objectFit: "cover",
+  backgroundSize: "cover",
 });
 
 const TextContainer = styled("div")({
