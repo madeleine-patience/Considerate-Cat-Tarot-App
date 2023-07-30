@@ -2,8 +2,6 @@ import { useState } from "react";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
 import TarotFront from "../components/TarotCard";
-import { v4 as uuidv4 } from "uuid";
-import TarotBack from "../components/TarotBack";
 
 //Ok so we have created this new component so that we can pull out tarot front and back and have everything render everything individualy. WIP. (Each card will have its own state : and to track state
 

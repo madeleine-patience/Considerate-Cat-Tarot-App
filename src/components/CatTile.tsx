@@ -1,6 +1,5 @@
 import "@fontsource/merriweather";
 import { styled } from "@mui/system";
-import { Routes, Route, useNavigate } from "react-router-dom";
 
 interface PROPS {
   image: string;

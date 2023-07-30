@@ -67,22 +67,22 @@ const BuddyImage = styled("img")({
   borderRadius: "10px",
 });
 
-function SelectedCat(props: ICatProps) {
+function SelectedCat({ data }: ICatProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
-  const buddyLinks = props.data.buddyIds;
+  const buddyLinks = data.buddyIds;
   return (
     <ModalContainer>
       <MainContent>
         <MainCatContainer>
-          <MainCat src={props.data.image} />
+          <MainCat src={data.image} />
         </MainCatContainer>
         <TextContainer>
-          <H2Title> {props.data.name}</H2Title>
-          <DescriptionParagraph> {props.data.description}</DescriptionParagraph>
+          <H2Title> {data.name}</H2Title>
+          <DescriptionParagraph> {data.description}</DescriptionParagraph>
         </TextContainer>
       </MainContent>
       <BuddyContainer>
-        {props.data.buddyIds && <h3> {props.data.name}'s Buddies</h3>}
+        {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
         {buddyLinks &&
           buddyLinks.map((buddyNumber) => (
             <BuddyImage

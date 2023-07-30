@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Button from "../components/Button";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
@@ -36,7 +36,6 @@ const Menu = () => {
     setShowHide(!showHide);
   };
 
-  // document.addEventListener('mousedown', () => { showHide(false) });
   const menuButtons = buttonInfo.map((button, index) => {
     return (
       <div key={uuidv4()}>
@@ -50,12 +49,13 @@ const Menu = () => {
       </div>
     );
   });
+
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const myEvent = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setShowHide(false);
-        console.log(showHide)
+        console.log(showHide);
       }
     };
     document.addEventListener("mousedown", myEvent);
@@ -65,7 +65,7 @@ const Menu = () => {
   }, []);
 
   return (
-    <div style={{position:'relative'}} ref={ref}>
+    <div style={{ position: "relative" }} ref={ref}>
       <MenuDropDown>
         {" "}
         <div onClick={showHideMenuButton}> {showHide ? "Hide" : "Menu"} </div>

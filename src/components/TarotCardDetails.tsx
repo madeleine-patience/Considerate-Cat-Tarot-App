@@ -2,7 +2,7 @@ import SelectedCatInfo from "./SelectedCatinfo";
 import catData from "../data/cats";
 import TarotCardProps from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
-import CatButton from "./StyledElements/CatButton"
+import CatButton from "./StyledElements/CatButton";
 
 import { styled } from "@mui/system";
 
@@ -49,35 +49,33 @@ const MainContent = styled("div")({
   gap: "15px",
 });
 
-function TarotCard(props: TarotCardProps) {
+function TarotCard({ data }: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
   function catLookup(image: any) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
-  }  
+  }
 
   return (
     <ModalContainer>
       {!showCatInfo && (
         <StyledPurrlaroide>
           <div>
-            <H2Title>{props.data.cardName}</H2Title>
-            <SuitText>Suit: {props.data.suit} </SuitText>
-            <KeywordsText>
-              Keywords: {props.data.keyWords.join(", ")}
-            </KeywordsText>
+            <H2Title>{data.cardName}</H2Title>
+            <SuitText>Suit: {data.suit} </SuitText>
+            <KeywordsText>Keywords: {data.keyWords.join(", ")}</KeywordsText>
           </div>
           <MainContent>
-            <TarotImg src={props.data.imageFileName} />
+            <TarotImg src={data.imageFileName} />
             <RightContainer>
               <div>
-                <p>{props.data.description}</p>
-                {props.data.catImage && <p>Cats Present: </p>}
+                <p>{data.description}</p>
+                {data.catImage && <p>Cats Present: </p>}
                 <CatContainer>
-                  {props.data.catImage &&
-                    props.data.catImage.map((image: string) => (
-                      <CatButton image={image} catLookup={catLookup}/>
+                  {data.catImage &&
+                    data.catImage.map((image: string) => (
+                      <CatButton image={image} catLookup={catLookup} />
                     ))}
                 </CatContainer>
               </div>
