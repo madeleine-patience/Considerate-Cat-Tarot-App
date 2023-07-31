@@ -20,12 +20,17 @@ const ButtonContainer = styled("div")(({ theme }) => ({
     alignItems: "center",
   },
 }));
+const TarotandMatt = styled("div")(({ theme }) => ({
+  position: "relative",
+}));
 
 const TarotCardContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  margin: "15px",
+  display: "grid",
+  gridTemplateColumns: "auto auto auto",
   gap: "15px",
-  justifyContent: "center",
+  position: "absolute",
+  left: "50%",
+  top: "50%",
 }));
 
 function TarotRead() {
@@ -40,11 +45,24 @@ function TarotRead() {
 
   const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
 
+  let [renderedStyle, updateRenderedStyle] = useState({
+    gridTemplateColumns: "auto",
+  });
+
   const randomNumbers: number[] = [];
   function getCards(lengthOfRead: number) {
+    let renderedStyle =
+      lengthOfRead == 1
+        ? updateRenderedStyle({ gridTemplateColumns: "auto" })
+        : lengthOfRead == 3
+        ? updateRenderedStyle({ gridTemplateColumns: "auto auto auto" })
+        : updateRenderedStyle({
+            gridTemplateColumns: "auto auto auto auto auto",
+          });
     setLengthOfTarotRead(lengthOfRead);
     // Looking at the length of the amount of cards to choose from in the tarot deck
     const arrayLength = data.tarotDeck.length;
+    // const classForCSS=
     // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
 
     while (randomNumbers.length < lengthOfRead) {
@@ -105,12 +123,13 @@ function TarotRead() {
   return (
     <>
       <Menu />
-      <div>
-        {/* <Button buttonName="Home" onClick={() => navigate("/")}></Button> */}
-        <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+      {/* <Button buttonName="Home" onClick={() => navigate("/")}></Button> */}
+      <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+      <TarotandMatt>
         <div>
-          <img></img>
-          <TarotCardContainer>{displayTarotCardBacks}</TarotCardContainer>
+          <TarotCardContainer style={renderedStyle}>
+            {displayTarotCardBacks}
+          </TarotCardContainer>
           {showHide && randomTarotNumbers[0] !== 0 && (
             <div>
               <div>
@@ -124,8 +143,9 @@ function TarotRead() {
               </div>
             </div>
           )}
+          <img src="/Art/matt.png"></img>
         </div>
-      </div>
+      </TarotandMatt>
     </>
   );
 }
