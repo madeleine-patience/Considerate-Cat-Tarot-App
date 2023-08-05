@@ -52,11 +52,11 @@ const MainContent = styled("div")({
 function TarotCard({ data }: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  function catLookup(image: string) {
+  function catLookup(image: string[]) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
   }
-
+  console.log(data);
   return (
     <ModalContainer>
       {!showCatInfo && (
@@ -74,8 +74,12 @@ function TarotCard({ data }: TarotCardProps) {
                 {data.catImage && <p>Cats Present: </p>}
                 <CatContainer>
                   {data.catImage &&
-                    data.catImage.map((image: string) => (
-                      <CatButton image={image} catLookup={catLookup} />
+                    data.catImage.map((image: string, index: number) => (
+                      <CatButton
+                        image={image}
+                        catLookup={catLookup}
+                        key={image + index}
+                      />
                     ))}
                 </CatContainer>
               </div>

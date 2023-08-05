@@ -294,7 +294,6 @@ const tarotDeck = {
       suit: "Cups",
       imageFileName: "/artwork/25.jpg",
       catImage: ["/Cats/Cole.jpg", "/Cats/Elmer.jpg"],
-
     },
     {
       id: 26,
@@ -408,7 +407,7 @@ const tarotDeck = {
       imageFileName: "/artwork/36.jpg",
       suit: "Cups",
 
-      catImage: "/Cats/Eddie.jpg",
+      catImage: ["/Cats/Eddie.jpg"],
     },
     {
       id: 37,
@@ -429,7 +428,7 @@ const tarotDeck = {
       imageFileName: "/artwork/38.jpg",
       suit: "Pentacles",
 
-      catImage: ["/Cats/Doogie.jpg", "/Cats/Chloe.jpg" ],
+      catImage: ["/Cats/Doogie.jpg", "/Cats/Chloe.jpg"],
     },
     {
       id: 39,

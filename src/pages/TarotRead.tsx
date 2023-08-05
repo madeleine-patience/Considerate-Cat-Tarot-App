@@ -7,7 +7,6 @@ import TarotFront from "../components/TarotCard";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
-import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -58,8 +57,9 @@ const DialogContent = styled("div")(({ theme }) => ({
 function TarotRead() {
   const navigate = useNavigate();
   const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
-  let [showTarotInfo, setShowTarotInfo] = useState(false);
-  const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
+  const [showTarotInfo, setShowTarotInfo] = useState(false);
+  const [showNumber, showHide, setTarotInfo, setShowHide] =
+    useDisplayTarotInfo(0);
   const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
 
   interface RenderedStyle {
@@ -99,35 +99,40 @@ function TarotRead() {
   // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
+    setShowHide(true);
   }
 
   // a function to pull the right about of cards but only display them cardback face up.
-
   const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
         style={{ width: "100%" }}
-        key={uuidv4()}
+        key={tarotFront.toString()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[0].imageFileName}
       />
     );
   });
 
-  function updateStatOfCard(newNum: number) {
+  function updateStateOfCard(newNum: number) {
     setShowTarotInfo(true);
     revealTarotInformation(newNum);
   }
 
   const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
+    console.log(tarotFront);
     return (
       <TarotFront
-        key={uuidv4()}
+        key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
-        onClick={() => updateStatOfCard(showNumber)}
+        onClick={() => updateStateOfCard(tarotFront)}
       />
     );
   });
+
+  const clearMyTarotRead = () => {
+    setRandomTarotNumbers([]);
+  };
 
   const buttonInfo = [
     { buttonname: "Pull One card", cardreadLength: 1 },
@@ -138,7 +143,7 @@ function TarotRead() {
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
       <Button
-        key={cardRead.buttonname}
+        key={cardRead.cardreadLength}
         buttonName={cardRead.buttonname}
         onClick={() => {
           getCards(cardRead.cardreadLength);
@@ -146,7 +151,6 @@ function TarotRead() {
       ></Button>
     );
   });
-  console.log(showHide);
   return (
     <>
       <Menu />
@@ -156,7 +160,7 @@ function TarotRead() {
           <DialogContent>
             <Button
               buttonName="X"
-              onClick={() => setShowTarotInfo(true)}
+              onClick={() => setShowTarotInfo(false)}
               style={{
                 borderRadius: "100px",
                 width: "34px",
@@ -188,10 +192,22 @@ function TarotRead() {
           </div>
         )}
         <Matt src="/Art/matt.png"></Matt>
-        <Button
-          buttonName="Reveal Cards"
-          onClick={() => setTarotInfo(showNumber)}
-        ></Button>
+        {showHide ||
+          (randomTarotNumbers[0] && (
+            <Button
+              style={{ margin: "auto" }}
+              buttonName="Reveal Cards"
+              onClick={() => setTarotInfo(showNumber)}
+            ></Button>
+          ))}
+
+        {showHide && randomTarotNumbers[0] && (
+          <Button
+            style={{ margin: "auto" }}
+            buttonName="Refresh My Tarot Read"
+            onClick={() => clearMyTarotRead()}
+          ></Button>
+        )}
       </TarotandMatt>
     </>
   );
