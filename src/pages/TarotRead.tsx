@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TarotCard from "../components/TarotCardDetails";
+import TarotCardDetails from "../components/TarotCardDetails";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
@@ -22,48 +22,70 @@ const ButtonContainer = styled("div")(({ theme }) => ({
 }));
 const TarotandMatt = styled("div")(({ theme }) => ({
   position: "relative",
+  width: "1000px",
+  margin: "auto",
+}));
+
+const Matt = styled("img")(({ theme }) => ({
+  width: "100%",
 }));
 
 const TarotCardContainer = styled("div")(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "auto auto auto",
   gap: "15px",
   position: "absolute",
   left: "50%",
   top: "50%",
+  transform: "translate(-50%, -50%)",
+}));
+
+const DialogContainer = styled("dialog")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  backgroundColor: "transparent",
+  backdropFilter: "blur(5px)",
+  zIndex: "2",
+}));
+
+const DialogContent = styled("div")(({ theme }) => ({
+  position: "relative",
 }));
 
 function TarotRead() {
-  // Allows navigation to other pages.
   const navigate = useNavigate();
-
-  // Getter and setter of 10 numbers all set at 0
   const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
-
-  // this is us pulling in the hook from displayTarotInfo. Show number is 0, showHide is set as false and setTarotInfo is a function that shows and hides the tarot info on a click.
+  let [showTarotInfo, setShowTarotInfo] = useState(false);
   const [showNumber, showHide, setTarotInfo] = useDisplayTarotInfo(0);
-
   const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
 
-  let [renderedStyle, updateRenderedStyle] = useState({
+  interface RenderedStyle {
+    gridTemplateColumns: string;
+    width?: string;
+  }
+  let [renderedStyle, updateRenderedStyle] = useState<RenderedStyle>({
     gridTemplateColumns: "auto",
+    width: "100%",
   });
 
   const randomNumbers: number[] = [];
+
   function getCards(lengthOfRead: number) {
     let renderedStyle =
       lengthOfRead == 1
-        ? updateRenderedStyle({ gridTemplateColumns: "auto" })
+        ? updateRenderedStyle({ gridTemplateColumns: "auto", width: "20%" })
         : lengthOfRead == 3
         ? updateRenderedStyle({ gridTemplateColumns: "auto auto auto" })
         : updateRenderedStyle({
             gridTemplateColumns: "auto auto auto auto auto",
           });
+
     setLengthOfTarotRead(lengthOfRead);
-    // Looking at the length of the amount of cards to choose from in the tarot deck
+
     const arrayLength = data.tarotDeck.length;
-    // const classForCSS=
-    // creating a while loop that executes until the randomNumbers array is filled above with three different numbers.
 
     while (randomNumbers.length < lengthOfRead) {
       let randomNum = Math.floor(Math.random() * arrayLength - 1) + 1;
@@ -71,7 +93,6 @@ function TarotRead() {
         randomNumbers.push(randomNum);
       }
     }
-    console.log(randomNumbers);
     setRandomTarotNumbers(randomNumbers);
   }
 
@@ -82,25 +103,31 @@ function TarotRead() {
 
   // a function to pull the right about of cards but only display them cardback face up.
 
-  const displayTarotCardBacks = randomTarotNumbers.map((tarotFront, index) => {
+  const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
-        style={{ width: 200 }}
+        style={{ width: "100%" }}
         key={uuidv4()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[0].imageFileName}
       />
     );
   });
-  // const pullThreeCards = randomTarotNumbers.map((tarotFront, index) => {
-  //   return (
-  //     <TarotFront
-  //       key={uuidv4()}
-  //       onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-  //       imageSrc={data.tarotDeck[tarotFront].imageFileName}
-  //     />
-  //   );
-  // });
+
+  function updateStatOfCard(newNum: number) {
+    setShowTarotInfo(true);
+    revealTarotInformation(newNum);
+  }
+
+  const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
+    return (
+      <TarotFront
+        key={uuidv4()}
+        imageSrc={data.tarotDeck[tarotFront].imageFileName}
+        onClick={() => updateStatOfCard(showNumber)}
+      />
+    );
+  });
 
   const buttonInfo = [
     { buttonname: "Pull One card", cardreadLength: 1 },
@@ -119,32 +146,52 @@ function TarotRead() {
       ></Button>
     );
   });
-
+  console.log(showHide);
   return (
     <>
       <Menu />
-      {/* <Button buttonName="Home" onClick={() => navigate("/")}></Button> */}
+      {/* modal */}
+      {showTarotInfo && (
+        <DialogContainer open>
+          <DialogContent>
+            <Button
+              buttonName="X"
+              onClick={() => setShowTarotInfo(true)}
+              style={{
+                borderRadius: "100px",
+                width: "34px",
+                height: "34px",
+                position: "absolute",
+                right: "-10px",
+                top: "-10px",
+              }}
+            ></Button>
+            <TarotCardDetails data={data.tarotDeck[showNumber]} />
+          </DialogContent>
+        </DialogContainer>
+      )}
+      {/* modal */}
+
       <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+
       <TarotandMatt>
-        <div>
+        {!showHide && (
           <TarotCardContainer style={renderedStyle}>
-            {displayTarotCardBacks}
+            {cardsNotRevealed}
           </TarotCardContainer>
-          {showHide && randomTarotNumbers[0] !== 0 && (
-            <div>
-              <div>
-                <TarotCard data={data.tarotDeck[showNumber]} />
-              </div>
-              <div className="m-10">
-                <Button
-                  buttonName="Close"
-                  onClick={() => setTarotInfo(showNumber)}
-                ></Button>
-              </div>
-            </div>
-          )}
-          <img src="/Art/matt.png"></img>
-        </div>
+        )}
+        {showHide && randomTarotNumbers[0] !== 0 && (
+          <div>
+            <TarotCardContainer style={renderedStyle}>
+              {cardsRevealed}
+            </TarotCardContainer>
+          </div>
+        )}
+        <Matt src="/Art/matt.png"></Matt>
+        <Button
+          buttonName="Reveal Cards"
+          onClick={() => setTarotInfo(showNumber)}
+        ></Button>
       </TarotandMatt>
     </>
   );

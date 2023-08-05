@@ -90,13 +90,8 @@ export const Deck = () => {
   const [descriptionOfSuit, setDescription] = useState(
     " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
   );
-  // console.log("setTarotInfo", setTarotInfo)
-  // console.log("showCard", showCard)
-
-  // console.log("selectedSuit", setSelectedState)
 
   const renderTitle = (selectedSuit: any) => {
-    // console.log("from renderTitle", selectedSuit);
     if (selectedSuit === "Major") {
       setDescription(
         "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery."
@@ -226,10 +221,7 @@ export const Deck = () => {
                   }}
                 ></Button>
               </ButtonHolder>
-              <div>
-                <TarotCardDetails data={data.tarotDeck[showNumber]} />
-              </div>
-              <div></div>
+              <TarotCardDetails data={data.tarotDeck[showNumber]} />
             </DialogContent>
           </DialogContainer>
         </div>

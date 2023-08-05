@@ -55,7 +55,6 @@ const Menu = () => {
     const myEvent = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setShowHide(false);
-        console.log(showHide);
       }
     };
     document.addEventListener("mousedown", myEvent);

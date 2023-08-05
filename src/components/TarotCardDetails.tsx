@@ -52,7 +52,7 @@ const MainContent = styled("div")({
 function TarotCard({ data }: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  function catLookup(image: any) {
+  function catLookup(image: string) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
   }
