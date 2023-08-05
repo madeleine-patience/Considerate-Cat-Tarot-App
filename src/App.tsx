@@ -5,6 +5,7 @@ import TarotRead from "./pages/TarotRead";
 import Home from "./pages/Home";
 import CatCatalogue from "./pages/CatCatalogue";
 import { Deck } from "./pages/Deck";
+import HoroscopeRead from "./pages/Horoscope";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,6 +23,7 @@ function App() {
       <Route path="/LandingPage" element={<LandingPage />} />
       <Route path="/Deck" element={<Deck />} />
       <Route path="/CatCatalogue" element={<CatCatalogue />} />
+      <Route path="/Horoscope" element={<HoroscopeRead />} />
     </Routes>
   );
 }

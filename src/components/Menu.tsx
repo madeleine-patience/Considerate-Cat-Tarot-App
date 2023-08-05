@@ -26,6 +26,7 @@ const Menu = () => {
     { buttonName: "Get a Tarot Read", urlRedirect: "/tarotRead" },
     { buttonName: "View All Cards", urlRedirect: "/Deck" },
     { buttonName: "View All Cats", urlRedirect: "/CatCatalogue" },
+    { buttonName: "Horoscope Read", urlRedirect: "/Horoscope" },
     { buttonName: "Shop", urlRedirect: "" },
     { buttonName: "Learn About Tarot", urlRedirect: "" },
     { buttonName: "About", urlRedirect: "" },
