@@ -21,9 +21,9 @@ const PurrlaroidImage = styled("img")({
 const Purrlaroid = ({ data, handleClick }: ICatProps) => {
   return (
     <StyledPurrlaroide>
-      <div className="">
+      <div>
         <PurrlaroidImage onClick={() => handleClick?.(data)} src={data.image} />
-        <h3 className="">{data.name}</h3>
+        <h3>{data.name}</h3>
       </div>
     </StyledPurrlaroide>
   );

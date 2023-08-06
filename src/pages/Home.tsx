@@ -31,7 +31,7 @@ const Home = () => {
       {" "}
       <Menu />
       <HomeContainer>
-        <img className="#" src={homepageImage} />
+        <img src={homepageImage} />
         <HomeButtonContainer>
           <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
           <Button

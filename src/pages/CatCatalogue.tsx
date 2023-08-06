@@ -42,7 +42,7 @@ const CatCatalogue = () => {
   });
 
   return (
-    <div className="">
+    <div>
       {showCatInfo && (
         <DialogContainer>
           <DialogContent style={{ width: "700px" }}>
