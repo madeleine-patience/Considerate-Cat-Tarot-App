@@ -1,7 +1,6 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
-import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 import { H2Title } from "./TarotCardDetails";
 
@@ -9,30 +8,29 @@ const ModalContainer = styled("div")({
   backgroundColor: "#C1FFD5",
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "Center",
   height: "100%",
   padding: "25px",
   borderRadius: "20px",
   gap: "15px",
 });
 
+const TitleText = styled("div")({});
+
 const MainContent = styled("div")({
-  display: "grid",
-  gridTemplateColumns: "auto auto",
+  display: "flex",
   gap: "20px",
-  height: "350px",
+  alignItems: "center",
 });
 // First section of Container
 const MainCatContainer = styled("div")({
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
+  width: "50%",
 });
 
 const MainCat = styled("img")({
   borderRadius: "25px",
   width: "100%",
-  height: "100%",
   backgroundSize: "cover",
 });
 
@@ -41,6 +39,7 @@ const TextContainer = styled("div")({
   flexDirection: "column",
   gap: "15px",
   overflow: "hidden",
+  width: "50%",
 });
 
 const DescriptionParagraph = styled("p")({
@@ -72,12 +71,13 @@ function SelectedCat({ data }: ICatProps) {
   const buddyLinks = data.buddyIds;
   return (
     <ModalContainer>
+      <H2Title> {data.name}</H2Title>
       <MainContent>
         <MainCatContainer>
           <MainCat src={data.image} />
         </MainCatContainer>
+
         <TextContainer>
-          <H2Title> {data.name}</H2Title>
           <DescriptionParagraph> {data.description}</DescriptionParagraph>
         </TextContainer>
       </MainContent>
@@ -86,7 +86,7 @@ function SelectedCat({ data }: ICatProps) {
         {buddyLinks &&
           buddyLinks.map((buddyNumber) => (
             <BuddyImage
-              key={uuidv4()}
+              key={"hi"}
               src={catData.cats[buddyNumber].image}
             ></BuddyImage>
           ))}

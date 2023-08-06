@@ -4,7 +4,9 @@ import Menu from "../components/Menu";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
 import SelectedCatInfo from "../components/SelectedCatinfo";
 import { styled } from "@mui/system";
-
+import { DialogContainer } from "../components/StyledElements/DialogContainer";
+import { DialogContent } from "../components/StyledElements/DialogContent";
+import Button from "../components/Button";
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
@@ -41,15 +43,30 @@ const CatCatalogue = () => {
 
   return (
     <div className="">
-      <Menu />
-      <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>
       {showCatInfo && (
-        <div className="flex flex-col">
-          <SelectedCatInfo
-            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-          />
-        </div>
+        <DialogContainer>
+          <DialogContent style={{ width: "700px" }}>
+            <Button
+              buttonName="X"
+              onClick={() => handleShowCatInfo(false)}
+              style={{
+                borderRadius: "100px",
+                width: "34px",
+                height: "34px",
+                position: "absolute",
+                right: "-10px",
+                top: "-10px",
+              }}
+            />
+            <SelectedCatInfo
+              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+            />
+          </DialogContent>
+        </DialogContainer>
       )}
+      <Menu />
+
+      <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 
 const MenuDropDown = styled("div")(({ theme }) => ({
@@ -39,7 +38,7 @@ const Menu = () => {
 
   const menuButtons = buttonInfo.map((button, index) => {
     return (
-      <div key={uuidv4()}>
+      <div key={button.buttonName}>
         <Button
           buttonName={button.buttonName}
           onClick={() => {

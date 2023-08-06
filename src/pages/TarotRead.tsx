@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
+import { DialogContainer } from "../components/StyledElements/DialogContainer";
+import { DialogContent } from "../components/StyledElements/DialogContent";
 
 const ButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -36,22 +38,6 @@ const TarotCardContainer = styled("div")(({ theme }) => ({
   left: "50%",
   top: "50%",
   transform: "translate(-50%, -50%)",
-}));
-
-const DialogContainer = styled("dialog")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  backgroundColor: "transparent",
-  backdropFilter: "blur(5px)",
-  zIndex: "2",
-}));
-
-const DialogContent = styled("div")(({ theme }) => ({
-  position: "relative",
 }));
 
 function TarotRead() {
@@ -153,8 +139,6 @@ function TarotRead() {
   });
   return (
     <>
-      <Menu />
-      {/* modal */}
       {showTarotInfo && (
         <DialogContainer open>
           <DialogContent>
@@ -175,7 +159,7 @@ function TarotRead() {
         </DialogContainer>
       )}
       {/* modal */}
-
+      <Menu />
       <ButtonContainer>{tarotReadButtons}</ButtonContainer>
 
       <TarotandMatt>

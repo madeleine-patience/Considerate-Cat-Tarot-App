@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
 
-let cancer = "virgo";
 function HoroscopeRead() {
-  const [horoscopeRead, setHoroscopeRead] = useState("");
+  const [horoscopeRead, setHoroscopeRead] = useState({
+    horoscope: null,
+    meta: { keywords: [] },
+  });
   const [starSign, setStarSign] = useState("");
-  console.log(horoscopeRead);
+
   useEffect(() => {
+    if (starSign === "") return;
     fetch(
       `http://sandipbgt.com/theastrologer/api/horoscope/${starSign}/today/`,
       {
@@ -15,7 +18,7 @@ function HoroscopeRead() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setHoroscopeRead(data.horoscope);
+        setHoroscopeRead(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -40,21 +43,22 @@ function HoroscopeRead() {
     setStarSign(starSign.toLowerCase());
   };
 
-  const HoroscopeButtons = buttonInfo.map((buttonInfo) => {
+  const HoroscopeButtons = buttonInfo.map((buttonInfo, index) => {
     return (
       <Button
         buttonName={buttonInfo.buttonname}
         onClick={() => updateHoroscopeRead(buttonInfo.buttonname)}
+        key={buttonInfo.buttonname}
       >
         {" "}
       </Button>
     );
   });
-
   return (
     <>
       {HoroscopeButtons}
-      <h1>{horoscopeRead}</h1>
+      <h1>{horoscopeRead.horoscope}</h1>
+      <h1>{horoscopeRead.meta.keywords}</h1>
     </>
   );
 }

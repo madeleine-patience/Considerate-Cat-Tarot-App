@@ -10,9 +10,10 @@ import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
-import { v4 as uuidv4 } from "uuid";
 import { styled } from "@mui/system";
 import TarotFront from "../components/TarotCard";
+import { DialogContainer } from "../components/StyledElements/DialogContainer";
+import { DialogContent } from "../components/StyledElements/DialogContent";
 
 const PageContainer = styled("div")(({ theme }) => ({
   margin: "50px",
@@ -67,21 +68,6 @@ const SuitDescription = styled("div")(({ theme }) => ({
   maxWidth: "800px",
   margin: "auto",
   textAlign: "center",
-}));
-
-const DialogContainer = styled("dialog")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  backgroundColor: "transparent",
-  backdropFilter: "blur(5px)",
-}));
-
-const DialogContent = styled("div")(({ theme }) => ({
-  position: "relative",
 }));
 
 export const Deck = () => {
@@ -140,7 +126,7 @@ export const Deck = () => {
     (tarotCard, index) => {
       return (
         <TarotCard
-          key={uuidv4()}
+          key={index}
           imageSrc={tarotCard.imageFileName}
           onClick={() =>
             revealTarotInformation(data.tarotDeck[tarotCard.id].id)
@@ -173,7 +159,7 @@ export const Deck = () => {
   ];
   const mappedButtons = buttonVals.map((button) => (
     <Button
-      key={uuidv4()}
+      key={button.value}
       value={button.value}
       buttonName={button.buttonName}
       onClick={grabSelectedSuit}

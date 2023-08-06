@@ -39,7 +39,6 @@ export default FlippableCard;
 //       />
 //     ) : (
 //       <TarotBack
-//         key={uuidv4()}
 //         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
 //       />
 //     ));
