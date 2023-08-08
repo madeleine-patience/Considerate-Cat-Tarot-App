@@ -10,11 +10,18 @@ const ModalContainer = styled("div")({
   flexDirection: "column",
   height: "100%",
   padding: "25px",
-  borderRadius: "20px",
+  borderRadius: "12px",
   gap: "15px",
+  animation: "SelectedCatInfoFadeIn 210ms",
+  "@keyframes SelectedCatInfoFadeIn": {
+    "from": {
+      opacity: 0,
+    },
+    "to": {
+      opacity: 1
+    }
+  }
 });
-
-const TitleText = styled("div")({});
 
 const MainContent = styled("div")({
   display: "flex",
@@ -29,7 +36,7 @@ const MainCatContainer = styled("div")({
 });
 
 const MainCat = styled("img")({
-  borderRadius: "25px",
+  borderRadius: "8px",
   width: "100%",
   backgroundSize: "cover",
 });
@@ -37,7 +44,6 @@ const MainCat = styled("img")({
 const TextContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
-  gap: "15px",
   overflow: "hidden",
   width: "50%",
 });
@@ -63,7 +69,22 @@ const BuddyContainer = styled("div")({
 
 const BuddyImage = styled("img")({
   width: "100px",
-  borderRadius: "10px",
+  borderRadius: "50%",
+  cursor: "pointer",
+  transition: "all 120ms",
+  transformStyle: "preserve-3d",
+  border: "3px double #346544",
+  filter: "saturate(40%)",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+  "&:hover": {
+    boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
+    transform: "scale(1.1)",
+    filter: "saturate(100%)",
+  },
+  "&:active": {
+    transform: "rotateY(-200deg) scale(1.1)",
+    filter: "saturate(100%)",
+  }
 });
 
 function SelectedCat({ data }: ICatProps) {
@@ -71,14 +92,14 @@ function SelectedCat({ data }: ICatProps) {
   const buddyLinks = data.buddyIds;
   return (
     <ModalContainer>
-      <H2Title> {data.name}</H2Title>
       <MainContent>
         <MainCatContainer>
           <MainCat src={data.image} />
         </MainCatContainer>
 
         <TextContainer>
-          <DescriptionParagraph> {data.description}</DescriptionParagraph>
+          <H2Title> {data.name}</H2Title>
+          <DescriptionParagraph>{data.description}</DescriptionParagraph>
         </TextContainer>
       </MainContent>
       <BuddyContainer>

@@ -4,12 +4,22 @@ import homepageImage from "/Art/titlePage.jpg";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
 
+const HomeHero = styled("div")(({ theme }) => ({
+  height: "calc(100vh - 230px)",
+  width: "100%",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundImage: `url(${homepageImage})`
+}));
+
 const HomeContainer = styled("div")(({ theme }) => ({
-  margin: "25px",
+  padding: "25px",
   display: "flex",
   flexDirection: "column",
   gap: "15px",
 }));
+
 const HomeButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -20,6 +30,7 @@ const HomeButtonContainer = styled("div")(({ theme }) => ({
     flexDirection: "row",
   },
 }));
+
 const Home = () => {
   const navigate = useNavigate();
   const navigateToTarotRead = () => {
@@ -28,10 +39,9 @@ const Home = () => {
 
   return (
     <>
-      {" "}
       <Menu />
       <HomeContainer>
-        <img src={homepageImage} />
+        <HomeHero />
         <HomeButtonContainer>
           <Button buttonName="Enter" onClick={() => navigateToTarotRead()} />
           <Button

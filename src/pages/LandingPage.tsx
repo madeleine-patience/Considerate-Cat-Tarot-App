@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const PageContainer = styled("div")({
   width: "100%",
-  minHeight: "100vh",
+  minHeight: "calc(100vh - 50px)",
+  paddingBottom: "50px",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",

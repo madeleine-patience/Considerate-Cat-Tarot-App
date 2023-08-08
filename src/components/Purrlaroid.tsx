@@ -7,23 +7,39 @@ const StyledPurrlaroide = styled("div")({
   borderRadius: "5px",
   textAlign: "center",
   justifyContent: "center",
-  backgroundColor: "lightYellow",
+  backgroundColor: "#FFF3E7",
+  paddingBottom: "20px",
   width: "300px",
   margin: "10px",
-  boxShadow: "12px 12px 2px 1px rgba(0, 0, 255, .1)",
+  cursor: "pointer",
+  transition: "all 200ms ease",
+  border: "1px solid #D2C3B7",
+  "&:hover div": {
+    backgroundSize: "120%",
+  },
+  "&:hover": {
+    boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
+    transform: "scale(1.02)"
+  }
 });
 
-const PurrlaroidImage = styled("img")({
-  width: "300px",
-  padding: "20px",
+const PurrlaroidImage = styled("div")({
+  width: "260px",
+  height: "230px",
+  backgroundSize: "100%",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  margin: "20px",
+  transition: "all 200ms ease",
+  border: "1px solid #8691A7",
 });
 
 const Purrlaroid = ({ data, handleClick }: ICatProps) => {
   return (
-    <StyledPurrlaroide>
+    <StyledPurrlaroide onClick={() => handleClick?.(data)}>
       <div>
-        <PurrlaroidImage onClick={() => handleClick?.(data)} src={data.image} />
-        <h3>{data.name}</h3>
+        <PurrlaroidImage style={{backgroundImage: `url(${data.image})`}} catName={data.name}/>
+        <h3 style={{fontSize: "1.4rem"}}>{data.name}</h3>
       </div>
     </StyledPurrlaroide>
   );
