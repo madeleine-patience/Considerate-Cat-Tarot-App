@@ -1,6 +1,5 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
-import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { styled } from "@mui/system";
 import { H2Title } from "./TarotCardDetails";
 
@@ -13,8 +12,6 @@ const ModalContainer = styled("div")({
   borderRadius: "20px",
   gap: "15px",
 });
-
-const TitleText = styled("div")({});
 
 const MainContent = styled("div")({
   display: "flex",
@@ -67,7 +64,6 @@ const BuddyImage = styled("img")({
 });
 
 function SelectedCat({ data }: ICatProps) {
-  const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
   const buddyLinks = data.buddyIds;
   return (
     <ModalContainer>

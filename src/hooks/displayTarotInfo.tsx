@@ -5,7 +5,6 @@ function useDisplayTarotInfo(cardNumber: number) {
   const [showHide, setShowHide] = React.useState(false);
 
   function setTarotInfo(cardNumber: number) {
-    console.log("hello chat");
     setShowHide(!showHide);
     setShowNumber(cardNumber);
   }

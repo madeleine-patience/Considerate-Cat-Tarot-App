@@ -22,8 +22,16 @@ const StyledPurrlaroide = styled("div")({
   gap: "20px",
 });
 export const H2Title = styled("h2")({
-  fontSize: "35px",
+  fontSize: "40px",
+  fontFamily: "Raleway",
 });
+
+const TitleTextContainer = styled("h2")({
+  display: "flex",
+  flexDirection: "column",
+  gap: "5px",
+});
+
 const SuitText = styled("h2")({
   fontSize: "24px",
 });
@@ -34,7 +42,11 @@ const TarotImg = styled("img")({
   width: "300px",
 });
 
-const RightContainer = styled("div")({});
+const RightContainer = styled("div")({
+  display: "flex",
+  gap: "15px",
+  flexDirection: "column",
+});
 const CatContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
@@ -61,28 +73,26 @@ function TarotCard({ data }: TarotCardProps) {
     <ModalContainer>
       {!showCatInfo && (
         <StyledPurrlaroide>
-          <div>
+          <TitleTextContainer>
             <H2Title>{data.cardName}</H2Title>
             <SuitText>Suit: {data.suit} </SuitText>
             <KeywordsText>Keywords: {data.keyWords.join(", ")}</KeywordsText>
-          </div>
+          </TitleTextContainer>
           <MainContent>
             <TarotImg src={data.imageFileName} />
             <RightContainer>
-              <div>
-                <p>{data.description}</p>
-                {data.catImage && <p>Cats Present: </p>}
-                <CatContainer>
-                  {data.catImage &&
-                    data.catImage.map((image: string, index: number) => (
-                      <CatButton
-                        image={image}
-                        catLookup={catLookup}
-                        key={image + index}
-                      />
-                    ))}
-                </CatContainer>
-              </div>
+              <p>{data.description}</p>
+              {data.catImage && <p>Cats Present: </p>}
+              <CatContainer>
+                {data.catImage &&
+                  data.catImage.map((image: string, index: number) => (
+                    <CatButton
+                      image={image}
+                      catLookup={catLookup}
+                      key={image + index}
+                    />
+                  ))}
+              </CatContainer>
             </RightContainer>
           </MainContent>
         </StyledPurrlaroide>
