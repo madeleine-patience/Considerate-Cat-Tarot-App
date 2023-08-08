@@ -12,14 +12,15 @@ const StyledPurrlaroide = styled("div")({
   width: "300px",
   margin: "10px",
   cursor: "pointer",
-  transition: "all 200ms ease",
+  transition: "all 400ms ease",
   border: "1px solid #D2C3B7",
   "&:hover div": {
-    backgroundSize: "120%",
+    backgroundSize: "105%",
+    transform: "scale(1.05) rotate(4deg)"
   },
   "&:hover": {
     boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
-    transform: "scale(1.02)"
+    transform: "scale(1.02) rotate(-8deg)"
   }
 });
 
