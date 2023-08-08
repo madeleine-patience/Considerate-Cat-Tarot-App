@@ -12,6 +12,7 @@ const PageContainer = styled("div")({
   flexDirection: "column",
   alignItems: "center",
 });
+
 const CatContainer = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",

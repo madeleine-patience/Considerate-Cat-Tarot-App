@@ -12,11 +12,11 @@ const StyledPurrlaroide = styled("div")({
   width: "300px",
   margin: "10px",
   cursor: "pointer",
-  transition: "all 400ms ease",
+  transition: "all 300ms",
   border: "1px solid #D2C3B7",
   "&:hover div": {
     backgroundSize: "105%",
-    transform: "scale(1.05) rotate(4deg)"
+    transform: "scale(1.06) rotate(4deg)"
   },
   "&:hover": {
     boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
@@ -31,7 +31,7 @@ const PurrlaroidImage = styled("div")({
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
   margin: "20px",
-  transition: "all 200ms ease",
+  transition: "all 40ms ease",
   border: "1px solid #8691A7",
 });
 
