@@ -90,6 +90,7 @@ const Menu = () => {
     );
   });
 
+  // Should probably set onBlur too
   return (
     <div style={{ position: "relative", zIndex: "1" }}>
       <MenuDropDown onClick={showHideMenuButton}>
