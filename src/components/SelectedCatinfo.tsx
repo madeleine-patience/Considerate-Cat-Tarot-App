@@ -45,8 +45,8 @@ const DescriptionParagraph = styled("p")({
   textOverflow: "ellipsis",
   whiteSpace: "normal",
   display: "-webkit-box",
-  "-webkit-line-clamp": "12",
-  "-webkit-box-orient": "vertical",
+  webkitLineClamp: "12",
+  webkitBoxOrient: "vertical",
 });
 // Second section of Container
 
@@ -79,12 +79,15 @@ function SelectedCat({ data }: ICatProps) {
       </MainContent>
       <BuddyContainer>
         {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
-        {buddyLinks &&
-          buddyLinks.map((buddyNumber) => (
-            <BuddyImage
-              key={"hi"}
-              src={catData.cats[buddyNumber].image}
-            ></BuddyImage>
+        {data.buddyIds &&
+          data.buddyIds.map((buddyNumber) => (
+            <>
+              <BuddyImage
+                key={"hi"}
+                src={catData.cats[buddyNumber].image}
+              ></BuddyImage>
+              <div>{buddyNumber}</div>
+            </>
           ))}
       </BuddyContainer>
     </ModalContainer>

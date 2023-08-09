@@ -68,7 +68,6 @@ function TarotCard({ data }: TarotCardProps) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
   }
-  console.log(data);
   return (
     <ModalContainer>
       {!showCatInfo && (
