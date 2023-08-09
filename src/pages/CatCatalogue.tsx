@@ -29,7 +29,7 @@ const StyledCatalogue = styled("div")(({ theme }) => ({
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  const sortByAlphabetical = catData.cats.sort((cat1, cat2) =>
+  const sortByAlphabetical = catData.cats.slice().sort((cat1, cat2) =>
     cat1.name < cat2.name ? -1 : cat1.name > cat2.name ? 1 : 0
   );
 
