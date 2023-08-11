@@ -12,15 +12,28 @@ const MenuDropDown = styled("div")(({ theme }) => ({
   background: "#ADD8E6",
   height: "50px",
   display: "flex",
-  justifyContent: "Center",
+  justifyContent: "space-between",
   alignItems: "Center",
   transition: `background ${animationDuration}ms`,
   borderBottom: "1px solid #A0BEC8",
   zIndex: "10",
+  fontFamily: "Raleway",
+  fontSize: "24px",
+  fontWeight: "400",
+  padding: "10px",
   "&:hover": {
     background: "#BDDFEB",
     cursor: "pointer"
   }
+ 
+}));
+
+const H1Title = styled("h1")(({ theme }) => ({
+  fontSize: "40px",
+  color: "white",
+}));
+const HeaderImage = styled("img")(({ theme }) => ({
+  height: "100%",
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -78,13 +91,16 @@ const Menu = () => {
 
   const menuButtons = buttonInfo.map(button => {
     return (
-      <div key={button.buttonName}>
+      <div
+        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
+        key={button.buttonName}
+      >
         <Button
           buttonName={button.buttonName}
           onClick={() => {
             navigate(button.urlRedirect);
           }}
-          style={{ borderRadius: "0", width: "100%" }}
+          style={{ borderRadius: "0" }}
         />
       </div>
     );
@@ -94,9 +110,13 @@ const Menu = () => {
   return (
     <div style={{ position: "relative", zIndex: "1" }}>
       <MenuDropDown onClick={showHideMenuButton}>
+        <HeaderImage src="./Art/EddieHead.png" />
+        <H1Title> Considerate Cat </H1Title>
+
         {buttonContainerClass === "show" ? "Hide" : "Menu"}
       </MenuDropDown> 
       <ButtonContainer className={buttonContainerClass}>{menuButtons}</ButtonContainer>
+
     </div>
   );
 };

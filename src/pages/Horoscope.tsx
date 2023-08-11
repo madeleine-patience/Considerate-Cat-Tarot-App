@@ -3,6 +3,8 @@ import Menu from "../components/Menu";
 import Button from "../components/Button";
 import { styled } from "@mui/system";
 import { H2Title } from "../components/TarotCardDetails";
+import { ItalisizedText } from "../components/StyledElements/ItalisizedText";
+import { Route, Link, Routes, useNavigate } from "react-router-dom";
 
 function HoroscopeRead() {
   const ButtonContainer = styled("div")(({ theme }) => ({
@@ -29,7 +31,22 @@ function HoroscopeRead() {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    gap: "15px",
   }));
+
+  const TarotReadButtonContainer = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    gap: "15px",
+  }));
+  const SuitText = styled("h2")({
+    fontSize: "24px",
+  });
+  const EntirePage = styled("h2")({
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+  });
 
   const [horoscopeRead, setHoroscopeRead] = useState({
     horoscope: null,
@@ -37,11 +54,11 @@ function HoroscopeRead() {
     meta: { keywords: [] },
   });
   const [starSign, setStarSign] = useState("");
-
+  const [todayOrTomorrow, setTodayOrTomorrow] = useState("Today");
   useEffect(() => {
     if (starSign === "") return;
     fetch(
-      `http://sandipbgt.com/theastrologer/api/horoscope/${starSign}/today/`,
+      `http://sandipbgt.com/theastrologer/api/horoscope/${starSign}/${todayOrTomorrow.toLowerCase()}/`,
       {
         method: "GET",
       }
@@ -53,7 +70,7 @@ function HoroscopeRead() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, [starSign]);
+  }, [starSign, todayOrTomorrow]);
 
   const buttonInfo = [
     { buttonname: "Aries" },
@@ -71,6 +88,7 @@ function HoroscopeRead() {
   ];
   const updateHoroscopeRead = (starSign: string) => {
     setStarSign(starSign.toLowerCase());
+    setBackAndForth(!backAndForth);
   };
 
   const HoroscopeButtons = buttonInfo.map((buttonInfo, index) => {
@@ -90,23 +108,54 @@ function HoroscopeRead() {
     mainRead = (horoscopeRead.horoscope as string).split("(").shift();
   }
 
+  const navigateBack = () => {
+    setBackAndForth(!backAndForth);
+  };
+
+  const viewTomorrowsHoroscope = () => {
+    setTodayOrTomorrow("Tomorrow");
+  };
+  const viewTodaysHorsocope = () => {
+    setTodayOrTomorrow("Today");
+  };
+
+  const [backAndForth, setBackAndForth] = useState(false);
+
   return (
     <>
       <Menu />
-      {!horoscopeRead.horoscope && (
-        <ButtonContainer>{HoroscopeButtons} </ButtonContainer>
-      )}
-      {horoscopeRead.horoscope && (
-        <ReadingStyling>
-          <CatImageStyling src="/Cats/71cPGWrOLFL.jpg" />
 
-          <TextContainer>
-            <H2Title> {horoscopeRead.sunsign}</H2Title>
+      {!backAndForth && <ButtonContainer>{HoroscopeButtons} </ButtonContainer>}
+      {backAndForth && (
+        <>
+          <EntirePage>
+            <Button buttonName="Back" onClick={() => navigateBack()}></Button>
 
-            <h1>{horoscopeRead.meta.keywords}</h1>
-            <h1>{mainRead}</h1>
-          </TextContainer>
-        </ReadingStyling>
+            <ReadingStyling>
+              <CatImageStyling src="/Cats/71cPGWrOLFL.jpg" />
+
+              <TextContainer>
+                <H2Title> {horoscopeRead.sunsign}</H2Title>
+                <SuitText> {`${todayOrTomorrow}'s reading`}</SuitText>
+                <ItalisizedText>
+                  {" "}
+                  Key Words : {horoscopeRead.meta.keywords}
+                </ItalisizedText>
+                <h1>{mainRead}</h1>
+              </TextContainer>
+            </ReadingStyling>
+            <TarotReadButtonContainer>
+              <Button
+                buttonName="View Today"
+                onClick={() => viewTodaysHorsocope()}
+              ></Button>
+              <Button
+                buttonName="View Tomorrow"
+                onClick={() => viewTomorrowsHoroscope()}
+              ></Button>
+            </TarotReadButtonContainer>
+          </EntirePage>
+        </>
       )}
     </>
   );

@@ -1,6 +1,5 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
-import useDisplayCatInfo from "../hooks/displayCatInfo";
 import { styled } from "@mui/system";
 import { H2Title } from "./TarotCardDetails";
 
@@ -54,8 +53,8 @@ const DescriptionParagraph = styled("p")({
   textOverflow: "ellipsis",
   whiteSpace: "normal",
   display: "-webkit-box",
-  "-webkit-line-clamp": "12",
-  "-webkit-box-orient": "vertical",
+  webkitLineClamp: "12",
+  webkitBoxOrient: "vertical",
 });
 // Second section of Container
 
@@ -88,7 +87,6 @@ const BuddyImage = styled("img")({
 });
 
 function SelectedCat({ data }: ICatProps) {
-  const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
   const buddyLinks = data.buddyIds;
   return (
     <ModalContainer>
@@ -104,12 +102,15 @@ function SelectedCat({ data }: ICatProps) {
       </MainContent>
       <BuddyContainer>
         {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
-        {buddyLinks &&
-          buddyLinks.map((buddyNumber) => (
-            <BuddyImage
-              key={"hi"}
-              src={catData.cats[buddyNumber].image}
-            ></BuddyImage>
+        {data.buddyIds &&
+          data.buddyIds.map((buddyNumber) => (
+            <>
+              <BuddyImage
+                key={"hi"}
+                src={catData.cats[buddyNumber].image}
+              ></BuddyImage>
+              <div>{buddyNumber}</div>
+            </>
           ))}
       </BuddyContainer>
     </ModalContainer>

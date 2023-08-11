@@ -106,7 +106,6 @@ function TarotRead() {
   }
 
   const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
-    console.log(tarotFront);
     return (
       <TarotFront
         key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}

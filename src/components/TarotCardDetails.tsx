@@ -27,7 +27,15 @@ export const H2Title = styled("h2")({
   fontSize: "35px",
   paddingBottom: "10px",
   fontFamily: "Yomogi"
+
 });
+
+const TitleTextContainer = styled("h2")({
+  display: "flex",
+  flexDirection: "column",
+  gap: "5px",
+});
+
 const SuitText = styled("h2")({
   fontSize: "24px",
 });
@@ -38,7 +46,11 @@ const TarotImg = styled("img")({
   width: "300px",
 });
 
-const RightContainer = styled("div")({});
+const RightContainer = styled("div")({
+  display: "flex",
+  gap: "15px",
+  flexDirection: "column",
+});
 const CatContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
@@ -60,16 +72,15 @@ function TarotCard({ data }: TarotCardProps) {
     const findTheCat = catData.cats.find((cat) => cat.image);
     handleShowCatInfo(findTheCat);
   }
-  console.log(data);
   return (
     <ModalContainer>
       {!showCatInfo && (
         <StyledPurrlaroide>
-          <div>
+          <TitleTextContainer>
             <H2Title>{data.cardName}</H2Title>
             <SuitText>Suit: {data.suit} </SuitText>
             <KeywordsText>Keywords: {data.keyWords.join(", ")}</KeywordsText>
-          </div>
+          </TitleTextContainer>
           <MainContent>
             <TarotImg src={data.imageFileName} />
             <RightContainer>

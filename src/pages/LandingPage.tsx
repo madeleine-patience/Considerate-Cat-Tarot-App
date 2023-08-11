@@ -39,6 +39,9 @@ export const LandingPage = () => {
   const navigateToCats = () => {
     navigate("/CatCatalogue");
   };
+  const navigateToHoroscope = () => {
+    navigate("/Horoscope");
+  };
   const CatTileInfo = [
     {
       image: "/Art/Heidi.jpg",
@@ -58,7 +61,12 @@ export const LandingPage = () => {
       title: "Meet The Cats",
       navigation: () => navigateToCats(),
     },
-    { image: "/Art/Heidi.jpg", color: "Thistle", title: "Learn Tarot" },
+    {
+      image: "/Art/Heidi.jpg",
+      color: "Thistle",
+      title: "Read Horoscope",
+      navigation: () => navigateToHoroscope(),
+    },
   ];
 
   const Tiles = CatTileInfo.map((cats) => {
