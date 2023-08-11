@@ -7,10 +7,12 @@ import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import Button from "../components/Button";
+
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
   gap: "10px",
+  fontFamily: "Yomogi",
   margin: "auto",
   justifyContent: "center",
   [theme.breakpoints.down("lg")]: {
@@ -27,7 +29,7 @@ const StyledCatalogue = styled("div")(({ theme }) => ({
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  const sortByAlphabetical = catData.cats.sort((cat1, cat2) =>
+  const sortByAlphabetical = catData.cats.slice().sort((cat1, cat2) =>
     cat1.name < cat2.name ? -1 : cat1.name > cat2.name ? 1 : 0
   );
 
@@ -56,6 +58,9 @@ const CatCatalogue = () => {
                 position: "absolute",
                 right: "-10px",
                 top: "-10px",
+                animation: "SelectedCatInfoFadeIn 210ms",
+                border: "1px solid #333333",
+                transition: "all 1ms",
               }}
             />
             <SelectedCatInfo

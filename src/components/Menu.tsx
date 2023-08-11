@@ -3,17 +3,29 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
 
+const animationDuration = "200"
+
 const MenuDropDown = styled("div")(({ theme }) => ({
-  width: "100%",
-  height: "75px",
-  background: "lightBlue",
+  position: "relative",
+  width: "130px",
+  borderRadius: "0 0 25px 0",
+  background: "#ADD8E6",
+  height: "50px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "Center",
+  transition: `background ${animationDuration}ms`,
+  borderBottom: "1px solid #A0BEC8",
+  zIndex: "10",
   fontFamily: "Raleway",
   fontSize: "24px",
   fontWeight: "400",
   padding: "10px",
+  "&:hover": {
+    background: "#BDDFEB",
+    cursor: "pointer"
+  }
+ 
 }));
 
 const H1Title = styled("h1")(({ theme }) => ({
@@ -26,8 +38,17 @@ const HeaderImage = styled("img")(({ theme }) => ({
 
 const ButtonContainer = styled("div")(({ theme }) => ({
   position: "absolute",
-  width: "100%",
-  zIndex: "1",
+  paddingTop: "50px",
+  width: "250px",
+  zIndex: "-1",
+  top: "-400px",
+  transition: `all ${animationDuration}ms`,
+  "&.show": {
+    top: "0"
+  },
+  "&.displaynone": {
+    display: "none"
+  },
 }));
 
 const Menu = () => {
@@ -43,12 +64,32 @@ const Menu = () => {
     { buttonName: "About", urlRedirect: "" },
   ];
 
-  const [showHide, setShowHide] = React.useState(false);
-  const showHideMenuButton = () => {
-    setShowHide(!showHide);
+  const [showHideAnimating, setShowHideAnimating] = React.useState(false);
+  const [buttonContainerClass, setButtonContainerClass] = React.useState("displaynone")
+
+  /*
+  This is for properly setting the menu to display none after it animates to hidden.
+  We want the menu out of the tab order and effectively off the page when closed.
+  CSS animations can't animate the display property, so we have to set display:none AFTER the animation (if we want the animation to work). We do this by adding the displaynone class to the element.
+  */
+  async function showHideMenuButton() {
+    // Don't do anything if there's an animation in progress
+    if (showHideAnimating) {
+      return;
+    }
+
+    const className = buttonContainerClass === "displaynone" ? "show" : "displaynone"
+    const animationTime = buttonContainerClass === "displaynone" ? 0 : Number(animationDuration)
+
+    setShowHideAnimating(true);
+    //Sleep until the animation is over before adding displaynone! Hopefully we don't make react mad...
+    setButtonContainerClass("")
+    await new Promise(t => setTimeout(t, animationTime))
+    setButtonContainerClass(className)      
+    setShowHideAnimating(false);
   };
 
-  const menuButtons = buttonInfo.map((button, index) => {
+  const menuButtons = buttonInfo.map(button => {
     return (
       <div
         style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
@@ -65,34 +106,17 @@ const Menu = () => {
     );
   });
 
-  const ref = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const myEvent = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setShowHide(false);
-      }
-    };
-    document.addEventListener("mousedown", myEvent);
-    return () => {
-      document.removeEventListener("mousedown", myEvent);
-    };
-  }, []);
-
+  // Should probably set onBlur too
   return (
-    <div style={{ position: "relative" }} ref={ref}>
-      <MenuDropDown>
+    <div style={{ position: "relative", zIndex: "1" }}>
+      <MenuDropDown onClick={showHideMenuButton}>
         <HeaderImage src="./Art/EddieHead.png" />
         <H1Title> Considerate Cat </H1Title>
 
-        <div
-          style={{ width: "100px", textAlign: "center", color: "white" }}
-          onClick={showHideMenuButton}
-        >
-          {" "}
-          {showHide ? "Hide" : "Menu"}{" "}
-        </div>
-      </MenuDropDown>
-      {showHide && <ButtonContainer>{menuButtons}</ButtonContainer>}
+        {buttonContainerClass === "show" ? "Hide" : "Menu"}
+      </MenuDropDown> 
+      <ButtonContainer className={buttonContainerClass}>{menuButtons}</ButtonContainer>
+
     </div>
   );
 };

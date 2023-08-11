@@ -8,8 +8,16 @@ const StyledButton = styled("button")(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   width: "150px",
-  background: "pink",
+  background: "#FAC0CB",
+  border: "1px solid #F0B2BF",
   borderRadius: "10px",
+  transition: "background-color 160ms ease",
+  "&:hover": {
+    backgroundColor: "#FCD4DC"
+  },
+  "&:focus": {
+    backgroundColor: "#FCD4DC"
+  },
 }));
 
 const Button = ({ buttonName, style, ...rest }: MyButtonProps) => {

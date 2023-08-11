@@ -1,4 +1,10 @@
+/* Fonts break if we remove these...idk why LUL" */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* A FONT FIT FOR A CAT */
+@font-face {
+    font-family: "Yomogi";
+    src: url("./public/fonts/Yomogi-Regular.ttf") format("truetype");
+}

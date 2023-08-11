@@ -10,6 +10,7 @@ const ModalContainer = styled("div")(({ theme }) => ({
   width: "700px",
   height: "700px",
 }));
+
 const StyledPurrlaroide = styled("div")({
   display: "flex",
   flexDirection: "column",
@@ -21,9 +22,12 @@ const StyledPurrlaroide = styled("div")({
   borderRadius: "30px",
   gap: "20px",
 });
+
 export const H2Title = styled("h2")({
-  fontSize: "40px",
-  fontFamily: "Raleway",
+  fontSize: "35px",
+  paddingBottom: "10px",
+  fontFamily: "Yomogi"
+
 });
 
 const TitleTextContainer = styled("h2")({
@@ -64,8 +68,8 @@ const MainContent = styled("div")({
 function TarotCard({ data }: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  function catLookup(image: string[]) {
-    const findTheCat = catData.cats.find((cat) => cat.image === image);
+  function catLookup(image: string[]): void {
+    const findTheCat = catData.cats.find((cat) => cat.image);
     handleShowCatInfo(findTheCat);
   }
   return (
@@ -80,18 +84,20 @@ function TarotCard({ data }: TarotCardProps) {
           <MainContent>
             <TarotImg src={data.imageFileName} />
             <RightContainer>
-              <p>{data.description}</p>
-              {data.catImage && <p>Cats Present: </p>}
-              <CatContainer>
-                {data.catImage &&
-                  data.catImage.map((image: string, index: number) => (
-                    <CatButton
-                      image={image}
-                      catLookup={catLookup}
-                      key={image + index}
-                    />
-                  ))}
-              </CatContainer>
+              <div>
+                <p>{data.description}</p>
+                {data.catImage && <p>Cats Present: </p>}
+                <CatContainer>
+                  {data.catImage &&
+                    data.catImage.map((image: string, index: number) => (
+                      <CatButton
+                        image={image}
+                        catLookup={() => catLookup}
+                        key={image + index}
+                      />
+                    ))}
+                </CatContainer>
+              </div>
             </RightContainer>
           </MainContent>
         </StyledPurrlaroide>
