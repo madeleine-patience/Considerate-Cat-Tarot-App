@@ -86,7 +86,6 @@ function SelectedCat({ data }: ICatProps) {
                 key={"hi"}
                 src={catData.cats[buddyNumber].image}
               ></BuddyImage>
-              <div>{buddyNumber}</div>
             </>
           ))}
       </BuddyContainer>
