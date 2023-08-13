@@ -66,9 +66,13 @@ const CatCatalogue = () => {
         </>
       )}
       <Menu />
-      <CatCarousel />
+      {showCatInfo && (
+        <CatCarousel
+          data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+        />
+      )}
 
-      {/* <StyledCatalogue>{allPurrlaroids}</StyledCatalogue> */}
+      {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
     </div>
   );
 };

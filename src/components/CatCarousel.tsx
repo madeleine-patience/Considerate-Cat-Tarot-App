@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import catData from "../data/cats";
 import { useState } from "react";
+import ICatProps from "../types/CatProps";
 const TempContainer = styled("div")({
   display: "flex",
   justifyContent: "center",
@@ -21,9 +22,13 @@ const SecondaryImageContainer = styled("div")({
   overflowX: "auto",
 });
 
-const CatCarousel = () => {
-  const secondaryCatImages = catData.cats[2].secondaryImages;
-  const [mainImage, setMainImage] = useState(catData.cats[2].image);
+interface CatCarouselProps {
+  id: number;
+}
+
+const CatCarousel = ({ data }: ICatProps) => {
+  const secondaryCatImages = catData.cats[data.id].secondaryImages;
+  const [mainImage, setMainImage] = useState(data.image);
 
   const scrollThroughCats = (
     currentImage: string,
@@ -49,7 +54,7 @@ const CatCarousel = () => {
     }
   };
 
-  const secondaryImages = catData.cats[2].secondaryImages?.map((catImages) => {
+  const secondaryImages = secondaryCatImages?.map((catImages) => {
     return (
       <button
         style={{
