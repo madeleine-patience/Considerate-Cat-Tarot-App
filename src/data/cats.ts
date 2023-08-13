@@ -26,9 +26,15 @@ const catData = {
         "Butters' journey started in Northern Canada, where he was rescued with a severe tail injury. When his family first took him in, he was a bit of a tough nut to crack - his mean and moody attitude often left them feeling a little intimidated. However, Butters' life changed for the better when he was introduced to his sister cat, Phaedra. The two became inseparable and brought out the best in each other. Eventually, they were adopted together and now share their loving home with a little baby brother. Butters' transformation from a moody cat to a loving and affectionate one is a true testament to the power of love and companionship.",
       buddyIds: [4],
       image: "/Cats/Butters.jpg",
+      secondaryImages: [
+        "/Cats/Butters.jpg",
+        "/Cats/Butters-Carousel2.png",
+        "/Cats/Butters-Carousel3.JPG",
+        "/Cats/Butters-Carousel5.JPG",
+        "/Cats/Butters-Carousel3.png",
+      ],
       appearsOnCards: [9, 58, 12],
     },
-
     {
       id: 3,
       name: "Gigi",

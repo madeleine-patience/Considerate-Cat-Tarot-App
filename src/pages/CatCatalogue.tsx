@@ -7,6 +7,7 @@ import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import Button from "../components/Button";
+import CatCarousel from "../components/CatCarousel";
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
@@ -46,29 +47,28 @@ const CatCatalogue = () => {
   return (
     <div>
       {showCatInfo && (
-        <DialogContainer>
-          <DialogContent style={{ width: "700px" }}>
-            <Button
-              buttonName="X"
-              onClick={() => handleShowCatInfo(false)}
-              style={{
-                borderRadius: "100px",
-                width: "34px",
-                height: "34px",
-                position: "absolute",
-                right: "-10px",
-                top: "-10px",
-              }}
-            />
-            <SelectedCatInfo
-              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-            />
-          </DialogContent>
-        </DialogContainer>
+        <>
+          <Button
+            buttonName="X"
+            onClick={() => handleShowCatInfo(false)}
+            style={{
+              borderRadius: "100px",
+              width: "34px",
+              height: "34px",
+              position: "absolute",
+              right: "-10px",
+              top: "-10px",
+            }}
+          />
+          {/* <SelectedCatInfo
+            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+          /> */}
+        </>
       )}
       <Menu />
+      <CatCarousel />
 
-      <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>
+      {/* <StyledCatalogue>{allPurrlaroids}</StyledCatalogue> */}
     </div>
   );
 };
