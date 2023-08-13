@@ -2,17 +2,59 @@ import { styled } from "@mui/system";
 import catData from "../data/cats";
 import { useState } from "react";
 import ICatProps from "../types/CatProps";
-const TempContainer = styled("div")({
+import { Fab } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-});
+  position: "relative",
+  width: 1000,
+  height: "800px",
+  background: "pink",
+  margin: "auto",
+  padding: 20,
+  gap: 20,
+
+  // [theme.breakpoints.up("md")]: {
+  //   flexDirection: "row",
+  //   justifyContent: "center",
+  // },
+}));
+
 const LeftContainer = styled("div")({
-  width: "600px",
-  height: "600px",
+  width: "50%",
+  display: "flex",
+  alignItems: "Center",
 });
-const MainCatImage = styled("img")({
+const CatImageContainer = styled("div")({
+  display: "flex",
+  position: "relative",
+  flexDirection: "column",
   width: "100%",
-  height: "100%",
+  height: "100%,",
+  padding: 20,
+});
+
+const ButtonSpacing = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  width: "450px",
+});
+
+const ButtonNavigationContainer = styled("div")({
+  position: "absolute",
+  top: "225px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-between",
+  margin: "auto",
+});
+
+const MainCatImage = styled("img")({
+  width: "450px",
+  height: "450px",
   objectFit: "cover",
 });
 
@@ -22,6 +64,21 @@ const SecondaryImageContainer = styled("div")({
   overflowX: "auto",
 });
 
+// Right content
+const RightContainer = styled("div")({
+  padding: 20,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+});
+
+const H1 = styled("h1")({
+  fontSize: 60,
+});
+const BuddyImage = styled("img")({
+  width: "100px",
+  borderRadius: "10px",
+});
 interface CatCarouselProps {
   id: number;
 }
@@ -34,24 +91,19 @@ const CatCarousel = ({ data }: ICatProps) => {
     currentImage: string,
     direction: "left" | "right"
   ) => {
-    const lastImage = secondaryCatImages.length - 1;
-    const indexOfCurrentImage = secondaryCatImages.indexOf(currentImage);
-
-    if (direction === "right") {
-      if (indexOfCurrentImage === lastImage) {
-        return;
-      }
-      const newIndex = (indexOfCurrentImage ?? 0) + 1;
-      setMainImage((secondaryCatImages as string[])[newIndex]);
+    if (secondaryCatImages.length < 1) {
+      return;
     }
+    let indexOfCurrentImage = secondaryCatImages.indexOf(currentImage);
+    direction === "right" ? ++indexOfCurrentImage : --indexOfCurrentImage;
 
-    if (direction === "left") {
-      if (indexOfCurrentImage === 0) {
-        return;
-      }
-      const newIndex = (indexOfCurrentImage ?? 0) - 1;
-      setMainImage((secondaryCatImages as string[])[newIndex]);
-    }
+    if (
+      indexOfCurrentImage < 0 ||
+      indexOfCurrentImage > secondaryCatImages.length - 1
+    )
+      return;
+
+    setMainImage((secondaryCatImages as string[])[indexOfCurrentImage]);
   };
 
   const secondaryImages = secondaryCatImages.map((catImages) => {
@@ -70,16 +122,54 @@ const CatCarousel = ({ data }: ICatProps) => {
     );
   });
   return (
-    <TempContainer>
-      <button onClick={() => scrollThroughCats(mainImage, "left")}>Left</button>
+    <PageContainer>
+      {/* Cat Content */}
       <LeftContainer>
-        <MainCatImage src={mainImage} />
-        <SecondaryImageContainer>{secondaryImages}</SecondaryImageContainer>
+        <CatImageContainer>
+          <ButtonSpacing>
+            <ButtonNavigationContainer>
+              <Fab
+                aria-label="add"
+                style={{
+                  background: "lightBlue",
+                }}
+                onClick={() => scrollThroughCats(mainImage, "left")}
+              >
+                <ArrowBackIcon />
+              </Fab>
+              <Fab
+                aria-label="add"
+                style={{
+                  background: "lightBlue",
+                }}
+                onClick={() => scrollThroughCats(mainImage, "right")}
+              >
+                <ArrowForwardIcon />
+              </Fab>
+            </ButtonNavigationContainer>
+          </ButtonSpacing>
+          <MainCatImage src={mainImage} />
+          <SecondaryImageContainer>{secondaryImages}</SecondaryImageContainer>
+        </CatImageContainer>
       </LeftContainer>
-      <button onClick={() => scrollThroughCats(mainImage, "right")}>
-        Right
-      </button>{" "}
-    </TempContainer>
+
+      {/* Text Content */}
+
+      <RightContainer>
+        <H1>{data.name}</H1>
+        <p>{data.description}</p>
+        {/* {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
+        {data.buddyIds &&
+          data.buddyIds.map((buddyNumber) => (
+            <>
+              <BuddyImage
+                key={"hi"}
+                src={catData.cats[buddyNumber].image}
+              ></BuddyImage>
+            </>
+          ))} */}
+      </RightContainer>
+    </PageContainer>
   );
 };
 

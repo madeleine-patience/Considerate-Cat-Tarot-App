@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/merriweather": "^4.5.14",
+    "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
