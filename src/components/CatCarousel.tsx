@@ -27,19 +27,19 @@ interface CatCarouselProps {
 }
 
 const CatCarousel = ({ data }: ICatProps) => {
-  const secondaryCatImages = catData.cats[data.id].secondaryImages;
+  const secondaryCatImages = catData.cats[data.id].secondaryImages ?? [];
   const [mainImage, setMainImage] = useState(data.image);
 
   const scrollThroughCats = (
     currentImage: string,
     direction: "left" | "right"
   ) => {
-    const lastImage = (secondaryCatImages?.length ?? 0) - 1;
-    const indexOfCurrentImage = secondaryCatImages?.indexOf(currentImage);
+    const lastImage = secondaryCatImages.length - 1;
+    const indexOfCurrentImage = secondaryCatImages.indexOf(currentImage);
 
     if (direction === "right") {
       if (indexOfCurrentImage === lastImage) {
-        return null;
+        return;
       }
       const newIndex = (indexOfCurrentImage ?? 0) + 1;
       setMainImage((secondaryCatImages as string[])[newIndex]);
@@ -47,14 +47,14 @@ const CatCarousel = ({ data }: ICatProps) => {
 
     if (direction === "left") {
       if (indexOfCurrentImage === 0) {
-        return null;
+        return;
       }
       const newIndex = (indexOfCurrentImage ?? 0) - 1;
       setMainImage((secondaryCatImages as string[])[newIndex]);
     }
   };
 
-  const secondaryImages = secondaryCatImages?.map((catImages) => {
+  const secondaryImages = secondaryCatImages.map((catImages) => {
     return (
       <button
         style={{
