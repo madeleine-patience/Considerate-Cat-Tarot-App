@@ -8,6 +8,7 @@ import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import Button from "../components/Button";
 import CatCarousel from "../components/CatCarousel";
+import AppearsOnTheseCards from "../components/AppearsOnTheseCards";
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
@@ -67,9 +68,16 @@ const CatCatalogue = () => {
       )}
       <Menu />
       {showCatInfo && (
-        <CatCarousel
-          data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-        />
+        <>
+          <CatCarousel
+            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+            stateFromParent={showCatInfo}
+            setterFromParent={handleShowCatInfo}
+          />
+          <AppearsOnTheseCards
+            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+          />
+        </>
       )}
 
       {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}

@@ -5,6 +5,11 @@ import ICatProps from "../types/CatProps";
 import { Fab } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../theme";
+import zIndex from "@mui/material/styles/zIndex";
 
 const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -12,7 +17,6 @@ const PageContainer = styled("div")(({ theme }) => ({
   position: "relative",
   width: 1000,
   height: "800px",
-  background: "pink",
   margin: "auto",
   padding: 20,
   gap: 20,
@@ -79,13 +83,16 @@ const BuddyImage = styled("img")({
   width: "100px",
   borderRadius: "10px",
 });
-interface CatCarouselProps {
-  id: number;
-}
 
-const CatCarousel = ({ data }: ICatProps) => {
+const CatCarousel = ({
+  data,
+  stateFromParent,
+  setterFromParent,
+}: ICatProps) => {
   const secondaryCatImages = catData.cats[data.id].secondaryImages ?? [];
   const [mainImage, setMainImage] = useState(data.image);
+
+  const navigate = useNavigate();
 
   const scrollThroughCats = (
     currentImage: string,
@@ -122,43 +129,64 @@ const CatCarousel = ({ data }: ICatProps) => {
     );
   });
   return (
-    <PageContainer>
-      {/* Cat Content */}
-      <LeftContainer>
-        <CatImageContainer>
-          <ButtonSpacing>
-            <ButtonNavigationContainer>
-              <Fab
-                aria-label="add"
-                style={{
-                  background: "lightBlue",
-                }}
-                onClick={() => scrollThroughCats(mainImage, "left")}
-              >
-                <ArrowBackIcon />
-              </Fab>
-              <Fab
-                aria-label="add"
-                style={{
-                  background: "lightBlue",
-                }}
-                onClick={() => scrollThroughCats(mainImage, "right")}
-              >
-                <ArrowForwardIcon />
-              </Fab>
-            </ButtonNavigationContainer>
-          </ButtonSpacing>
-          <MainCatImage src={mainImage} />
-          <SecondaryImageContainer>{secondaryImages}</SecondaryImageContainer>
-        </CatImageContainer>
-      </LeftContainer>
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          position: "relative",
+          width: 1000,
+          margin: "auto",
+        }}
+      >
+        <Button
+          buttonName="Back"
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            margin: "10px 35px",
+          }}
+          onClick={() => {
+            setterFromParent?.(true);
+          }}
+        />
+        <PageContainer>
+          {/* Cat Content */}
+          <LeftContainer>
+            <CatImageContainer>
+              <ButtonSpacing>
+                <ButtonNavigationContainer>
+                  <Fab
+                    aria-label="add"
+                    style={{
+                      background: theme.palette.secondary.main,
+                    }}
+                    onClick={() => scrollThroughCats(mainImage, "left")}
+                  >
+                    <ArrowBackIcon />
+                  </Fab>
+                  <Fab
+                    aria-label="add"
+                    style={{
+                      background: theme.palette.secondary.main,
+                    }}
+                    onClick={() => scrollThroughCats(mainImage, "right")}
+                  >
+                    <ArrowForwardIcon />
+                  </Fab>
+                </ButtonNavigationContainer>
+              </ButtonSpacing>
+              <MainCatImage src={mainImage} />
+              <SecondaryImageContainer>
+                {secondaryImages}
+              </SecondaryImageContainer>
+            </CatImageContainer>
+          </LeftContainer>
 
-      {/* Text Content */}
+          {/* Text Content */}
 
-      <RightContainer>
-        <H1>{data.name}</H1>
-        <p>{data.description}</p>
-        {/* {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
+          <RightContainer>
+            <H1>{data.name}</H1>
+            <p>{data.description}</p>
+            {/* {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
         {data.buddyIds &&
           data.buddyIds.map((buddyNumber) => (
             <>
@@ -168,8 +196,10 @@ const CatCarousel = ({ data }: ICatProps) => {
               ></BuddyImage>
             </>
           ))} */}
-      </RightContainer>
-    </PageContainer>
+          </RightContainer>
+        </PageContainer>
+      </div>
+    </ThemeProvider>
   );
 };
 

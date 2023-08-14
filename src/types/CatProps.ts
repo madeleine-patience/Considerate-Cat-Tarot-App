@@ -5,7 +5,11 @@ interface ICatProps {
     description: string;
     buddyIds?: number[];
     image: string;
+    appearsOnCards: number[];
   };
+  stateFromParent?: boolean;
+  setterFromParent?: Function;
+
   handleClick?: (cat: any) => void;
 }
 
