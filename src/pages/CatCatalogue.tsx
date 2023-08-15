@@ -9,6 +9,9 @@ import { DialogContent } from "../components/StyledElements/DialogContent";
 import Button from "../components/Button";
 import CatCarousel from "../components/CatCarousel";
 import AppearsOnTheseCards from "../components/AppearsOnTheseCards";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../theme";
+
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
@@ -25,6 +28,18 @@ const StyledCatalogue = styled("div")(({ theme }) => ({
     gridTemplateColumns: "auto   ",
   },
 }));
+const CatInfoContainer = styled("div")(({ theme }) => ({
+  width: 1000,
+  margin: "auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: 20,
+}));
+
+const SecondaryTitles = styled("h2")({
+  fontFamily: theme.typography.h1.fontFamily,
+  fontSize: 32,
+});
 
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
@@ -46,42 +61,46 @@ const CatCatalogue = () => {
   });
 
   return (
-    <div>
-      {showCatInfo && (
-        <>
-          <Button
-            buttonName="X"
-            onClick={() => handleShowCatInfo(false)}
-            style={{
-              borderRadius: "100px",
-              width: "34px",
-              height: "34px",
-              position: "absolute",
-              right: "-10px",
-              top: "-10px",
-            }}
-          />
-          {/* <SelectedCatInfo
+    <ThemeProvider theme={theme}>
+      <div>
+        {showCatInfo && (
+          <>
+            <Button
+              buttonName="X"
+              onClick={() => handleShowCatInfo(false)}
+              style={{
+                borderRadius: "100px",
+                width: "34px",
+                height: "34px",
+                position: "absolute",
+                right: "-10px",
+                top: "-10px",
+              }}
+            />
+            {/* <SelectedCatInfo
             data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
           /> */}
-        </>
-      )}
-      <Menu />
-      {showCatInfo && (
-        <>
-          <CatCarousel
-            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-            stateFromParent={showCatInfo}
-            setterFromParent={handleShowCatInfo}
-          />
-          <AppearsOnTheseCards
-            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-          />
-        </>
-      )}
+          </>
+        )}
+        <Menu />
+        {showCatInfo && (
+          <CatInfoContainer>
+            <CatCarousel
+              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+              stateFromParent={showCatInfo}
+              setterFromParent={handleShowCatInfo}
+            />
+            <SecondaryTitles> Appears On Cards: </SecondaryTitles>
+            <AppearsOnTheseCards
+              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
+            />
+            <SecondaryTitles> Buddies: </SecondaryTitles>
+          </CatInfoContainer>
+        )}
 
-      {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
-    </div>
+        {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
+      </div>
+    </ThemeProvider>
   );
 };
 

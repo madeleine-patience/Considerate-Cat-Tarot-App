@@ -9,17 +9,15 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
-import zIndex from "@mui/material/styles/zIndex";
 
 const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   position: "relative",
   width: 1000,
+  background: theme.palette.primary.main,
   height: "800px",
   margin: "auto",
-  padding: 20,
-  gap: 20,
 
   // [theme.breakpoints.up("md")]: {
   //   flexDirection: "row",
@@ -38,7 +36,7 @@ const CatImageContainer = styled("div")({
   flexDirection: "column",
   width: "100%",
   height: "100%,",
-  padding: 20,
+  padding: 25,
 });
 
 const ButtonSpacing = styled("div")({
@@ -57,8 +55,8 @@ const ButtonNavigationContainer = styled("div")({
 });
 
 const MainCatImage = styled("img")({
-  width: "450px",
-  height: "450px",
+  width: "500px",
+  height: "500px",
   objectFit: "cover",
 });
 
@@ -70,18 +68,23 @@ const SecondaryImageContainer = styled("div")({
 
 // Right content
 const RightContainer = styled("div")({
-  padding: 20,
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  padding: 20,
 });
 
 const H1 = styled("h1")({
-  fontSize: 60,
+  fontFamily: theme.typography.h1.fontFamily,
+  fontSize: 80,
 });
 const BuddyImage = styled("img")({
   width: "100px",
   borderRadius: "10px",
+});
+
+const Parargraph = styled("p")({
+  fontFamily: theme.typography.h2.fontFamily,
 });
 
 const CatCarousel = ({
@@ -139,11 +142,7 @@ const CatCarousel = ({
       >
         <Button
           buttonName="Back"
-          style={{
-            position: "absolute",
-            zIndex: 1,
-            margin: "10px 35px",
-          }}
+          style={{ margin: "20px 0" }}
           onClick={() => {
             setterFromParent?.(true);
           }}
@@ -185,7 +184,7 @@ const CatCarousel = ({
 
           <RightContainer>
             <H1>{data.name}</H1>
-            <p>{data.description}</p>
+            <Parargraph>{data.description}</Parargraph>
             {/* {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
         {data.buddyIds &&
           data.buddyIds.map((buddyNumber) => (

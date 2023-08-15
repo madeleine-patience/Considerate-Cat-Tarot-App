@@ -8,7 +8,6 @@ const TarotContainer = styled("div")({
   gap: "20px",
   width: 1000,
   margin: "auto",
-  padding: 20,
 });
 const MappedCard = styled("div")({
   width: "200px",

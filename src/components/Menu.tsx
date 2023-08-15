@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../theme";
 
 const MenuDropDown = styled("div")(({ theme }) => ({
   width: "100%",
@@ -17,6 +19,7 @@ const MenuDropDown = styled("div")(({ theme }) => ({
 }));
 
 const H1Title = styled("h1")(({ theme }) => ({
+  fontFamily: theme.typography.h1.fontFamily,
   fontSize: "40px",
   color: "white",
 }));
@@ -79,21 +82,23 @@ const Menu = () => {
   }, []);
 
   return (
-    <div style={{ position: "relative" }} ref={ref}>
-      <MenuDropDown>
-        <HeaderImage src="./Art/EddieHead.png" />
-        <H1Title> Considerate Cat </H1Title>
+    <ThemeProvider theme={theme}>
+      <div style={{ position: "relative" }} ref={ref}>
+        <MenuDropDown>
+          <HeaderImage src="./Art/EddieHead.png" />
+          <H1Title> Considerate Cat </H1Title>
 
-        <div
-          style={{ width: "100px", textAlign: "center", color: "white" }}
-          onClick={showHideMenuButton}
-        >
-          {" "}
-          {showHide ? "Hide" : "Menu"}{" "}
-        </div>
-      </MenuDropDown>
-      {showHide && <ButtonContainer>{menuButtons}</ButtonContainer>}
-    </div>
+          <div
+            style={{ width: "100px", textAlign: "center", color: "white" }}
+            onClick={showHideMenuButton}
+          >
+            {" "}
+            {showHide ? "Hide" : "Menu"}{" "}
+          </div>
+        </MenuDropDown>
+        {showHide && <ButtonContainer>{menuButtons}</ButtonContainer>}
+      </div>
+    </ThemeProvider>
   );
 };
 
