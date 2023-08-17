@@ -9,13 +9,14 @@ import { DialogContent } from "../components/StyledElements/DialogContent";
 import Button from "../components/Button";
 import CatCarousel from "../components/CatCarousel";
 import AppearsOnTheseCards from "../components/AppearsOnTheseCards";
+import DisplayBuddies from "../components/DisplayBuddies";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
-  gap: "10px",
+  gap: "30px",
   margin: "auto",
   justifyContent: "center",
   [theme.breakpoints.down("lg")]: {
@@ -27,6 +28,7 @@ const StyledCatalogue = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     gridTemplateColumns: "auto   ",
   },
+  padding: 25,
 }));
 const CatInfoContainer = styled("div")(({ theme }) => ({
   width: 1000,
@@ -41,9 +43,14 @@ const SecondaryTitles = styled("h2")({
   fontSize: 32,
 });
 
+const BuddyContainer = styled("div")({
+  background: "lightBlue",
+  padding: 25,
+});
+
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
-
+  console.log(selectedCatId);
   const sortByAlphabetical = catData.cats
     .slice()
     .sort((cat1, cat2) =>
@@ -58,6 +65,12 @@ const CatCatalogue = () => {
         handleClick={() => handleShowCatInfo(cat)}
       />
     );
+  });
+
+  const SelectedCatBuddies = catData.cats.map((cat, index) => {
+    if (catData.cats[selectedCatId]?.buddyIds?.includes(cat.id)) {
+      return <Purrlaroid data={cat}></Purrlaroid>;
+    }
   });
 
   return (
@@ -77,9 +90,6 @@ const CatCatalogue = () => {
                 top: "-10px",
               }}
             />
-            {/* <SelectedCatInfo
-            data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-          /> */}
           </>
         )}
         <Menu />
@@ -94,7 +104,10 @@ const CatCatalogue = () => {
             <AppearsOnTheseCards
               data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
             />
-            <SecondaryTitles> Buddies: </SecondaryTitles>
+            {catData.cats[selectedCatId].buddyIds && (
+              <SecondaryTitles> Buddies: </SecondaryTitles>
+            )}
+            <BuddyContainer> {SelectedCatBuddies}</BuddyContainer>
           </CatInfoContainer>
         )}
 
