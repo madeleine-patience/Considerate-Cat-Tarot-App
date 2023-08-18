@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import catData from "../data/cats";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ICatProps from "../types/CatProps";
 import { Fab } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -94,6 +94,10 @@ const CatCarousel = ({
 }: ICatProps) => {
   const secondaryCatImages = catData.cats[data.id].secondaryImages ?? [];
   const [mainImage, setMainImage] = useState(data.image);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const navigate = useNavigate();
 

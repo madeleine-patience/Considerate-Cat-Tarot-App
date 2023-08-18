@@ -1,23 +1,23 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, Theme } from "@mui/material/styles";
 
-const theme = createTheme({
+const theme: Theme = createTheme({
   palette: {
     primary: {
-      main: "#e8ccda",
+      main: "#a9d0d6",
     },
     secondary: {
-      main: "#ded5ad",
+      main: "#a0bda3",
     },
   },
   typography: {
-    fontFamily: '"Abril Fatface", sans-serif', // this sets the default font family
-
-    // For headers
     h1: {
-      fontFamily: '"Yomogi", sans-serif', // this sets the default font family
+      fontFamily: '"Lora", sans-serif',
     },
     h2: {
       fontFamily: '" Raleway", sans-serif',
+    },
+    body1: {
+      fontFamily: '"Volkhov", sans-serif',
     },
   },
 });

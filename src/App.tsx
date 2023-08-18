@@ -19,7 +19,7 @@ import { LandingPage } from "./pages/LandingPage";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/tarotRead" element={<TarotRead />} />
       <Route path="/LandingPage" element={<LandingPage />} />
       <Route path="/Deck" element={<Deck />} />

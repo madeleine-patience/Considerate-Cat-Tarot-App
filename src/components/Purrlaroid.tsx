@@ -26,6 +26,9 @@ const PurrlaroidImage = styled("img")({
 const PurrlaroidFont = styled("h3")({
   fontFamily: theme.typography.h1.fontFamily,
   fontSize: 28,
+  fontWeight: "bold",
+  fontStyle: "italic",
+  color: "#7d7168",
 });
 
 const Purrlaroid = ({ data, handleClick }: ICatProps) => {
