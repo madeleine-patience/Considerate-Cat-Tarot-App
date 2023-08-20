@@ -7,7 +7,7 @@ export const DialogContainer = styled("dialog")(({ theme }) => ({
   position: "fixed",
   width: "100%",
   height: "100%",
-  backgroundColor: "transparent",
-  backdropFilter: "blur(5px)",
+  backgroundColor: "rgba(255, 255, 255, 0.2)",
+  backdropFilter: "blur(10px)",
   zIndex: "2",
 }));

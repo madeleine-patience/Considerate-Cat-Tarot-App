@@ -12,6 +12,7 @@ const StyledButton = styled("button")(() => ({
   width: "150px",
   background: "pink",
   borderRadius: "10px",
+  fontFamily: theme.typography.h1.fontFamily,
   "&:hover": {
     background: "#f7e6ef", // using 'background' instead of 'backgroundColor' for consistency
   },

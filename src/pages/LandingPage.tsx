@@ -118,13 +118,16 @@ export const LandingPage = () => {
         <MainContainer>
           <MainImage src={homepageImage} />
           <MainText>
-            <H2Title> Welcome to Considerate Cat!</H2Title>
+            <H2Title style={{ textShadow: " 5px 5px #558ABB" }}>
+              {" "}
+              Welcome to Considerate Cat!
+            </H2Title>
             <ParargraphText>
-              Bear with us as we work our{" "}
+              Hold onto your whiskers as we work our{" "}
               <b>
-                <i style={{ color: "yellow" }}>magic </i>
-              </b>
-              . This site is under cat-struction.
+                <i style={{ color: "yellow" }}>magic</i>
+              </b>{" "}
+              ! This site is under cat-struction.
             </ParargraphText>
           </MainText>
         </MainContainer>

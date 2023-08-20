@@ -2,11 +2,20 @@ import { createTheme, Theme } from "@mui/material/styles";
 
 const theme: Theme = createTheme({
   palette: {
+    //Blues
     primary: {
       main: "#a9d0d6",
+      dark: "#8781b3",
     },
+    //Purples
     secondary: {
-      main: "#a0bda3",
+      main: "#c5a9d9",
+      dark: "#c995ed",
+    },
+    //Pinks
+    background: {
+      default: "#ce9cd6",
+      paper: "#d4b4d9",
     },
   },
   typography: {
@@ -20,6 +29,7 @@ const theme: Theme = createTheme({
       fontFamily: '"Volkhov", sans-serif',
     },
   },
+  spacing: 20,
 });
 
 export default theme;

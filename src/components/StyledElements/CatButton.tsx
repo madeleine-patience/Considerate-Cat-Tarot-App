@@ -9,7 +9,7 @@ const CatImages = styled("img")({
   width: "100px",
   height: "100px",
   overflow: "cover",
-  borderRadius: "10px",
+  border: "1px solid grey",
 });
 
 const CatButton: React.FunctionComponent<CatButton> = (props) => {

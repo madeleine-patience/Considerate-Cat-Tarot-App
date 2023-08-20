@@ -1,21 +1,26 @@
 import catData from "../data/cats";
 import ICatProps from "../types/CatProps";
 import { styled } from "@mui/system";
-import { H2Title } from "./TarotCardDetails";
+import theme from "../theme";
+import { ThemeProvider } from "@mui/material/styles";
+import H2Title from "./StyledElements/H2Title";
+import Purrlaroid from "./Purrlaroid";
 
 const ModalContainer = styled("div")({
-  backgroundColor: "#C1FFD5",
+  backgroundColor: "#9bba99",
   display: "flex",
   flexDirection: "column",
-  height: "100%",
-  padding: "25px",
-  borderRadius: "20px",
+  width: 700,
+  height: 700,
+  padding: 25,
+  borderRadius: 10,
   gap: "15px",
+  border: "2px solid white",
 });
 
 const MainContent = styled("div")({
   display: "flex",
-  gap: "20px",
+  gap: 50,
   alignItems: "center",
 });
 // First section of Container
@@ -25,18 +30,14 @@ const MainCatContainer = styled("div")({
   width: "50%",
 });
 
-const MainCat = styled("img")({
-  borderRadius: "25px",
-  width: "100%",
-  backgroundSize: "cover",
-});
-
 const TextContainer = styled("div")({
   display: "flex",
+  justifyContent: "center",
   flexDirection: "column",
   gap: "15px",
-  overflow: "hidden",
   width: "50%",
+  height: "100%",
+  fontFamily: theme.typography.h2.fontFamily,
 });
 
 const DescriptionParagraph = styled("p")({
@@ -45,8 +46,8 @@ const DescriptionParagraph = styled("p")({
   textOverflow: "ellipsis",
   whiteSpace: "normal",
   display: "-webkit-box",
-  webkitLineClamp: "12",
-  webkitBoxOrient: "vertical",
+  WebkitLineClamp: 12,
+  WebkitBoxOrient: "vertical",
 });
 // Second section of Container
 
@@ -66,30 +67,30 @@ const BuddyImage = styled("img")({
 function SelectedCat({ data }: ICatProps) {
   const buddyLinks = data.buddyIds;
   return (
-    <ModalContainer>
-      <H2Title> {data.name}</H2Title>
-      <MainContent>
-        <MainCatContainer>
-          <MainCat src={data.image} />
-        </MainCatContainer>
-
-        <TextContainer>
-          <DescriptionParagraph> {data.description}</DescriptionParagraph>
-        </TextContainer>
-      </MainContent>
-      <BuddyContainer>
-        {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
-        {data.buddyIds &&
-          data.buddyIds.map((buddyNumber) => (
-            <>
-              <BuddyImage
-                key={"hi"}
-                src={catData.cats[buddyNumber].image}
-              ></BuddyImage>
-            </>
-          ))}
-      </BuddyContainer>
-    </ModalContainer>
+    <ThemeProvider theme={theme}>
+      <ModalContainer>
+        <H2Title style={{ textShadow: " 5px 5px grey" }}>{data.name}</H2Title>
+        <MainContent>
+          <Purrlaroid data={data} />
+          <TextContainer>
+            <DescriptionParagraph> {data.description}</DescriptionParagraph>
+          </TextContainer>
+        </MainContent>
+        <BuddyContainer>
+          {data.buddyIds && <h3> {data.name}'s Friends:</h3>}
+          {data.buddyIds &&
+            data.buddyIds.map((buddyNumber) => (
+              <>
+                <Purrlaroid
+                  key={"hi"}
+                  data={catData.cats[buddyNumber]}
+                  style={{ height: 125, width: 125 }}
+                ></Purrlaroid>
+              </>
+            ))}
+        </BuddyContainer>
+      </ModalContainer>
+    </ThemeProvider>
   );
 }
 

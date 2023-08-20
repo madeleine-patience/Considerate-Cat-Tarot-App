@@ -13,6 +13,10 @@ import DisplayBuddies from "../components/DisplayBuddies";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 
+const WholePage = styled("div")(({ theme }) => ({
+  background: "#ebe6ce",
+}));
+
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "auto auto auto auto ",
@@ -40,6 +44,7 @@ const CatInfoContainer = styled("div")(({ theme }) => ({
 
 const SecondaryTitles = styled("h2")({
   fontFamily: theme.typography.h1.fontFamily,
+  fontWeight: "bold",
   fontSize: 32,
 });
 
@@ -50,7 +55,6 @@ const BuddyContainer = styled("div")({
 
 const CatCatalogue = () => {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
-  console.log(selectedCatId);
   const sortByAlphabetical = catData.cats
     .slice()
     .sort((cat1, cat2) =>
@@ -60,6 +64,7 @@ const CatCatalogue = () => {
   const allPurrlaroids = sortByAlphabetical.map((cat, index) => {
     return (
       <Purrlaroid
+        displayName={true}
         data={cat}
         key={index}
         handleClick={() => handleShowCatInfo(cat)}
@@ -69,50 +74,56 @@ const CatCatalogue = () => {
 
   const SelectedCatBuddies = catData.cats.map((cat, index) => {
     if (catData.cats[selectedCatId]?.buddyIds?.includes(cat.id)) {
-      return <Purrlaroid data={cat}></Purrlaroid>;
+      return <Purrlaroid displayName={true} data={cat}></Purrlaroid>;
     }
   });
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        {showCatInfo && (
-          <>
-            <Button
-              buttonName="X"
-              onClick={() => handleShowCatInfo(false)}
-              style={{
-                borderRadius: "100px",
-                width: "34px",
-                height: "34px",
-                position: "absolute",
-                right: "-10px",
-                top: "-10px",
-              }}
-            />
-          </>
-        )}
-        <Menu />
-        {showCatInfo && (
-          <CatInfoContainer>
-            <CatCarousel
-              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-              stateFromParent={showCatInfo}
-              setterFromParent={handleShowCatInfo}
-            />
-            <SecondaryTitles> Appears On Cards: </SecondaryTitles>
-            <AppearsOnTheseCards
-              data={sortByAlphabetical.find((cat) => cat.id == selectedCatId)!}
-            />
-            {catData.cats[selectedCatId].buddyIds && (
-              <SecondaryTitles> Buddies: </SecondaryTitles>
-            )}
-            <BuddyContainer> {SelectedCatBuddies}</BuddyContainer>
-          </CatInfoContainer>
-        )}
+      <WholePage>
+        <div>
+          {showCatInfo && (
+            <>
+              <Button
+                buttonName="X"
+                onClick={() => handleShowCatInfo(false)}
+                style={{
+                  borderRadius: "100px",
+                  width: "34px",
+                  height: "34px",
+                  position: "absolute",
+                  right: "-10px",
+                  top: "-10px",
+                }}
+              />
+            </>
+          )}
+          <Menu />
+          {showCatInfo && (
+            <CatInfoContainer>
+              <CatCarousel
+                data={
+                  sortByAlphabetical.find((cat) => cat.id == selectedCatId)!
+                }
+                stateFromParent={showCatInfo}
+                setterFromParent={handleShowCatInfo}
+              />
+              <SecondaryTitles> Appears On Cards: </SecondaryTitles>
+              <AppearsOnTheseCards
+                data={
+                  sortByAlphabetical.find((cat) => cat.id == selectedCatId)!
+                }
+              />
+              {catData.cats[selectedCatId].buddyIds && (
+                <SecondaryTitles> Buddies: </SecondaryTitles>
+              )}
+              <BuddyContainer> {SelectedCatBuddies}</BuddyContainer>
+            </CatInfoContainer>
+          )}
 
-        {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
-      </div>
+          {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
+        </div>
+      </WholePage>
     </ThemeProvider>
   );
 };

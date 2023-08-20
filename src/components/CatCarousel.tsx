@@ -9,16 +9,16 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
-
+import H1Title from "./StyledElements/H1Title";
+import H2Title from "./StyledElements/H2Title";
 const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   position: "relative",
   width: 1000,
-  background: theme.palette.primary.main,
-  height: "800px",
+  background: "#dbc1ce",
   margin: "auto",
-
+  boxShadow: " 10px 5px 5px grey",
   // [theme.breakpoints.up("md")]: {
   //   flexDirection: "row",
   //   justifyContent: "center",
@@ -72,15 +72,7 @@ const RightContainer = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   padding: 20,
-});
-
-const H1 = styled("h1")({
-  fontFamily: theme.typography.h1.fontFamily,
-  fontSize: 80,
-});
-const BuddyImage = styled("img")({
-  width: "100px",
-  borderRadius: "10px",
+  border: "2px solid red",
 });
 
 const Parargraph = styled("p")({
@@ -157,24 +149,29 @@ const CatCarousel = ({
             <CatImageContainer>
               <ButtonSpacing>
                 <ButtonNavigationContainer>
-                  <Fab
-                    aria-label="add"
-                    style={{
-                      background: theme.palette.secondary.main,
-                    }}
-                    onClick={() => scrollThroughCats(mainImage, "left")}
-                  >
-                    <ArrowBackIcon />
-                  </Fab>
-                  <Fab
-                    aria-label="add"
-                    style={{
-                      background: theme.palette.secondary.main,
-                    }}
-                    onClick={() => scrollThroughCats(mainImage, "right")}
-                  >
-                    <ArrowForwardIcon />
-                  </Fab>
+                  {secondaryImages.length > 0 && (
+                    <>
+                      {" "}
+                      <Fab
+                        aria-label="add"
+                        style={{
+                          background: "white",
+                        }}
+                        onClick={() => scrollThroughCats(mainImage, "left")}
+                      >
+                        <ArrowBackIcon />
+                      </Fab>
+                      <Fab
+                        aria-label="add"
+                        style={{
+                          background: "white",
+                        }}
+                        onClick={() => scrollThroughCats(mainImage, "right")}
+                      >
+                        <ArrowForwardIcon />
+                      </Fab>
+                    </>
+                  )}
                 </ButtonNavigationContainer>
               </ButtonSpacing>
               <MainCatImage src={mainImage} />
@@ -187,7 +184,7 @@ const CatCarousel = ({
           {/* Text Content */}
 
           <RightContainer>
-            <H1>{data.name}</H1>
+            <H1Title>{data.name}</H1Title>
             <Parargraph>{data.description}</Parargraph>
             {/* {data.buddyIds && <h3> {data.name}'s Buddies</h3>}
         {data.buddyIds &&
