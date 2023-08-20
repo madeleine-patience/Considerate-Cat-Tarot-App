@@ -14,6 +14,8 @@ import { styled } from "@mui/system";
 import TarotFront from "../components/TarotCard";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
+import theme from "../theme";
+import { ThemeProvider } from "@mui/material/styles";
 
 const PageContainer = styled("div")(({ theme }) => ({
   margin: "50px",
@@ -187,8 +189,7 @@ export const Deck = () => {
   }, [ref, setTarotInfo]);
 
   return (
-    <>
-      {" "}
+    <ThemeProvider theme={theme}>
       {showCard && (
         <div ref={ref}>
           <DialogContainer open>
@@ -198,12 +199,15 @@ export const Deck = () => {
                   buttonName="X"
                   onClick={() => setTarotInfo(showNumber)}
                   style={{
-                    borderRadius: "100px",
                     width: "34px",
                     height: "34px",
                     position: "absolute",
-                    right: "-10px",
-                    top: "-10px",
+                    right: 15,
+                    top: 15,
+                    border: "2px solid #d47daf",
+                    borderRadius: 0,
+                    fontFamily: theme.typography.h2.fontFamily,
+                    color: "#d47daf",
                   }}
                 ></Button>
               </ButtonHolder>
@@ -230,7 +234,7 @@ export const Deck = () => {
 
         {/* What were working on  */}
       </PageContainer>
-    </>
+    </ThemeProvider>
   );
 };
 // arthvadrr: Probably want to utilize state, then have buttons update state, and then render components conditionally based on that state

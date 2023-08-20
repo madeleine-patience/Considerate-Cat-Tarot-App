@@ -8,6 +8,8 @@ interface ICatProps {
     appearsOnCards: number[];
   };
   stateFromParent?: boolean;
+  displayName?: boolean;
+  style?: any;
   setterFromParent?: Function;
 
   handleClick?: (cat: any) => void;

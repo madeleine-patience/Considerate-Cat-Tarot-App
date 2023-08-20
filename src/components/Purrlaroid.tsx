@@ -26,18 +26,21 @@ const PurrlaroidImage = styled("img")({
 const PurrlaroidFont = styled("h3")({
   fontFamily: theme.typography.h1.fontFamily,
   fontSize: 28,
+  fontWeight: "bold",
+  fontStyle: "italic",
+  color: "#7d7168",
 });
 
-const Purrlaroid = ({ data, handleClick }: ICatProps) => {
+const Purrlaroid = ({ data, handleClick, displayName, style }: ICatProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <StyledPurrlaroid>
+      <StyledPurrlaroid style={style}>
         <div>
           <PurrlaroidImage
             onClick={() => handleClick?.(data)}
             src={data.image}
           />
-          <PurrlaroidFont>{data.name}</PurrlaroidFont>
+          {displayName && <PurrlaroidFont>{data.name}</PurrlaroidFont>}
         </div>
       </StyledPurrlaroid>
     </ThemeProvider>

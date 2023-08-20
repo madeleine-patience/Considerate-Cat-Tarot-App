@@ -7,30 +7,37 @@ import theme from "../theme";
 
 const MenuDropDown = styled("div")(({ theme }) => ({
   width: "100%",
-  height: "75px",
-  background: "lightBlue",
+  background: theme.palette.secondary.main,
   display: "flex",
-  justifyContent: "space-between",
+  flexDirection: "column",
   alignItems: "Center",
-  fontFamily: "Raleway",
-  fontSize: "24px",
-  fontWeight: "400",
-  padding: "10px",
 }));
 
-const H1Title = styled("h1")(({ theme }) => ({
+const H1Title = styled("h1")(() => ({
+  fontSize: 50,
   fontFamily: theme.typography.h1.fontFamily,
-  fontSize: "40px",
   color: "white",
+  fontWeight: "bold",
+}));
+
+const HeaderCenterContent = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+  height: "100%",
+  padding: 5,
 }));
 const HeaderImage = styled("img")(({ theme }) => ({
-  height: "100%",
+  height: 150,
+  width: 150,
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
-  position: "absolute",
+  display: "flex",
   width: "100%",
-  zIndex: "1",
+  justifyContent: "center",
+  background: "pink",
 }));
 
 const Menu = () => {
@@ -53,10 +60,7 @@ const Menu = () => {
 
   const menuButtons = buttonInfo.map((button, index) => {
     return (
-      <div
-        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
-        key={button.buttonName}
-      >
+      <div key={button.buttonName}>
         <Button
           buttonName={button.buttonName}
           onClick={() => {
@@ -85,18 +89,19 @@ const Menu = () => {
     <ThemeProvider theme={theme}>
       <div style={{ position: "relative" }} ref={ref}>
         <MenuDropDown>
-          <HeaderImage src="./Art/EddieHead.png" />
-          <H1Title> Considerate Cat </H1Title>
-
+          <HeaderCenterContent>
+            <HeaderImage src="./Art/EddieHead.png" />
+            <H1Title> Considerate Cat </H1Title>
+          </HeaderCenterContent>
           <div
             style={{ width: "100px", textAlign: "center", color: "white" }}
             onClick={showHideMenuButton}
           >
-            {" "}
-            {showHide ? "Hide" : "Menu"}{" "}
+            {/* {" "}
+            {showHide ? "Hide" : "Menu"}{" "} */}
           </div>
         </MenuDropDown>
-        {showHide && <ButtonContainer>{menuButtons}</ButtonContainer>}
+        <ButtonContainer>{menuButtons}</ButtonContainer>
       </div>
     </ThemeProvider>
   );

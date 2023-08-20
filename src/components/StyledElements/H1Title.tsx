@@ -1,12 +1,12 @@
 import { styled } from "@mui/system";
 import theme from "../../theme";
 
-const H2Title = styled("h2")({
-  fontSize: "70px",
-  fontStyle: "italic",
-  fontWeight: "bold",
+const H1Title = styled("h1")({
   fontFamily: theme.typography.h1.fontFamily,
+  fontWeight: "bold",
+  fontSize: 80,
+  textShadow: " 3px 3px grey",
   color: "white",
 });
 
-export default H2Title;
+export default H1Title;

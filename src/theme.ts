@@ -1,25 +1,35 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, Theme } from "@mui/material/styles";
 
-const theme = createTheme({
+const theme: Theme = createTheme({
   palette: {
+    //Blues
     primary: {
-      main: "#e8ccda",
+      main: "#a9d0d6",
+      dark: "#8781b3",
     },
+    //Purples
     secondary: {
-      main: "#ded5ad",
+      main: "#c5a9d9",
+      dark: "#c995ed",
+    },
+    //Pinks
+    background: {
+      default: "#ce9cd6",
+      paper: "#d4b4d9",
     },
   },
   typography: {
-    fontFamily: '"Abril Fatface", sans-serif', // this sets the default font family
-
-    // For headers
     h1: {
-      fontFamily: '"Yomogi", sans-serif', // this sets the default font family
+      fontFamily: '"Lora", sans-serif',
     },
     h2: {
       fontFamily: '" Raleway", sans-serif',
     },
+    body1: {
+      fontFamily: '"Volkhov", sans-serif',
+    },
   },
+  spacing: 20,
 });
 
 export default theme;
