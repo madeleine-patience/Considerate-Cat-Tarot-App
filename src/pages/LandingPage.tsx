@@ -39,7 +39,7 @@ const MainContainer = styled("div")(({ theme }) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "Center",
-    height: 800,
+    height: 1000,
   },
 }));
 const MainImage = styled("img")(({ theme }) => ({

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
-import TarotFront from "../components/TarotCard";
+import TarotFront from "./TarotFront";
 
 //Ok so we have created this new component so that we can pull out tarot front and back and have everything render everything individualy. WIP. (Each card will have its own state : and to track state
 

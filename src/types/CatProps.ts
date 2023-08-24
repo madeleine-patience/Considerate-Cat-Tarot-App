@@ -10,6 +10,7 @@ interface ICatProps {
   stateFromParent?: boolean;
   displayName?: boolean;
   style?: any;
+  imageSize?: number;
   setterFromParent?: Function;
 
   handleClick?: (cat: any) => void;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useRef } from "react";
 import tarotCardData from "../data/tarotCardData";
-import TarotCard from "../components/TarotCard";
+import TarotCard from "../components/TarotFront";
 import MyTarotProps from "../types/Tarot.type";
 import { useState } from "react";
 import Button from "../components/Button";
@@ -11,7 +11,7 @@ import TarotCardDetails from "../components/TarotCardDetails";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
-import TarotFront from "../components/TarotCard";
+import TarotFront from "../components/TarotFront";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import theme from "../theme";
@@ -27,13 +27,13 @@ const PageContainer = styled("div")(({ theme }) => ({
 const CardSpreadContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  width: "500px",
-  margin: "auto",
+  justifyContent: "center",
 }));
 
 const TarotCardContainer = styled("div")(({ theme }) => ({
   display: "grid",
   gap: "50px",
+  justifyContent: "center",
   [theme.breakpoints.up("sm")]: {
     gridTemplateColumns: "auto auto",
   },
@@ -128,6 +128,7 @@ export const Deck = () => {
     (tarotCard, index) => {
       return (
         <TarotCard
+          width={250}
           key={index}
           imageSrc={tarotCard.imageFileName}
           onClick={() =>
@@ -223,10 +224,16 @@ export const Deck = () => {
         {!selectedSuit && (
           <CardSpreadContainer>
             <TarotCardStyled1>
-              <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+              <TarotFront
+                width={200}
+                imageSrc={data.tarotDeck[0].imageFileName}
+              />
             </TarotCardStyled1>
             <TarotCardStyled2>
-              <TarotFront imageSrc={data.tarotDeck[0].imageFileName} />
+              <TarotFront
+                width={200}
+                imageSrc={data.tarotDeck[0].imageFileName}
+              />{" "}
             </TarotCardStyled2>
           </CardSpreadContainer>
         )}

@@ -23,7 +23,7 @@ const theme: Theme = createTheme({
       fontFamily: '"Lora", sans-serif',
     },
     h2: {
-      fontFamily: '" Raleway", sans-serif',
+      fontFamily: '"Raleway", sans-serif',
     },
     body1: {
       fontFamily: '"Volkhov", sans-serif',

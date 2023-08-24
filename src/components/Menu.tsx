@@ -2,12 +2,19 @@ import React, { useEffect, useRef } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, useTheme } from "@mui/material/styles";
 import theme from "../theme";
+import MenuIcon from "@mui/icons-material/Menu";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+const MenuContainer = styled("div")(({ theme }) => ({
+  position: "relative",
+}));
 
 const MenuDropDown = styled("div")(({ theme }) => ({
+  height: "100%",
   width: "100%",
-  background: theme.palette.secondary.main,
+  background: "#d1b6e0",
   display: "flex",
   flexDirection: "column",
   alignItems: "Center",
@@ -16,8 +23,8 @@ const MenuDropDown = styled("div")(({ theme }) => ({
 const H1Title = styled("h1")(() => ({
   fontSize: 50,
   fontFamily: theme.typography.h1.fontFamily,
-  color: "white",
   fontWeight: "bold",
+  color: "white",
 }));
 
 const HeaderCenterContent = styled("div")(({ theme }) => ({
@@ -29,8 +36,8 @@ const HeaderCenterContent = styled("div")(({ theme }) => ({
   padding: 5,
 }));
 const HeaderImage = styled("img")(({ theme }) => ({
-  height: 150,
-  width: 150,
+  height: 200,
+  marginBottom: -20,
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -38,8 +45,36 @@ const ButtonContainer = styled("div")(({ theme }) => ({
   width: "100%",
   justifyContent: "center",
   background: "pink",
+  border: "2px solid #d47daf",
+  [theme.breakpoints.down("lg")]: {
+    position: "absolute",
+    flexDirection: "column",
+    width: 400,
+    alignItems: "center",
+    top: 490,
+    left: "50%",
+    transform: "translate(-50%, -50%);",
+  },
 }));
 
+const ButtonContainer2 = styled("div")(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  justifyContent: "center",
+  background: "pink",
+
+  [theme.breakpoints.down("lg")]: {
+    display: "none",
+  },
+}));
+
+const StyledMenuIcon = styled(MenuIcon)(({ theme }) => ({
+  color: "white",
+
+  [theme.breakpoints.up("lg")]: {
+    display: "none",
+  },
+}));
 const Menu = () => {
   const navigate = useNavigate();
   const buttonInfo = [
@@ -66,7 +101,7 @@ const Menu = () => {
           onClick={() => {
             navigate(button.urlRedirect);
           }}
-          style={{ borderRadius: "0" }}
+          style={{ borderRadius: "0", boxShadow: "0px", border: "0px" }}
         />
       </div>
     );
@@ -85,24 +120,26 @@ const Menu = () => {
     };
   }, []);
 
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
+  console.log(isLargeScreen);
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ position: "relative" }} ref={ref}>
-        <MenuDropDown>
-          <HeaderCenterContent>
-            <HeaderImage src="./Art/EddieHead.png" />
-            <H1Title> Considerate Cat </H1Title>
-          </HeaderCenterContent>
-          <div
-            style={{ width: "100px", textAlign: "center", color: "white" }}
-            onClick={showHideMenuButton}
-          >
-            {/* {" "}
-            {showHide ? "Hide" : "Menu"}{" "} */}
-          </div>
-        </MenuDropDown>
-        <ButtonContainer>{menuButtons}</ButtonContainer>
-      </div>
+      <MenuContainer ref={ref}>
+        {
+          <MenuDropDown>
+            <HeaderCenterContent>
+              <HeaderImage src="./Art/ElmerMain.png" />
+              <H1Title> Considerate Cat </H1Title>
+            </HeaderCenterContent>
+            <StyledMenuIcon onMouseEnter={showHideMenuButton} />
+          </MenuDropDown>
+        }
+        {showHide && !isLargeScreen && (
+          <ButtonContainer>{menuButtons}</ButtonContainer>
+        )}
+      </MenuContainer>
+      <ButtonContainer2>{menuButtons}</ButtonContainer2>
     </ThemeProvider>
   );
 };

@@ -3,7 +3,7 @@ import TarotCardDetails from "../components/TarotCardDetails";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
-import TarotFront from "../components/TarotCard";
+import TarotFront from "../components/TarotFront";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
@@ -92,7 +92,7 @@ function TarotRead() {
   const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
-        style={{ width: "100%" }}
+        width={200}
         key={tarotFront.toString()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
         imageSrc={data.tarotDeck[0].imageFileName}
@@ -108,6 +108,7 @@ function TarotRead() {
   const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
     return (
       <TarotFront
+        width={200}
         key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
         onClick={() => updateStateOfCard(tarotFront)}

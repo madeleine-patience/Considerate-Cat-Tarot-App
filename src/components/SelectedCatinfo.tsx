@@ -7,41 +7,41 @@ import H2Title from "./StyledElements/H2Title";
 import Purrlaroid from "./Purrlaroid";
 
 const ModalContainer = styled("div")({
-  backgroundColor: "#9bba99",
+  backgroundColor: "#e8dfca",
   display: "flex",
   flexDirection: "column",
-  width: 700,
-  height: 700,
   padding: 25,
-  borderRadius: 10,
-  gap: "15px",
+  gap: 15,
   border: "2px solid white",
+  zIndex: 3,
+});
+const MainCatImage = styled("img")({
+  display: "flex",
+  width: 250,
+  margin: "auto",
+  padding: 20,
+  background: "white",
 });
 
 const MainContent = styled("div")({
   display: "flex",
-  gap: 50,
-  alignItems: "center",
-});
-// First section of Container
-const MainCatContainer = styled("div")({
-  display: "flex",
-  alignItems: "flex-start",
-  width: "50%",
+  flexDirection: "column",
+  gap: 20,
 });
 
 const TextContainer = styled("div")({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  gap: "15px",
-  width: "50%",
+  gap: 15,
   height: "100%",
   fontFamily: theme.typography.h2.fontFamily,
+  textAlign: "center",
 });
 
 const DescriptionParagraph = styled("p")({
   width: "100%",
+  fontFamily: theme.typography.h1.fontFamily,
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "normal",
@@ -57,26 +57,29 @@ const BuddyContainer = styled("div")({
   flexDirection: "column",
   fontSize: "20px",
   gap: "10px",
-});
-
-const BuddyImage = styled("img")({
-  width: "100px",
-  borderRadius: "10px",
+  alignItems: "center",
 });
 
 function SelectedCat({ data }: ICatProps) {
-  const buddyLinks = data.buddyIds;
   return (
     <ThemeProvider theme={theme}>
       <ModalContainer>
-        <H2Title style={{ textShadow: " 5px 5px grey" }}>{data.name}</H2Title>
         <MainContent>
-          <Purrlaroid data={data} />
+          <H2Title
+            style={{
+              textAlign: "center",
+              WebkitTextStroke: "1px #d47daf",
+              color: "#686ba1",
+            }}
+          >
+            {data.name}
+          </H2Title>
+          <MainCatImage src={data.image} />
           <TextContainer>
             <DescriptionParagraph> {data.description}</DescriptionParagraph>
           </TextContainer>
         </MainContent>
-        <BuddyContainer>
+        {/* <BuddyContainer>
           {data.buddyIds && <h3> {data.name}'s Friends:</h3>}
           {data.buddyIds &&
             data.buddyIds.map((buddyNumber) => (
@@ -84,11 +87,11 @@ function SelectedCat({ data }: ICatProps) {
                 <Purrlaroid
                   key={"hi"}
                   data={catData.cats[buddyNumber]}
-                  style={{ height: 125, width: 125 }}
+                  imageSize={150}
                 ></Purrlaroid>
               </>
             ))}
-        </BuddyContainer>
+        </BuddyContainer> */}
       </ModalContainer>
     </ThemeProvider>
   );

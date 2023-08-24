@@ -11,14 +11,13 @@ interface PROPS {
 const CatTile = ({ image, color, title, navigation }: PROPS) => {
   const StyledTile = styled("button")({
     display: "flex",
-    width: "250px",
-    height: "250px",
-    backgroundColor: "pink",
-    borderRadius: "10px",
+    width: 250,
+    height: 250,
     backgroundImage: `url(${image})`,
     backgroundSize: "cover",
     alignItems: "flex-end",
-    fontFamily: theme.typography.h1.fontFamily,
+    fontFamily: theme.typography.h2.fontFamily,
+    border: "2px solid #d47daf",
   });
 
   const BottomTile = styled("div")({
@@ -28,8 +27,7 @@ const CatTile = ({ image, color, title, navigation }: PROPS) => {
     height: "50px",
     width: "100%",
     backgroundColor: color,
-    borderBottomRightRadius: "10px",
-    borderBottomLeftRadius: "10px",
+    borderTop: "2px solid #d47daf",
   });
 
   return (

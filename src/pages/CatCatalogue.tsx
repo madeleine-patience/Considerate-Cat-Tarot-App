@@ -65,9 +65,11 @@ const CatCatalogue = () => {
     return (
       <Purrlaroid
         displayName={true}
+        imageSize={300}
         data={cat}
         key={index}
         handleClick={() => handleShowCatInfo(cat)}
+        style={{ boxShadow: "12px 12px 2px 1px rgba(0, 0, 255, .1)" }}
       />
     );
   });
