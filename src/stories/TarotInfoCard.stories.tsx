@@ -7,7 +7,7 @@ import "../styles/reset.css";
 import tarotCardData from "../data/tarotCardData";
 
 export default {
-  title: "Components/TarotInfoCard",
+  title: "Components/TarotCardDetails",
   component: TarotInfoCard,
 } as Meta;
 
@@ -24,14 +24,16 @@ BasicTarotCard.args = { ...tarotCardData.tarotDeck[3] };
 
 export { BasicTarotCard };
 
-// const CatInfoWithLongText: StoryType = Template.bind({});
-// CatInfoWithLongText.args = {
-//   ...Default.args,
-//   data: {
-//     ...Default.args.data,
-//     description: data.cats[20].description,
-//   },
-//   displayName: false,
-// };
+const CatWithBuds: StoryType = Template.bind({});
+CatWithBuds.args = {
+  ...tarotCardData.tarotDeck[5],
+};
 
-// export { CatInfoWithLongText };
+export { CatWithBuds };
+
+const CatWithManyBuds: StoryType = Template.bind({});
+CatWithManyBuds.args = {
+  ...tarotCardData.tarotDeck[12],
+};
+
+export { CatWithManyBuds };

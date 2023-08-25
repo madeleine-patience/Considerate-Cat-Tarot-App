@@ -23,7 +23,7 @@ const StyledPurrlaroide = styled("div")({
 });
 
 export const H2Title = styled("h2")({
-  fontSize: 64,
+  fontSize: 50,
   fontWeight: "bold",
   fontFamily: theme.typography.h1.fontFamily,
   color: "white",
