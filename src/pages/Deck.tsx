@@ -7,7 +7,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
-import TarotCardDetails from "../components/TarotCardDetails";
+import TarotInfoCard from "../components/TarotInfoCard";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
@@ -188,6 +188,7 @@ export const Deck = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, setTarotInfo]);
+  console.log(data.tarotDeck[showNumber]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -209,10 +210,11 @@ export const Deck = () => {
                     borderRadius: 0,
                     fontFamily: theme.typography.h2.fontFamily,
                     color: "#d47daf",
+                    zIndex: 3,
                   }}
                 ></Button>
               </ButtonHolder>
-              <TarotCardDetails data={data.tarotDeck[showNumber]} />
+              <TarotInfoCard {...data.tarotDeck[showNumber]} />
             </DialogContent>
           </DialogContainer>
         </div>

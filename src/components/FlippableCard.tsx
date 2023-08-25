@@ -17,6 +17,7 @@ const FlippableCard = ({ message, pets }: PROPS) => {
     <>
       {pets.map((pet: { id: number; name: string }) => (
         <TarotFront
+          width={100}
           key={pet.id}
           onClick={() => console.log("message", pet.name, pets)}
           imageSrc={data.tarotDeck[0].imageFileName}

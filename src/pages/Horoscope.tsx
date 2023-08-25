@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Menu from "../components/Menu";
 import Button from "../components/Button";
 import { styled } from "@mui/system";
-import { H2Title } from "../components/TarotCardDetails";
+import { H2Title } from "../components/TarotInfoCard";
 import { ItalisizedText } from "../components/StyledElements/ItalisizedText";
 import { Route, Link, Routes, useNavigate } from "react-router-dom";
 

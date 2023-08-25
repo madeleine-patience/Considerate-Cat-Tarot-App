@@ -51,9 +51,10 @@ const ButtonContainer = styled("div")(({ theme }) => ({
     flexDirection: "column",
     width: 400,
     alignItems: "center",
-    top: 490,
+    top: 465,
     left: "50%",
     transform: "translate(-50%, -50%);",
+    zIndex: 2,
   },
 }));
 
@@ -122,7 +123,6 @@ const Menu = () => {
 
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
-  console.log(isLargeScreen);
   return (
     <ThemeProvider theme={theme}>
       <MenuContainer ref={ref}>

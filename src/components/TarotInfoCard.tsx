@@ -1,4 +1,4 @@
-import SelectedCatInfo from "./SelectedCatinfo";
+import SelectedCatInfo from "./CatInfoCard";
 import catData from "../data/cats";
 import TarotCardProps from "../types/Tarot.type";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
@@ -35,7 +35,7 @@ const SolidLine = styled("div")({
   borderBottom: "2px solid #d47daf",
 });
 
-const TitleTextContainer = styled("h2")({
+const TitleTextContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
 });
@@ -55,7 +55,7 @@ const KeywordsText = styled("p")({
   padding: `10px ${theme.spacing(1)} `,
   textShadow: " 2px 2px grey",
 });
-const KeyWordContainer = styled("p")({
+const KeyWordContainer = styled("div")({
   display: "flex",
   gap: 5,
   alignItems: "center",
@@ -96,17 +96,18 @@ const CatsPresentText = styled("p")({
   color: "white",
   fontWeight: "bold",
 });
-function TarotCard({ data }: TarotCardProps) {
+function TarotCard(data: TarotCardProps) {
   const [showCatInfo, selectedCatId, handleShowCatInfo] = useDisplayCatInfo();
 
-  function catLookup(image: string) {
+  const catLookup = (image: string) => {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
-  }
-
-  const KeywordStyling = data.keyWords.map((keyWord: string) => {
+  };
+  console.log(data);
+  const KeywordStyling = data.keyWords?.map((keyWord: string) => {
     return (
       <p
+        key={keyWord}
         style={{
           background: theme.palette.secondary.dark,
           textAlign: "center",

@@ -2,7 +2,7 @@ import catData from "../data/cats";
 import Purrlaroid from "../components/Purrlaroid";
 import Menu from "../components/Menu";
 import useDisplayCatInfo from "../hooks/displayCatInfo";
-import SelectedCatInfo from "../components/SelectedCatinfo";
+import SelectedCatInfo from "../components/CatInfoCard";
 import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";

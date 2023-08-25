@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import SelectedCatInfo from "../components/SelectedCatinfo";
+import CatInfoCard from "../components/CatInfoCard";
 import ICatProps from "../types/CatProps";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
@@ -7,13 +7,13 @@ import "../styles/reset.css";
 import data from "../data/cats";
 
 export default {
-  title: "Components/SelectedCatInfo",
-  component: SelectedCatInfo,
+  title: "Components/CatInfoCard",
+  component: CatInfoCard,
 } as Meta;
 
 const Template = (args: ICatProps) => (
   <ThemeProvider theme={theme}>
-    <SelectedCatInfo {...args} />
+    <CatInfoCard {...args} />
   </ThemeProvider>
 );
 
@@ -39,6 +39,10 @@ export { Default };
 const CatInfoWithLongText: StoryType = Template.bind({});
 CatInfoWithLongText.args = {
   ...Default.args,
+  data: {
+    ...Default.args.data,
+    description: data.cats[20].description,
+  },
   displayName: false,
 };
 

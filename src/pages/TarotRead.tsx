@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TarotCardDetails from "../components/TarotCardDetails";
+import TarotInfoCard from "../components/TarotInfoCard";
 import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
@@ -154,7 +154,7 @@ function TarotRead() {
                 top: "-10px",
               }}
             ></Button>
-            <TarotCardDetails data={data.tarotDeck[showNumber]} />
+            <TarotInfoCard data={data.tarotDeck[showNumber]} />
           </DialogContent>
         </DialogContainer>
       )}

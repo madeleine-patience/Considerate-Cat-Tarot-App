@@ -2,7 +2,7 @@ import { styled } from "@mui/system";
 
 type CatButton = {
   image: string;
-  catLookup: (arg0: string) => {};
+  catLookup: (arg0: string) => void;
 };
 
 const CatImages = styled("img")({
