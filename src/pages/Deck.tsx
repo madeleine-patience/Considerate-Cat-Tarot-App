@@ -16,6 +16,7 @@ import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import theme from "../theme";
 import { ThemeProvider } from "@mui/material/styles";
+import { TwoCardsStyled } from "../components/TwoCardsStyled";
 
 const PageContainer = styled("div")(({ theme }) => ({
   margin: "50px",
@@ -43,13 +44,6 @@ const TarotCardContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     gridTemplateColumns: "auto auto auto auto",
   },
-}));
-
-const TarotCardStyled1 = styled("div")(({ theme }) => ({
-  transform: "rotate(-0.1turn)",
-}));
-const TarotCardStyled2 = styled("div")(({ theme }) => ({
-  transform: "rotate(0.03turn)",
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -224,20 +218,12 @@ export const Deck = () => {
         <ButtonContainer>{mappedButtons}</ButtonContainer>
         <SuitDescription>{descriptionOfSuit}</SuitDescription>
         {!selectedSuit && (
-          <CardSpreadContainer>
-            <TarotCardStyled1>
-              <TarotFront
-                width={200}
-                imageSrc={data.tarotDeck[0].imageFileName}
-              />
-            </TarotCardStyled1>
-            <TarotCardStyled2>
-              <TarotFront
-                width={200}
-                imageSrc={data.tarotDeck[0].imageFileName}
-              />{" "}
-            </TarotCardStyled2>
-          </CardSpreadContainer>
+          <div style={{ margin: "auto", paddingLeft: 200 }}>
+            <TwoCardsStyled
+              amountOfCards={2}
+              selectedCard={[15, 1, 23, 2, 3, 0, 54]}
+            />
+          </div>
         )}
         <TarotCardContainer> {selectedCards} </TarotCardContainer>
 

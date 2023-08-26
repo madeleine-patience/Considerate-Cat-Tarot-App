@@ -8,31 +8,39 @@ import theme from "../theme";
 import { ThemeProvider } from "@mui/material/styles";
 
 const ModalContainer = styled("div")(({ theme }) => ({
-  width: "700px",
-  height: "700px",
+  width: 700,
+  height: 700,
   borderRadius: 10,
 }));
-const StyledPurrlaroide = styled("div")({
+const FullModalContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
-  width: "100%",
   justifyContent: "center",
-  backgroundColor: "#dbb8d2",
+  backgroundColor: "#b4cfb0",
   textAlign: "left",
   border: "2px solid #d47daf",
+  width: "100%",
+  height: "100%",
+});
+const InnerModalContainer = styled("div")({
+  backgroundColor: "#F7F7F7",
+  width: "90%",
+  height: "90%",
+  margin: "auto",
+  border: "4px solid #F7F7F7",
 });
 
 export const H2Title = styled("h2")({
-  fontSize: 64,
-  fontWeight: "bold",
-  fontFamily: theme.typography.h1.fontFamily,
-  color: "white",
-  textShadow: " 5px 5px #d47daf",
-  padding: `5px ${theme.spacing(1)} `,
+  fontSize: 40,
+  color: "black",
+  backgroundColor: "#e8d3c5",
+  padding: " 20px",
+  fontWeight: 100,
+  fontFamily: theme.typography.body1.fontFamily,
 });
 
 const SolidLine = styled("div")({
-  borderBottom: "2px solid #d47daf",
+  borderBottom: "2px solid black",
 });
 
 const TitleTextContainer = styled("div")({
@@ -42,38 +50,35 @@ const TitleTextContainer = styled("div")({
 
 const SuitText = styled("h2")({
   fontFamily: theme.typography.h2.fontFamily,
-  color: "white",
+  color: "black",
   fontSize: 24,
-  padding: `10px ${theme.spacing(1)} `,
 });
 const KeywordsText = styled("p")({
   fontSize: "20px",
   fontFamily: theme.typography.h1.fontFamily,
-  fontStyle: "italic",
   fontWeight: "bold",
-  color: "white",
-  padding: `10px ${theme.spacing(1)} `,
-  textShadow: " 2px 2px grey",
+  color: "black",
 });
 const KeyWordContainer = styled("div")({
   display: "flex",
   gap: 5,
-  alignItems: "center",
+  alignItems: "flex",
 });
 
 const CardDescriptionText = styled("p")({
   fontFamily: theme.typography.h2.fontFamily,
   fontSize: 18,
-  color: "white",
+  color: "black",
 });
 const TarotImg = styled("img")({
-  width: "300px",
+  height: 500,
 });
 
 const RightContainer = styled("div")({
   display: "flex",
   gap: "15px",
   flexDirection: "column",
+  width: "50%",
 });
 const CatContainer = styled("div")({
   display: "flex",
@@ -85,7 +90,6 @@ const CatContainer = styled("div")({
 
 const MainContent = styled("div")({
   display: "flex",
-  alignItems: "center",
   gap: "15px",
   padding: theme.spacing(1),
 });
@@ -93,7 +97,7 @@ const MainContent = styled("div")({
 const CatsPresentText = styled("p")({
   fontFamily: theme.typography.h2.fontFamily,
   fontSize: 18,
-  color: "white",
+  color: "black",
   fontWeight: "bold",
 });
 function TarotCard(data: TarotCardProps) {
@@ -109,56 +113,60 @@ function TarotCard(data: TarotCardProps) {
       <p
         key={keyWord}
         style={{
-          background: theme.palette.secondary.dark,
+          background: "#e8d3c5",
           textAlign: "center",
           borderRadius: 10,
           padding: 5,
+          fontSize: 18,
         }}
       >
         {keyWord}
       </p>
     );
   });
+  let renderBuddyWidth = 0;
+  if (data.catImage) {
+    renderBuddyWidth = data.catImage.length > 4 ? 75 : 100;
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <ModalContainer>
         {!showCatInfo && (
-          <StyledPurrlaroide>
-            <TitleTextContainer>
+          <FullModalContainer>
+            <InnerModalContainer>
               <H2Title>{data.cardName}</H2Title>
-              <SolidLine />
-              <KeyWordContainer>
-                <KeywordsText>Keywords:</KeywordsText>
-                {KeywordStyling}
-              </KeyWordContainer>
-              <SolidLine />
-              <SuitText>
-                {" "}
-                <b>Card Suit:</b> {data.suit}{" "}
-              </SuitText>
-              <SolidLine />
-            </TitleTextContainer>
-            <MainContent>
-              <TarotImg src={data.imageFileName} />
-              <RightContainer>
-                <CardDescriptionText>{data.description}</CardDescriptionText>
-                {data.catImage && (
-                  <CatsPresentText>Cats Present: </CatsPresentText>
-                )}
-                <CatContainer>
-                  {data.catImage &&
-                    data.catImage.map((image: string, index: number) => (
-                      <CatButton
-                        image={image}
-                        catLookup={catLookup}
-                        key={image + index}
-                      />
-                    ))}
-                </CatContainer>
-              </RightContainer>
-            </MainContent>
-          </StyledPurrlaroide>
+
+              <TitleTextContainer></TitleTextContainer>
+              <MainContent>
+                <TarotImg src={data.imageFileName} />
+                <RightContainer>
+                  <KeywordsText>Keywords:</KeywordsText>
+
+                  <KeyWordContainer>{KeywordStyling}</KeyWordContainer>
+                  <SuitText>
+                    {" "}
+                    <b>Card Suit:</b> {data.suit}{" "}
+                  </SuitText>
+                  <CardDescriptionText>{data.description}</CardDescriptionText>
+                  {data.catImage && (
+                    <CatsPresentText>Cats Present: </CatsPresentText>
+                  )}
+                  <CatContainer>
+                    {data.catImage &&
+                      data.catImage.map((image: string, index: number) => (
+                        <CatButton
+                          width={renderBuddyWidth}
+                          image={image}
+                          catLookup={catLookup}
+                          key={image + index}
+                        />
+                      ))}
+                  </CatContainer>
+                </RightContainer>
+              </MainContent>
+            </InnerModalContainer>
+          </FullModalContainer>
         )}
         {showCatInfo && <SelectedCatInfo data={catData.cats[selectedCatId]} />}
       </ModalContainer>

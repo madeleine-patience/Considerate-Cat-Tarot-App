@@ -12,7 +12,7 @@ const ModalContainer = styled("div")(({ theme }) => ({
   height: "700px",
   borderRadius: 10,
 }));
-const StyledPurrlaroide = styled("div")({
+const MainContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   width: "100%",
@@ -23,7 +23,7 @@ const StyledPurrlaroide = styled("div")({
 });
 
 export const H2Title = styled("h2")({
-  fontSize: 64,
+  fontSize: 50,
   fontWeight: "bold",
   fontFamily: theme.typography.h1.fontFamily,
   color: "white",
@@ -123,7 +123,7 @@ function TarotCard({ data }: TarotCardProps) {
     <ThemeProvider theme={theme}>
       <ModalContainer>
         {!showCatInfo && (
-          <StyledPurrlaroide>
+          <MainContainer>
             <TitleTextContainer>
               <H2Title>{data.cardName}</H2Title>
               <SolidLine />
@@ -131,11 +131,6 @@ function TarotCard({ data }: TarotCardProps) {
                 <KeywordsText>Keywords:</KeywordsText>
                 {KeywordStyling}
               </KeyWordContainer>
-              <SolidLine />
-              <SuitText>
-                {" "}
-                <b>Card Suit:</b> {data.suit}{" "}
-              </SuitText>
               <SolidLine />
             </TitleTextContainer>
             <MainContent>
@@ -145,19 +140,9 @@ function TarotCard({ data }: TarotCardProps) {
                 {data.catImage && (
                   <CatsPresentText>Cats Present: </CatsPresentText>
                 )}
-                <CatContainer>
-                  {data.catImage &&
-                    data.catImage.map((image: string, index: number) => (
-                      <CatButton
-                        image={image}
-                        catLookup={catLookup}
-                        key={image + index}
-                      />
-                    ))}
-                </CatContainer>
               </RightContainer>
             </MainContent>
-          </StyledPurrlaroide>
+          </MainContainer>
         )}
         {showCatInfo && <SelectedCatInfo data={catData.cats[selectedCatId]} />}
       </ModalContainer>
