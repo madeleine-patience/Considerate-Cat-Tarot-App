@@ -16,7 +16,7 @@ const FullModalContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  backgroundColor: "#eba2cb",
+  backgroundColor: "#b4cfb0",
   textAlign: "left",
   border: "2px solid #d47daf",
   width: "100%",
@@ -31,11 +31,12 @@ const InnerModalContainer = styled("div")({
 });
 
 export const H2Title = styled("h2")({
-  fontSize: 50,
+  fontSize: 40,
   color: "black",
-  backgroundColor: "#F9A4A4",
-  padding: "15px 20px",
-  fontFamily: theme.typography.h1.fontFamily,
+  backgroundColor: "#e8d3c5",
+  padding: " 20px",
+  fontWeight: 100,
+  fontFamily: theme.typography.body1.fontFamily,
 });
 
 const SolidLine = styled("div")({
@@ -55,10 +56,8 @@ const SuitText = styled("h2")({
 const KeywordsText = styled("p")({
   fontSize: "20px",
   fontFamily: theme.typography.h1.fontFamily,
-  fontStyle: "italic",
   fontWeight: "bold",
   color: "black",
-  textShadow: " 2px 2px pink",
 });
 const KeyWordContainer = styled("div")({
   display: "flex",
@@ -114,16 +113,21 @@ function TarotCard(data: TarotCardProps) {
       <p
         key={keyWord}
         style={{
-          background: theme.palette.secondary.dark,
+          background: "#e8d3c5",
           textAlign: "center",
           borderRadius: 10,
           padding: 5,
+          fontSize: 18,
         }}
       >
         {keyWord}
       </p>
     );
   });
+  let renderBuddyWidth = 0;
+  if (data.catImage) {
+    renderBuddyWidth = data.catImage.length > 4 ? 75 : 100;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -152,6 +156,7 @@ function TarotCard(data: TarotCardProps) {
                     {data.catImage &&
                       data.catImage.map((image: string, index: number) => (
                         <CatButton
+                          width={renderBuddyWidth}
                           image={image}
                           catLookup={catLookup}
                           key={image + index}

@@ -154,7 +154,7 @@ function TarotRead() {
                 top: "-10px",
               }}
             ></Button>
-            <TarotInfoCard data={data.tarotDeck[showNumber]} />
+            <TarotInfoCard {...data.tarotDeck[showNumber]} />
           </DialogContent>
         </DialogContainer>
       )}

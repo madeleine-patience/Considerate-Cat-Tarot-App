@@ -6,7 +6,7 @@ import { ThemeProvider, useTheme } from "@mui/material/styles";
 import theme from "../theme";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
+import ElmerIcon from "./ElmerIcon";
 const MenuContainer = styled("div")(({ theme }) => ({
   position: "relative",
 }));
@@ -17,27 +17,30 @@ const MenuDropDown = styled("div")(({ theme }) => ({
   background: "#d1b6e0",
   display: "flex",
   flexDirection: "column",
-  alignItems: "Center",
 }));
 
 const H1Title = styled("h1")(() => ({
-  fontSize: 50,
+  fontSize: "75px",
+  fontStyle: "italic",
   fontFamily: theme.typography.h1.fontFamily,
-  fontWeight: "bold",
   color: "white",
+  textShadow: " 5px 5px pink",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
-const HeaderCenterContent = styled("div")(({ theme }) => ({
+const MainHeaderContent = styled("div")(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: 15,
+}));
+const LeftHeaderContent = styled("div")(({ theme }) => ({
+  display: "flex",
   alignItems: "center",
   height: "100%",
-  padding: 5,
-}));
-const HeaderImage = styled("img")(({ theme }) => ({
-  height: 200,
-  marginBottom: -20,
+  gap: 20,
 }));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
@@ -49,11 +52,9 @@ const ButtonContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     position: "absolute",
     flexDirection: "column",
-    width: 400,
+    right: 0,
+    width: "100%",
     alignItems: "center",
-    top: 465,
-    left: "50%",
-    transform: "translate(-50%, -50%);",
     zIndex: 2,
   },
 }));
@@ -128,11 +129,13 @@ const Menu = () => {
       <MenuContainer ref={ref}>
         {
           <MenuDropDown>
-            <HeaderCenterContent>
-              <HeaderImage src="./Art/ElmerMain.png" />
-              <H1Title> Considerate Cat </H1Title>
-            </HeaderCenterContent>
-            <StyledMenuIcon onMouseEnter={showHideMenuButton} />
+            <MainHeaderContent>
+              <LeftHeaderContent>
+                <ElmerIcon />
+                <H1Title> Considerate Cat </H1Title>
+              </LeftHeaderContent>
+              <StyledMenuIcon onMouseEnter={showHideMenuButton} />
+            </MainHeaderContent>
           </MenuDropDown>
         }
         {showHide && !isLargeScreen && (
