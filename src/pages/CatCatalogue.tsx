@@ -12,6 +12,7 @@ import AppearsOnTheseCards from "../components/AppearsOnTheseCards";
 import DisplayBuddies from "../components/DisplayBuddies";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
+import FlowerFooter from "../components/FlowerFooter";
 
 const WholePage = styled("div")(({ theme }) => ({
   background: "#ebe6ce",
@@ -125,6 +126,7 @@ const CatCatalogue = () => {
 
           {!showCatInfo && <StyledCatalogue>{allPurrlaroids}</StyledCatalogue>}
         </div>
+        <FlowerFooter />
       </WholePage>
     </ThemeProvider>
   );

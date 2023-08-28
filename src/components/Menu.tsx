@@ -24,7 +24,7 @@ const H1Title = styled("h1")(() => ({
   fontStyle: "italic",
   fontFamily: theme.typography.h1.fontFamily,
   color: "white",
-  textShadow: " 5px 5px pink",
+  textShadow: " 5px 5px #de71a1",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
@@ -55,7 +55,7 @@ const ButtonContainer = styled("div")(({ theme }) => ({
     right: 0,
     width: "100%",
     alignItems: "center",
-    zIndex: 2,
+    zIndex: 5,
   },
 }));
 
