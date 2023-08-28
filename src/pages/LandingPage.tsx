@@ -6,13 +6,15 @@ import homepageImage from "/Art/titlePage.jpg";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import { TwoCardsStyled } from "../components/TwoCardsStyled";
+import FlowerFooter from "../components/FlowerFooter";
 
 const PageContainer = styled("div")({
   width: "100%",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flexStart",
   flexDirection: "column",
   alignItems: "center",
+  backgroundColor: "#e8d3dc",
 });
 const CatContainer = styled("div")(({ theme }) => ({
   padding: 25,
@@ -50,6 +52,8 @@ const CardContainer = styled("div")(({ theme }) => ({
 const MainImage = styled("img")(({ theme }) => ({
   height: 600,
   borderRadius: 20,
+  boxShadow:
+    "rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px",
   [theme.breakpoints.down("md")]: {
     width: "100%",
     objectFit: "cover",
@@ -83,25 +87,29 @@ export const LandingPage = () => {
   const CatTileInfo = [
     {
       image: "/Art/Heidi.jpg",
-      color: "pink",
+      color: "#d498a7",
+      color2: "#f2cbd5",
       title: "View All Cards",
       navigation: () => navigateToCards(),
     },
     {
       image: "/Art/Abe.jpg",
-      color: "lightYellow",
+      color: "#e6dca1",
+      color2: "#f2eed0",
       title: "Get A Tarot Read",
       navigation: () => navigateToRead(),
     },
     {
       image: "/Art/Elm.jpg",
-      color: "PowderBlue",
+      color: "#8eabbd",
+      color2: "#bfd5e3",
       title: "Meet The Cats",
       navigation: () => navigateToCats(),
     },
     {
       image: "/Art/Heidi.jpg",
-      color: "Thistle",
+      color: "#af99bf",
+      color2: "#dbc5eb",
       title: "Read Horoscope",
       navigation: () => navigateToHoroscope(),
     },
@@ -112,6 +120,7 @@ export const LandingPage = () => {
       <CatTile
         image={cats.image}
         color={cats.color}
+        color2={cats.color2}
         title={cats.title}
         navigation={cats.navigation}
       />
@@ -131,8 +140,11 @@ export const LandingPage = () => {
             />
           </CardContainer>
         </MainContainer>
-
         <CatContainer>{Tiles}</CatContainer>
+        <div style={{ display: "flex", width: "100vw" }}>
+          {" "}
+          <FlowerFooter />
+        </div>
       </PageContainer>
     </ThemeProvider>
   );

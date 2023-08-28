@@ -17,6 +17,7 @@ import { DialogContent } from "../components/StyledElements/DialogContent";
 import theme from "../theme";
 import { ThemeProvider } from "@mui/material/styles";
 import { TwoCardsStyled } from "../components/TwoCardsStyled";
+import FlowerFooter from "../components/FlowerFooter";
 
 const PageContainer = styled("div")(({ theme }) => ({
   margin: "50px",
@@ -66,6 +67,14 @@ const SuitDescription = styled("div")(({ theme }) => ({
   textAlign: "center",
 }));
 
+const StyledCardContainer = styled("div")(({ theme }) => ({
+  margin: "auto",
+  paddingLeft: 300,
+  height: 300,
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 export const Deck = () => {
   const [showNumber, showCard, setTarotInfo] = useDisplayTarotInfo(0);
   const [selectedSuit, setSelectedState] = useState<string | null>(null);
@@ -218,17 +227,18 @@ export const Deck = () => {
         <ButtonContainer>{mappedButtons}</ButtonContainer>
         <SuitDescription>{descriptionOfSuit}</SuitDescription>
         {!selectedSuit && (
-          <div style={{ margin: "auto", paddingLeft: 200 }}>
+          <StyledCardContainer>
             <TwoCardsStyled
-              amountOfCards={2}
+              amountOfCards={3}
               selectedCard={[15, 1, 23, 2, 3, 0, 54]}
             />
-          </div>
+          </StyledCardContainer>
         )}
         <TarotCardContainer> {selectedCards} </TarotCardContainer>
 
         {/* What were working on  */}
       </PageContainer>
+      <FlowerFooter />
     </ThemeProvider>
   );
 };

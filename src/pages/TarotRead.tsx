@@ -11,33 +11,31 @@ import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 
+const FullPageContainer = styled("div")(({ theme }) => ({
+  background: "#E3EAD1",
+  width: "100%",
+  minHeight: "100vh",
+  height: "100%",
+  padding: "25px 0",
+}));
+
 const ButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   gap: "15px",
-  margin: "15px",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     alignItems: "center",
   },
 }));
-const TarotandMatt = styled("div")(({ theme }) => ({
-  position: "relative",
-  width: "1000px",
-  margin: "auto",
-}));
-
-const Matt = styled("img")(({ theme }) => ({
-  width: "100%",
-}));
 
 const TarotCardContainer = styled("div")(({ theme }) => ({
-  display: "grid",
-  gap: "15px",
-  position: "absolute",
-  left: "50%",
-  top: "50%",
-  transform: "translate(-50%, -50%)",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  gap: 30,
+  margin: "25px 0",
 }));
 
 function TarotRead() {
@@ -48,27 +46,9 @@ function TarotRead() {
     useDisplayTarotInfo(0);
   const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
 
-  interface RenderedStyle {
-    gridTemplateColumns: string;
-    width?: string;
-  }
-  let [renderedStyle, updateRenderedStyle] = useState<RenderedStyle>({
-    gridTemplateColumns: "auto",
-    width: "100%",
-  });
-
   const randomNumbers: number[] = [];
 
   function getCards(lengthOfRead: number) {
-    let renderedStyle =
-      lengthOfRead == 1
-        ? updateRenderedStyle({ gridTemplateColumns: "auto", width: "20%" })
-        : lengthOfRead == 3
-        ? updateRenderedStyle({ gridTemplateColumns: "auto auto auto" })
-        : updateRenderedStyle({
-            gridTemplateColumns: "auto auto auto auto auto",
-          });
-
     setLengthOfTarotRead(lengthOfRead);
 
     const arrayLength = data.tarotDeck.length;
@@ -92,6 +72,7 @@ function TarotRead() {
   const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
     return (
       <TarotFront
+        cardNumber={0}
         width={200}
         key={tarotFront.toString()}
         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
@@ -106,8 +87,11 @@ function TarotRead() {
   }
 
   const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
+    console.log(tarotFront);
     return (
       <TarotFront
+        displayToolTip={true}
+        cardNumber={tarotFront}
         width={200}
         key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
@@ -159,23 +143,19 @@ function TarotRead() {
         </DialogContainer>
       )}
       {/* modal */}
-      <Menu />
-      <ButtonContainer>{tarotReadButtons}</ButtonContainer>
 
-      <TarotandMatt>
+      <Menu />
+      <FullPageContainer>
+        <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+
         {!showHide && (
-          <TarotCardContainer style={renderedStyle}>
-            {cardsNotRevealed}
-          </TarotCardContainer>
+          <TarotCardContainer>{cardsNotRevealed}</TarotCardContainer>
         )}
         {showHide && randomTarotNumbers[0] !== 0 && (
           <div>
-            <TarotCardContainer style={renderedStyle}>
-              {cardsRevealed}
-            </TarotCardContainer>
+            <TarotCardContainer>{cardsRevealed}</TarotCardContainer>
           </div>
         )}
-        <Matt src="/Art/matt.png"></Matt>
         {showHide ||
           (randomTarotNumbers[0] && (
             <Button
@@ -192,7 +172,7 @@ function TarotRead() {
             onClick={() => clearMyTarotRead()}
           ></Button>
         )}
-      </TarotandMatt>
+      </FullPageContainer>
     </>
   );
 }
