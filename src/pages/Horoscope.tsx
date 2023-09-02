@@ -10,8 +10,11 @@ import theme from "../theme";
 
 function HoroscopeRead() {
   const ButtonContainer = styled("div")(({ theme }) => ({
+    margin: 20,
     justifyItems: "center",
     display: "grid",
+    gap: 50,
+    minHeight: 600,
     [theme.breakpoints.up("sm")]: {
       gridTemplateColumns: "auto auto auto",
     },
@@ -24,7 +27,7 @@ function HoroscopeRead() {
     alignItems: "center",
     flexDirection: "column",
     gap: "15px",
-    width: "100%",
+    minHeight: "100vh",
   });
   const HoroscopeReadingContainer = styled("div")({
     maxWidth: 1000,
@@ -134,10 +137,8 @@ function HoroscopeRead() {
         buttonName={buttonInfo.buttonname}
         onClick={() => updateHoroscopeRead(buttonInfo.buttonname)}
         key={buttonInfo.buttonname}
-        style={{ margin: "10px" }}
-      >
-        {" "}
-      </Button>
+        style={{ boxShadow: "4px 4px 0px 3px rgba(173, 118, 145)" }}
+      ></Button>
     );
   });
   let mainRead;

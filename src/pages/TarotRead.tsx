@@ -21,6 +21,7 @@ const FullPageContainer = styled("div")(({ theme }) => ({
 
 const ButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
   gap: "15px",
   [theme.breakpoints.down("md")]: {
@@ -38,6 +39,16 @@ const TarotCardContainer = styled("div")(({ theme }) => ({
   margin: "25px 0",
 }));
 
+const StyledButtonContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+}));
+const FullButtonContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  width: 600,
+  alignItems: "center",
+  gap: 20,
+  margin: "auto",
+}));
 function TarotRead() {
   const navigate = useNavigate();
   const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
@@ -105,20 +116,45 @@ function TarotRead() {
   };
 
   const buttonInfo = [
-    { buttonname: "Pull One card", cardreadLength: 1 },
-    { buttonname: "Three Card Read", cardreadLength: 3 },
-    { buttonname: "Five Card Read", cardreadLength: 5 },
-    { buttonname: "Nine Card Read", cardreadLength: 9 },
+    {
+      buttonname: "Pull One card",
+      cardreadLength: 1,
+      cardReadDescription:
+        " This is a simple and direct reading often used for daily guidance or to gain clarity on a specific question. The single card can provide a straightforward answer or highlight the energy surrounding the querent (the person asking the question).",
+    },
+    {
+      buttonname: "Three Card Read",
+      cardreadLength: 3,
+      cardReadDescription:
+        ": This spread provides insight into the progression of events or situations. The first card represents the past influences or the root of the issue, the second card reveals the current situation, and the third card indicates the potential future outcome or direction.",
+    },
+    {
+      buttonname: "Five Card Read",
+      cardreadLength: 5,
+      cardReadDescription:
+        "This spread is a bit more detailed than the previous ones. The first card outlines the present situation or the question at hand. The next two cards suggest possible actions or paths to take. The last two cards forecast the short-term and long-term outcomes of the situation if the advice is heeded.",
+    },
+    {
+      buttonname: "Nine Card Read",
+      cardreadLength: 9,
+      cardReadDescription:
+        "A more in-depth spread, this can be viewed as an expanded version of the three card layout. Cards can represent a variety of aspects such as past, present, future, subconscious influences, personal feelings, external influences, hopes or fears, and the outcome. The positions' meanings can vary based on the reader's system.",
+    },
   ];
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
-      <Button
-        key={cardRead.cardreadLength}
-        buttonName={cardRead.buttonname}
-        onClick={() => {
-          getCards(cardRead.cardreadLength);
-        }}
-      ></Button>
+      <FullButtonContainer>
+        <StyledButtonContainer>
+          <Button
+            key={cardRead.cardreadLength}
+            buttonName={cardRead.buttonname}
+            onClick={() => {
+              getCards(cardRead.cardreadLength);
+            }}
+          ></Button>{" "}
+        </StyledButtonContainer>
+        {cardRead.cardReadDescription}
+      </FullButtonContainer>
     );
   });
   return (
@@ -146,8 +182,7 @@ function TarotRead() {
 
       <Menu />
       <FullPageContainer>
-        <ButtonContainer>{tarotReadButtons}</ButtonContainer>
-
+        (<ButtonContainer>{tarotReadButtons}</ButtonContainer>)
         {!showHide && (
           <TarotCardContainer>{cardsNotRevealed}</TarotCardContainer>
         )}
@@ -164,7 +199,6 @@ function TarotRead() {
               onClick={() => setTarotInfo(showNumber)}
             ></Button>
           ))}
-
         {showHide && randomTarotNumbers[0] && (
           <Button
             style={{ margin: "auto" }}

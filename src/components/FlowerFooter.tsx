@@ -1,13 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
-import theme from "../theme";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 const FlowerContainer = styled("div")(({ theme }) => ({
   display: "flex",
+  alignSelf: "flex-end",
   position: "relative",
   overflow: "hidden",
 }));

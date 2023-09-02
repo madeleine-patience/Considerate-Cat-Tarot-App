@@ -86,7 +86,7 @@ const Menu = () => {
     { buttonName: "View All Cats", urlRedirect: "/CatCatalogue" },
     { buttonName: "Horoscope Read", urlRedirect: "/Horoscope" },
     { buttonName: "Shop", urlRedirect: "" },
-    { buttonName: "Learn About Tarot", urlRedirect: "" },
+    { buttonName: "Learn About Tarot", urlRedirect: "/LearnTarot" },
     { buttonName: "About", urlRedirect: "" },
   ];
 
