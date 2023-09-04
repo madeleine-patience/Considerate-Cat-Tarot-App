@@ -28,19 +28,3 @@ const FlippableCard = ({ message, pets }: PROPS) => {
 };
 
 export default FlippableCard;
-
-// const FlippableCard = (props:any) => {
-//     const [isFlipped, setIsFlipped] = useState(false);
-
-//     return (isFlipped ? (
-//       <TarotFront
-//         key={}
-//         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-//         imageSrc={data.tarotDeck[0].imageFileName}
-//       />
-//     ) : (
-//       <TarotBack
-//         onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-//       />
-//     ));
-//   };

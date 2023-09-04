@@ -65,7 +65,6 @@ export const TwoCardsStyled = ({
   console.log("before Slice", styles);
 
   styles = styles.slice(-amountOfCards);
-  console.log("after Slice", styles);
 
   const mappedCardLayout = styles.map((card) => {
     return (

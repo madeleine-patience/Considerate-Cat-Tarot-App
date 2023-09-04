@@ -10,6 +10,7 @@ import Menu from "../components/Menu";
 import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
+import TarotCardWithFlip from "../components/TarotCardWithFlip";
 
 const FullPageContainer = styled("div")(({ theme }) => ({
   background: "#E3EAD1",
@@ -49,19 +50,22 @@ const FullButtonContainer = styled("div")(({ theme }) => ({
   gap: 20,
   margin: "auto",
 }));
+
 function TarotRead() {
   const navigate = useNavigate();
+
   const [randomTarotNumbers, setRandomTarotNumbers] = useState<number[]>([]);
   const [showTarotInfo, setShowTarotInfo] = useState(false);
   const [showNumber, showHide, setTarotInfo, setShowHide] =
     useDisplayTarotInfo(0);
   const [lengthOfTarotRead, setLengthOfTarotRead] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const randomNumbers: number[] = [];
 
   function getCards(lengthOfRead: number) {
     setLengthOfTarotRead(lengthOfRead);
-
+    setIsFlipped(false);
     const arrayLength = data.tarotDeck.length;
 
     while (randomNumbers.length < lengthOfRead) {
@@ -77,39 +81,49 @@ function TarotRead() {
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
     setShowHide(true);
+    console.log("hi");
   }
+  console.log(randomNumbers);
+  // function revealTarotInformation2(cardNumber: number[]) {
+  //   setTarotInfo(randomNumbers);
+  //   setShowHide(true);
+  //   console.log("hi");
+  // }
 
   // a function to pull the right about of cards but only display them cardback face up.
-  const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
-    return (
-      <TarotFront
-        cardNumber={0}
-        width={200}
-        key={tarotFront.toString()}
-        onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-        imageSrc={data.tarotDeck[0].imageFileName}
-      />
-    );
-  });
+  // const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
+  //   return (
+  //     <TarotFront
+  //       cardNumber={0}
+  //       width={200}
+  //       key={tarotFront.toString()}
+  //       onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
+  //       imageSrc={data.tarotDeck[0].imageFileName}
+  //     />
+  //   );
+  // });
 
   function updateStateOfCard(newNum: number) {
     setShowTarotInfo(true);
     revealTarotInformation(newNum);
   }
 
-  const cardsRevealed = randomTarotNumbers.map((tarotFront) => {
-    console.log(tarotFront);
+  const cardsRevealed = randomTarotNumbers.map((tarotFront, index) => {
     return (
-      <TarotFront
-        displayToolTip={true}
-        cardNumber={tarotFront}
-        width={200}
+      <TarotCardWithFlip
+        cardProps={{ isFlipped, transitionDelay: `${index / 2}s` }}
         key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}
         imageSrc={data.tarotDeck[tarotFront].imageFileName}
-        onClick={() => updateStateOfCard(tarotFront)}
+        onClick={() => (isFlipped ? updateStateOfCard(tarotFront) : null)}
       />
     );
   });
+
+  const flipCardsAndAllowModal = () => {
+    setIsFlipped(true);
+  };
+
+  console.log(showTarotInfo);
 
   const clearMyTarotRead = () => {
     setRandomTarotNumbers([]);
@@ -143,10 +157,9 @@ function TarotRead() {
   ];
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
-      <FullButtonContainer>
+      <FullButtonContainer key={cardRead.cardreadLength}>
         <StyledButtonContainer>
           <Button
-            key={cardRead.cardreadLength}
             buttonName={cardRead.buttonname}
             onClick={() => {
               getCards(cardRead.cardreadLength);
@@ -178,17 +191,18 @@ function TarotRead() {
           </DialogContent>
         </DialogContainer>
       )}
-      {/* modal */}
 
       <Menu />
       <FullPageContainer>
         (<ButtonContainer>{tarotReadButtons}</ButtonContainer>)
-        {!showHide && (
-          <TarotCardContainer>{cardsNotRevealed}</TarotCardContainer>
-        )}
-        {showHide && randomTarotNumbers[0] !== 0 && (
+        {showHide && randomTarotNumbers.length !== 0 && (
           <div>
             <TarotCardContainer>{cardsRevealed}</TarotCardContainer>
+            <Button
+              style={{ margin: "auto", marginBottom: 10 }}
+              buttonName="Reveal Cards"
+              onClick={() => setIsFlipped(true)}
+            ></Button>
           </div>
         )}
         {showHide ||

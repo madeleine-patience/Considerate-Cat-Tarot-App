@@ -20,17 +20,14 @@ const WholePage = styled("div")(({ theme }) => ({
 
 const StyledCatalogue = styled("div")(({ theme }) => ({
   display: "grid",
-  gridTemplateColumns: "auto auto auto auto ",
+  gridTemplateColumns: "auto auto auto  ",
   gap: "30px",
   margin: "auto",
   justifyContent: "center",
   [theme.breakpoints.down("lg")]: {
-    gridTemplateColumns: "auto auto auto ",
-  },
-  [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "auto auto  ",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "auto   ",
   },
   padding: 25,

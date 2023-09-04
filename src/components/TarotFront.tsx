@@ -16,7 +16,7 @@ function TarotFront({
   style?: CSSProperties;
   width: number;
   displayToolTip?: boolean;
-  cardNumber: number;
+  cardNumber?: number;
 }) {
   const CustomTooltip = styled(Tooltip)(({ theme }) => ({
     backgroundColor: "pink", // Set pink background color

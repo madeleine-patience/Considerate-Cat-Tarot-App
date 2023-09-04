@@ -124,6 +124,8 @@ const FlowerFooter = () => {
         <FlowerImage src="/Art/TuliipBed.png" />
         <FlowerImage src="/Art/TuliipBed.png" />
         <FlowerImage src="/Art/TuliipBed.png" />
+        <FlowerImage src="/Art/TuliipBed.png" />
+
         <GreenOverlay>
           <div>
             <TextBox>
