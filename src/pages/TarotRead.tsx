@@ -81,27 +81,7 @@ function TarotRead() {
   function revealTarotInformation(cardNumber: number) {
     setTarotInfo(cardNumber);
     setShowHide(true);
-    console.log("hi");
   }
-  console.log(randomNumbers);
-  // function revealTarotInformation2(cardNumber: number[]) {
-  //   setTarotInfo(randomNumbers);
-  //   setShowHide(true);
-  //   console.log("hi");
-  // }
-
-  // a function to pull the right about of cards but only display them cardback face up.
-  // const cardsNotRevealed = randomTarotNumbers.map((tarotFront, index) => {
-  //   return (
-  //     <TarotFront
-  //       cardNumber={0}
-  //       width={200}
-  //       key={tarotFront.toString()}
-  //       onClick={() => revealTarotInformation(data.tarotDeck[tarotFront].id)}
-  //       imageSrc={data.tarotDeck[0].imageFileName}
-  //     />
-  //   );
-  // });
 
   function updateStateOfCard(newNum: number) {
     setShowTarotInfo(true);
@@ -118,12 +98,6 @@ function TarotRead() {
       />
     );
   });
-
-  const flipCardsAndAllowModal = () => {
-    setIsFlipped(true);
-  };
-
-  console.log(showTarotInfo);
 
   const clearMyTarotRead = () => {
     setRandomTarotNumbers([]);

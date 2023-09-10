@@ -81,6 +81,7 @@ export const Deck = () => {
   const [descriptionOfSuit, setDescription] = useState(
     " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
   );
+  const [showHide, setShowHide] = React.useState(false);
 
   const renderTitle = (selectedSuit: any) => {
     if (selectedSuit === "Major") {
@@ -172,7 +173,6 @@ export const Deck = () => {
     />
   ));
 
-  const [showHide, setShowHide] = React.useState(false);
   const showHideMenuButton = () => {
     setShowHide(!showHide);
   };

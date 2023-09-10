@@ -1,7 +1,9 @@
 import { styled } from "@mui/system";
 import ICatProps from "../types/CatProps";
 import { ThemeProvider } from "@mui/material/styles";
+
 import theme from "../theme";
+import { transform } from "@babel/core";
 
 const Purrlaroid = ({
   data,
@@ -19,22 +21,25 @@ const Purrlaroid = ({
     maxWidth: imageSize,
     padding: 20,
     border: "1px solid lightGrey",
+    transform: "rotate(0deg)",
+    transition: "1s transform ease",
+    "&:hover": {
+      transform: "rotate(3deg)",
+    },
   });
-
+  const PurrlaroidContent = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+    gap: 20,
+  });
   const PurrlaroidImage = styled("img")({
     width: imageSize,
     height: imageSize,
     objectFit: "cover",
   });
 
-  const PurrlaroidContent = styled("div")({
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-  });
-
-  const PurrlaroidFont = styled("h3")({
-    fontFamily: theme.typography.h1.fontFamily,
+  const PurrlaroidText = styled("h3")({
+    fontFamily: " 'Homemade Apple', cursive",
     fontSize: 28,
     fontWeight: "bold",
     fontStyle: "italic",
@@ -49,7 +54,7 @@ const Purrlaroid = ({
             onClick={() => handleClick?.(data)}
             src={data.image}
           />
-          {displayName && <PurrlaroidFont>{data.name}</PurrlaroidFont>}
+          {displayName && <PurrlaroidText>{data.name}</PurrlaroidText>}
         </PurrlaroidContent>
       </StyledPurrlaroid>
     </ThemeProvider>
@@ -57,3 +62,5 @@ const Purrlaroid = ({
 };
 
 export default Purrlaroid;
+
+// marble_wraith: Also worth noting, be careful about which properties you animate on. Stick to Translate, scale, rotate, and opacity. Because those are the ones that can be GPU accelerated.
