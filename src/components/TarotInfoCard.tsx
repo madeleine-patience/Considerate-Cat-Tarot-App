@@ -107,7 +107,6 @@ function TarotCard(data: TarotCardProps) {
     const findTheCat = catData.cats.find((cat) => cat.image === image);
     handleShowCatInfo(findTheCat);
   };
-  console.log(data);
   const KeywordStyling = data.keyWords?.map((keyWord: string) => {
     return (
       <p

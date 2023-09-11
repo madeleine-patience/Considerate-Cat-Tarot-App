@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useReducer } from "react";
 import tarotCardData from "../data/tarotCardData";
 import TarotCard from "../components/TarotFront";
 import MyTarotProps from "../types/Tarot.type";
-import { useState } from "react";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import useDisplayTarotInfo from "../hooks/displayTarotInfo";
@@ -11,7 +10,6 @@ import TarotInfoCard from "../components/TarotInfoCard";
 import data from "../data/tarotCardData";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
-import TarotFront from "../components/TarotFront";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import theme from "../theme";
@@ -24,12 +22,6 @@ const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "50px",
-}));
-
-const CardSpreadContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
 }));
 
 const TarotCardContainer = styled("div")(({ theme }) => ({
@@ -77,44 +69,63 @@ const StyledCardContainer = styled("div")(({ theme }) => ({
 }));
 export const Deck = () => {
   const [showNumber, showCard, setTarotInfo] = useDisplayTarotInfo(0);
-  const [selectedSuit, setSelectedState] = useState<string | null>(null);
-  const [descriptionOfSuit, setDescription] = useState(
-    " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs."
-  );
-  const [showHide, setShowHide] = React.useState(false);
+  interface State {
+    selectedSuit: string | null;
+    showHide: boolean;
+    descriptionOfSuit: string;
+  }
+  type Action =
+    | { type: "SET_SELECTED_SUIT"; payload: string }
+    | { type: "SHOW_HIDE" }
+    | { type: "UPDATE_DESCRIPTION"; payload: string };
 
-  const renderTitle = (selectedSuit: any) => {
-    if (selectedSuit === "Major") {
-      setDescription(
-        "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery."
-      );
+  const reducer = (state: State, action: Action) => {
+    switch (action.type) {
+      case "SET_SELECTED_SUIT":
+        return { ...state, selectedSuit: action.payload };
+      case "SHOW_HIDE":
+        return { ...state, showHide: !state.showHide };
+      case "UPDATE_DESCRIPTION": {
+        return { ...state, descriptionOfSuit: action.payload };
+      }
+      default:
+        return state;
     }
-    if (selectedSuit === "Cups") {
-      setDescription(
-        "The suit of Cups represents emotions, relationships, intuition, and creativity. It signifies matters of the heart, love, compassion, and the exploration of one's feelings and inner world."
-      );
-    }
-    if (selectedSuit === "Pentacles") {
-      setDescription(
-        "The suit of Pentacles relates to material wealth, abundance, practicality, and the physical realm. It signifies financial matters, career, physical well-being, and the tangible aspects of life."
-      );
-    }
-    if (selectedSuit === "Swords") {
-      setDescription(
-        "The suit of Swords represents intellect, thoughts, communication, and challenges. It signifies mental clarity, conflicts, decision-making, and the power of the mind to cut through illusions and gain insight."
-      );
-    }
-    if (selectedSuit === "Wands") {
-      setDescription(
-        "The suit of Wands symbolizes energy, ambition, passion, and personal growth. It signifies creativity, inspiration, willpower, and the pursuit of goals, often related to career or personal projects."
-      );
-    }
-
-    setSelectedState(selectedSuit);
+  };
+  const initialState = {
+    selectedSuit: null,
+    showHide: false,
+    descriptionOfSuit:
+      " There are five suits of cards in the Considerate Cat Tarot deck. Major, Cups, Wands, Pentacles and Swords. While each card means something different from the next, each card has a connection or meaning to the suit of which it belongs.",
   };
 
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const renderTitle = (selectedSuit: any) => {
+    let description = "";
+
+    if (selectedSuit === "Major") {
+      description =
+        "The major Arcana cards represent significant life events and spiritual lessons, reflecting powerful archetypal energies and themes that can profoundly impact one's journey of personal growth and self-discovery.";
+    } else if (selectedSuit === "Cups") {
+      description =
+        "The suit of Cups represents emotions, relationships, intuition, and creativity. It signifies matters of the heart, love, compassion, and the exploration of one's feelings and inner world.";
+    } else if (selectedSuit === "Pentacles") {
+      description =
+        "The suit of Pentacles relates to material wealth, abundance, practicality, and the physical realm. It signifies financial matters, career, physical well-being, and the tangible aspects of life.";
+    } else if (selectedSuit === "Swords") {
+      description =
+        "The suit of Swords represents intellect, thoughts, communication, and challenges. It signifies mental clarity, conflicts, decision-making, and the power of the mind to cut through illusions and gain insight.";
+    } else if (selectedSuit === "Wands") {
+      description =
+        "The suit of Wands symbolizes energy, ambition, passion, and personal growth. It signifies creativity, inspiration, willpower, and the pursuit of goals, often related to career or personal projects.";
+    }
+
+    dispatch({ type: "SET_SELECTED_SUIT", payload: selectedSuit });
+    dispatch({ type: "UPDATE_DESCRIPTION", payload: description });
+  };
   function filterBySuit(data: MyTarotProps[]) {
-    return data.filter((card) => card.suit === selectedSuit);
+    return data.filter((card) => card.suit === state.selectedSuit);
   }
 
   function grabSelectedSuit(e: React.MouseEvent<HTMLButtonElement>) {
@@ -174,7 +185,7 @@ export const Deck = () => {
   ));
 
   const showHideMenuButton = () => {
-    setShowHide(!showHide);
+    dispatch({ type: "SHOW_HIDE" });
   };
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -191,7 +202,6 @@ export const Deck = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, setTarotInfo]);
-  console.log(data.tarotDeck[showNumber]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -225,8 +235,8 @@ export const Deck = () => {
       <Menu />
       <PageContainer>
         <ButtonContainer>{mappedButtons}</ButtonContainer>
-        <SuitDescription>{descriptionOfSuit}</SuitDescription>
-        {!selectedSuit && (
+        <SuitDescription>{state.descriptionOfSuit}</SuitDescription>
+        {!state.selectedSuit && (
           <StyledCardContainer>
             <TwoCardsStyled
               amountOfCards={3}
