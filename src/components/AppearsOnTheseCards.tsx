@@ -1,17 +1,17 @@
 import CardData from "../data/tarotCardData";
-import catData from "../data/cats";
 import { styled } from "@mui/system";
 import ICatProps from "../types/CatProps";
 
 const TarotContainer = styled("div")({
   display: "flex",
+  justifyContent: "center",
   gap: "20px",
-  width: 1000,
   margin: "auto",
+  width: "1000px",
+  background: "pink",
 });
-const MappedCard = styled("div")({
+const MappedCard = styled("img")({
   width: "200px",
-  display: "flex",
 });
 
 const AppearsOnTheseCards = ({ data }: ICatProps) => {
@@ -19,11 +19,7 @@ const AppearsOnTheseCards = ({ data }: ICatProps) => {
 
   const cardsToDisplay = CardData.tarotDeck.map((card) => {
     if (displayTheseCards.includes(card.id)) {
-      return (
-        <MappedCard>
-          <img src={card.imageFileName} key={card.id} />
-        </MappedCard>
-      );
+      return <MappedCard src={card.imageFileName} key={card.id} />;
     }
   });
 
