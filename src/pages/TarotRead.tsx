@@ -73,11 +73,11 @@ function TarotRead() {
   const initialState = {
     showTarotInfo: false,
     lengthOfTarotRead: 0,
-    isFlipped: false,
+    isFlipped: true,
     randomTarotNumbers: [],
     showCatInfo: false,
     tarotNumber: 0,
-    revealCards: false,
+    revealCards: true,
   };
 
   const reducer = (state: State, action: Action) => {
@@ -87,7 +87,7 @@ function TarotRead() {
       case "LENGTH_OF_TAROT_READ":
         return { ...state, lengthOfTarotRead: action.payload };
       case "IS_FLIPPED":
-        return { ...state, isFlipped: !state.isFlipped };
+        return { ...state, isFlipped: false };
       case "RANDOM_TAROT_NUMS":
         return { ...state, randomTarotNumbers: action.payload };
       case "SHOW_CAT_INFO":
@@ -95,7 +95,7 @@ function TarotRead() {
       case "SET_TAROT_NUMBER":
         return { ...state, tarotNumber: action.payload };
       case "REVEAL_CARDS":
-        return { ...state, revealCards: true };
+        return { ...state, revealCards: !state.revealCards };
       default:
         return state;
     }
@@ -106,7 +106,6 @@ function TarotRead() {
   const randomNumbers: number[] = [];
   function generateCardRead(lengthOfRead: number) {
     dispatch({ type: "LENGTH_OF_TAROT_READ", payload: lengthOfRead });
-    dispatch({ type: "IS_FLIPPED" });
 
     const arrayLength = data.tarotDeck.length;
 
@@ -122,14 +121,13 @@ function TarotRead() {
 
   function refreshTarotRead() {
     dispatch({ type: "RANDOM_TAROT_NUMS", payload: [] });
-    dispatch({ type: "IS_FLIPPED" });
+    state.isFlipped = true;
   }
 
   function displayTarotInfoModal(cardNumber: number) {
     console.log("hi");
 
     dispatch({ type: "SET_TAROT_NUMBER", payload: cardNumber });
-    dispatch({ type: "REVEAL_CARDS" });
     dispatch({ type: "SHOW_TAROT_INFO" });
   }
 
@@ -220,23 +218,20 @@ function TarotRead() {
           <ButtonContainer>{tarotReadButtons}</ButtonContainer>
         )}
 
-        {state.revealCards && state.randomTarotNumbers.length !== 0 && (
-          <div>
-            <TarotCardContainer>{cardsRevealed}</TarotCardContainer>
-            <Button
-              style={{ margin: "auto", marginBottom: 10 }}
-              buttonName="Reveal Cards"
-              onClick={() => dispatch({ type: "IS_FLIPPED" })}
-            ></Button>
-          </div>
-        )}
-        {state.revealCards && state.randomTarotNumbers[0] && (
+        <div>
+          <TarotCardContainer>{cardsRevealed}</TarotCardContainer>
           <Button
-            style={{ margin: "auto" }}
-            buttonName="Refresh My Tarot Read"
-            onClick={() => refreshTarotRead()}
+            style={{ margin: "auto", marginBottom: 10 }}
+            buttonName="Reveal Cards"
+            onClick={() => dispatch({ type: "IS_FLIPPED" })}
           ></Button>
-        )}
+        </div>
+
+        <Button
+          style={{ margin: "auto" }}
+          buttonName="Refresh My Tarot Read"
+          onClick={() => refreshTarotRead()}
+        ></Button>
       </FullPageContainer>
     </>
   );
