@@ -4,14 +4,13 @@ import Button from "../components/Button";
 import data from "../data/tarotCardData";
 import "@fontsource/merriweather";
 import { useNavigate } from "react-router-dom";
-import useDisplayTarotInfo from "../hooks/displayTarotInfo";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";
 import { DialogContainer } from "../components/StyledElements/DialogContainer";
 import { DialogContent } from "../components/StyledElements/DialogContent";
 import TarotCardWithFlip from "../components/TarotCardWithFlip";
-
-const FullPageContainer = styled("div")(({ theme }) => ({
+import { Box } from "@mui/material";
+const FullPageContainer = styled(Box)(({ theme }) => ({
   background: "#E3EAD1",
   width: "100%",
   minHeight: "100vh",
@@ -19,7 +18,7 @@ const FullPageContainer = styled("div")(({ theme }) => ({
   padding: "25px 0",
 }));
 
-const ButtonContainer = styled("div")(({ theme }) => ({
+const ButtonContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -30,7 +29,7 @@ const ButtonContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-const TarotCardContainer = styled("div")(({ theme }) => ({
+const TarotCardContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "flex",
   justifyContent: "center",
@@ -39,10 +38,10 @@ const TarotCardContainer = styled("div")(({ theme }) => ({
   margin: "25px 0",
 }));
 
-const StyledButtonContainer = styled("div")(({ theme }) => ({
+const StyledButtonContainer = styled(Box)(({ theme }) => ({
   display: "flex",
 }));
-const FullButtonContainer = styled("div")(({ theme }) => ({
+const FullButtonContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   width: 600,
   alignItems: "center",
@@ -53,26 +52,32 @@ const FullButtonContainer = styled("div")(({ theme }) => ({
 function TarotRead() {
   const navigate = useNavigate();
 
-  const [showNumber, showHide, setTarotInfo, setShowHide] =
-    useDisplayTarotInfo(0);
-
   interface State {
     showTarotInfo: boolean;
     lengthOfTarotRead: number;
     isFlipped: boolean;
     randomTarotNumbers: number[];
+    showCatInfo: boolean;
+    tarotNumber: number;
+    revealCards: boolean;
   }
   type Action =
     | { type: "SHOW_TAROT_INFO" }
     | { type: "LENGTH_OF_TAROT_READ"; payload: number }
     | { type: "IS_FLIPPED" }
-    | { type: "RANDOM_TAROT_NUMS"; payload: number[] };
+    | { type: "RANDOM_TAROT_NUMS"; payload: number[] }
+    | { type: "SHOW_CAT_INFO" }
+    | { type: "SET_TAROT_NUMBER"; payload: number }
+    | { type: "REVEAL_CARDS" };
 
   const initialState = {
     showTarotInfo: false,
     lengthOfTarotRead: 0,
     isFlipped: false,
     randomTarotNumbers: [],
+    showCatInfo: false,
+    tarotNumber: 0,
+    revealCards: false,
   };
 
   const reducer = (state: State, action: Action) => {
@@ -85,6 +90,12 @@ function TarotRead() {
         return { ...state, isFlipped: !state.isFlipped };
       case "RANDOM_TAROT_NUMS":
         return { ...state, randomTarotNumbers: action.payload };
+      case "SHOW_CAT_INFO":
+        return { ...state, showCatInfo: !state.showCatInfo };
+      case "SET_TAROT_NUMBER":
+        return { ...state, tarotNumber: action.payload };
+      case "REVEAL_CARDS":
+        return { ...state, revealCards: true };
       default:
         return state;
     }
@@ -93,8 +104,7 @@ function TarotRead() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const randomNumbers: number[] = [];
-
-  function getCards(lengthOfRead: number) {
+  function generateCardRead(lengthOfRead: number) {
     dispatch({ type: "LENGTH_OF_TAROT_READ", payload: lengthOfRead });
     dispatch({ type: "IS_FLIPPED" });
 
@@ -106,20 +116,23 @@ function TarotRead() {
         randomNumbers.push(randomNum);
       }
     }
-
+    dispatch({ type: "REVEAL_CARDS" });
     dispatch({ type: "RANDOM_TAROT_NUMS", payload: randomNumbers });
   }
-  // Function that shows the card clicked by taking in the card number and updating state of setShowNumber2
-  function revealTarotInformation(cardNumber: number) {
-    setTarotInfo(cardNumber);
-    setShowHide(true);
+
+  function refreshTarotRead() {
+    dispatch({ type: "RANDOM_TAROT_NUMS", payload: [] });
+    dispatch({ type: "IS_FLIPPED" });
   }
 
-  function updateStateOfCard(newNum: number) {
+  function displayTarotInfoModal(cardNumber: number) {
+    console.log("hi");
+
+    dispatch({ type: "SET_TAROT_NUMBER", payload: cardNumber });
+    dispatch({ type: "REVEAL_CARDS" });
     dispatch({ type: "SHOW_TAROT_INFO" });
-    revealTarotInformation(newNum);
   }
-  console.log(state.randomTarotNumbers);
+
   const cardsRevealed = state.randomTarotNumbers.map(
     (tarotFront: number, index: number) => {
       return (
@@ -131,17 +144,12 @@ function TarotRead() {
           key={data.tarotDeck[tarotFront].id + "-cardsRevealed"}
           imageSrc={data.tarotDeck[tarotFront].imageFileName}
           onClick={() =>
-            !state.isFlipped ? updateStateOfCard(tarotFront) : null
+            !state.isFlipped ? displayTarotInfoModal(tarotFront) : null
           }
         />
       );
     }
   );
-
-  const clearMyTarotRead = () => {
-    setRandomTarotNumbers([]);
-  };
-
   const buttonInfo = [
     {
       buttonname: "Pull One card",
@@ -168,6 +176,7 @@ function TarotRead() {
         "A more in-depth spread, this can be viewed as an expanded version of the three card layout. Cards can represent a variety of aspects such as past, present, future, subconscious influences, personal feelings, external influences, hopes or fears, and the outcome. The positions' meanings can vary based on the reader's system.",
     },
   ];
+
   const tarotReadButtons = buttonInfo.map((cardRead) => {
     return (
       <FullButtonContainer key={cardRead.cardreadLength}>
@@ -175,9 +184,9 @@ function TarotRead() {
           <Button
             buttonName={cardRead.buttonname}
             onClick={() => {
-              getCards(cardRead.cardreadLength);
+              generateCardRead(cardRead.cardreadLength);
             }}
-          ></Button>{" "}
+          ></Button>
         </StyledButtonContainer>
         {cardRead.cardReadDescription}
       </FullButtonContainer>
@@ -200,15 +209,18 @@ function TarotRead() {
                 top: "-10px",
               }}
             ></Button>
-            <TarotInfoCard {...data.tarotDeck[showNumber]} />
+            <TarotInfoCard {...data.tarotDeck[state.tarotNumber]} />
           </DialogContent>
         </DialogContainer>
       )}
 
       <Menu />
       <FullPageContainer>
-        (<ButtonContainer>{tarotReadButtons}</ButtonContainer>)
-        {showHide && state.randomTarotNumbers.length !== 0 && (
+        {state.randomTarotNumbers.length === 0 && (
+          <ButtonContainer>{tarotReadButtons}</ButtonContainer>
+        )}
+
+        {state.revealCards && state.randomTarotNumbers.length !== 0 && (
           <div>
             <TarotCardContainer>{cardsRevealed}</TarotCardContainer>
             <Button
@@ -218,19 +230,11 @@ function TarotRead() {
             ></Button>
           </div>
         )}
-        {showHide ||
-          (state.randomTarotNumbers[0] && (
-            <Button
-              style={{ margin: "auto" }}
-              buttonName="Reveal Cards"
-              onClick={() => setTarotInfo(showNumber)}
-            ></Button>
-          ))}
-        {showHide && state.randomTarotNumbers[0] && (
+        {state.revealCards && state.randomTarotNumbers[0] && (
           <Button
             style={{ margin: "auto" }}
             buttonName="Refresh My Tarot Read"
-            onClick={() => clearMyTarotRead()}
+            onClick={() => refreshTarotRead()}
           ></Button>
         )}
       </FullPageContainer>

@@ -15,14 +15,11 @@ const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   position: "relative",
-  width: 1000,
+  width: 800,
   background: "#dbc1ce",
+  borderRadius: "20px",
   margin: "auto",
   boxShadow: " 10px 5px 5px grey",
-  // [theme.breakpoints.up("md")]: {
-  //   flexDirection: "row",
-  //   justifyContent: "center",
-  // },
 }));
 
 const LeftContainer = styled("div")({
@@ -39,12 +36,6 @@ const CatImageContainer = styled("div")({
   padding: 25,
 });
 
-const ButtonSpacing = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-  width: "450px",
-});
-
 const ButtonNavigationContainer = styled("div")({
   position: "absolute",
   top: "225px",
@@ -55,8 +46,7 @@ const ButtonNavigationContainer = styled("div")({
 });
 
 const MainCatImage = styled("img")({
-  width: "500px",
-  height: "500px",
+  width: "400px",
   objectFit: "cover",
 });
 
@@ -72,7 +62,7 @@ const RightContainer = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   padding: 20,
-  border: "2px solid red",
+  width: "400px",
 });
 
 const Parargraph = styled("p")({
@@ -90,8 +80,6 @@ const CatCarousel = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const navigate = useNavigate();
 
   const scrollThroughCats = (
     currentImage: string,
@@ -147,33 +135,31 @@ const CatCarousel = ({
           {/* Cat Content */}
           <LeftContainer>
             <CatImageContainer>
-              <ButtonSpacing>
-                <ButtonNavigationContainer>
-                  {secondaryImages.length > 0 && (
-                    <>
-                      {" "}
-                      <Fab
-                        aria-label="add"
-                        style={{
-                          background: "white",
-                        }}
-                        onClick={() => scrollThroughCats(mainImage, "left")}
-                      >
-                        <ArrowBackIcon />
-                      </Fab>
-                      <Fab
-                        aria-label="add"
-                        style={{
-                          background: "white",
-                        }}
-                        onClick={() => scrollThroughCats(mainImage, "right")}
-                      >
-                        <ArrowForwardIcon />
-                      </Fab>
-                    </>
-                  )}
-                </ButtonNavigationContainer>
-              </ButtonSpacing>
+              <ButtonNavigationContainer>
+                {secondaryImages.length > 0 && (
+                  <>
+                    {" "}
+                    <Fab
+                      aria-label="add"
+                      style={{
+                        background: "white",
+                      }}
+                      onClick={() => scrollThroughCats(mainImage, "left")}
+                    >
+                      <ArrowBackIcon />
+                    </Fab>
+                    <Fab
+                      aria-label="add"
+                      style={{
+                        background: "white",
+                      }}
+                      onClick={() => scrollThroughCats(mainImage, "right")}
+                    >
+                      <ArrowForwardIcon />
+                    </Fab>
+                  </>
+                )}
+              </ButtonNavigationContainer>
               <MainCatImage src={mainImage} />
               <SecondaryImageContainer>
                 {secondaryImages}
