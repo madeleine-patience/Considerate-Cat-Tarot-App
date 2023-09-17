@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
+import { Link, useNavigate } from "react-router-dom";
 
 const Keyframes = styled("div")({});
 const Container = styled("div")(({ theme }) => ({}));
@@ -51,13 +52,18 @@ const Elmer = styled("img")(({ theme }) => ({
 
 const Menu = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+
   return (
     <ThemeProvider theme={theme}>
-      <Container>
+      <Link
+        to="/LandingPage"
+        style={{ background: "transparent", border: "0px" }}
+      >
         <Circle>
           <Elmer src="/Art/ElmerBasic.png" />
         </Circle>
-      </Container>
+      </Link>
     </ThemeProvider>
   );
 };
