@@ -1,9 +1,11 @@
 import { styled } from "@mui/system";
 import ICatProps from "../types/CatProps";
 import { ThemeProvider } from "@mui/material/styles";
-
 import theme from "../theme";
-import { transform } from "@babel/core";
+
+interface PurrlaroidProps extends ICatProps {
+  animation?: boolean;
+}
 
 const Purrlaroid = ({
   data,
@@ -11,7 +13,8 @@ const Purrlaroid = ({
   displayName,
   style,
   imageSize,
-}: ICatProps) => {
+  animation = true,
+}: PurrlaroidProps) => {
   const StyledPurrlaroid = styled("div")({
     display: "flex",
     borderRadius: "5px",
@@ -24,7 +27,7 @@ const Purrlaroid = ({
     transform: "rotate(0deg)",
     transition: "1s transform ease",
     "&:hover": {
-      transform: "rotate(3deg)",
+      transform: animation ? "rotate(3deg)" : "rotate(0)",
     },
   });
   const PurrlaroidContent = styled("div")({
@@ -36,6 +39,18 @@ const Purrlaroid = ({
     width: imageSize,
     height: imageSize,
     objectFit: "cover",
+    transition: "opacity .5s ease-in-out",
+    "&:hover": {
+      opacity: animation ? 0 : 1,
+    },
+  });
+
+  const PurrlaroidAnimation = styled("img")({
+    width: imageSize,
+    height: imageSize,
+    objectFit: "cover",
+    position: "absolute",
+    zIndex: -1,
   });
 
   const PurrlaroidText = styled("h3")({
@@ -54,6 +69,12 @@ const Purrlaroid = ({
             onClick={() => handleClick?.(data)}
             src={data.image}
           />
+          {animation && (
+            <PurrlaroidAnimation
+              onClick={() => handleClick?.(data)}
+              src={"/Art/Abe.jpg"}
+            />
+          )}
           {displayName && <PurrlaroidText>{data.name}</PurrlaroidText>}
         </PurrlaroidContent>
       </StyledPurrlaroid>

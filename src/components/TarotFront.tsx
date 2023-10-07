@@ -19,9 +19,9 @@ function TarotFront({
   cardNumber?: number;
 }) {
   const CustomTooltip = styled(Tooltip)(({ theme }) => ({
-    backgroundColor: "pink", // Set pink background color
-    fontWeight: "bold", // Set bold font weight
-    fontSize: 18, // You can adjust the font size as needed
+    backgroundColor: "pink",
+    fontWeight: "bold",
+    fontSize: 18,
   }));
 
   const StyledTarotCard = styled("img")(({ theme }) => ({

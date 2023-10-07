@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import homepageImage from "/Art/titlePage.jpg";
 import Menu from "../components/Menu";
 import { styled } from "@mui/system";

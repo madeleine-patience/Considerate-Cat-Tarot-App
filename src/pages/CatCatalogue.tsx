@@ -70,7 +70,9 @@ const CatCatalogue = () => {
 
   const SelectedCatBuddies = catData.cats.map((cat, index) => {
     if (catData.cats[selectedCatId]?.buddyIds?.includes(cat.id)) {
-      return <Purrlaroid displayName={true} data={cat}></Purrlaroid>;
+      return (
+        <Purrlaroid animation={true} displayName={true} data={cat}></Purrlaroid>
+      );
     }
   });
 

@@ -18,11 +18,7 @@ export interface Cards {
   style?: any;
 }
 
-export const TwoCardsStyled = ({
-  amountOfCards,
-  selectedCard,
-  style,
-}: Cards) => {
+export const TwoCardsStyled = ({ amountOfCards, selectedCard }: Cards) => {
   let styles = [
     {
       transform: "rotate(-0.05turn)",
@@ -59,6 +55,7 @@ export const TwoCardsStyled = ({
       top: 0,
       right: 200,
       selectedCard: selectedCard[6],
+      hover: "scale(1.2)",
     },
   ];
 

@@ -9,6 +9,7 @@ const TarotContainer = styled("div")({
   margin: "auto",
   width: "1000px",
   background: "pink",
+  padding: 10,
 });
 const MappedCard = styled("img")({
   width: "200px",

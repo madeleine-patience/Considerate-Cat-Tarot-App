@@ -62,14 +62,6 @@ const MainImage = styled("img")(({ theme }) => ({
   },
 }));
 
-const MainText = styled("div")(({ theme }) => ({
-  width: 650,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  padding: 25,
-}));
-
 export const LandingPage = () => {
   const navigate = useNavigate();
   const navigateToCards = () => {

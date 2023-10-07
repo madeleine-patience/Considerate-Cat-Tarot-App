@@ -6,7 +6,7 @@ interface TarotCardProps {
   description: string;
   catImage?: string[];
   suit?: string;
-  data?: any; //cheating lul
+  data?: any;
 }
 
 export default TarotCardProps;

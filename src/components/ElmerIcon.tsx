@@ -18,27 +18,6 @@ const Elmer = styled("img")(({ theme }) => ({
     "0%": {
       top: 80,
     },
-    "10%": {
-      top: 70,
-    },
-    "20%": {
-      top: 60,
-    },
-    "40%": {
-      top: 50,
-    },
-    "50%": {
-      top: 40,
-    },
-    "60%": {
-      top: 30,
-    },
-    "70%": {
-      top: 10,
-    },
-    "80%": {
-      top: 0,
-    },
     "100%": { top: -4 },
   },
   position: "absolute",
@@ -46,7 +25,7 @@ const Elmer = styled("img")(({ theme }) => ({
   overflow: "hidden",
   left: -87,
   top: 80,
-  animation: "704.824ms ease 821.45ms 1 normal none running elmerRise",
+  animation: "800ms ease 700ms 1 normal none running elmerRise",
   animationFillMode: "forwards",
 }));
 

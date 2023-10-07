@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import { AccordionInfo } from "../components/Accordion";
 import PageContainer from "../components/StyledElements/PageContainer";
 import FlowerFooter from "../components/FlowerFooter";
+import AnatomyOfATarotCard from "../components/AnatomyOfATarotCard";
 export const LearnTarot = () => {
   const [displayLessons, setDisplayLessons] = useState(false);
 
@@ -57,6 +58,7 @@ export const LearnTarot = () => {
   return (
     <ThemeProvider theme={theme}>
       <Menu />
+      <AnatomyOfATarotCard />
       <PageContainer style={{ background: "lightYellow" }}>
         {!displayLessons && (
           <IllustrativeContentContainer>

@@ -10,22 +10,18 @@ import { useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import H1Title from "./StyledElements/H1Title";
-import H2Title from "./StyledElements/H2Title";
+
 const PageContainer = styled("div")(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "spaceBetween",
   position: "relative",
-  width: 800,
   background: "#dbc1ce",
-  borderRadius: "20px",
   margin: "auto",
-  boxShadow: " 10px 5px 5px grey",
+  padding: "20px",
 }));
 
 const LeftContainer = styled("div")({
   width: "50%",
-  display: "flex",
-  alignItems: "Center",
 });
 const CatImageContainer = styled("div")({
   display: "flex",
@@ -33,7 +29,6 @@ const CatImageContainer = styled("div")({
   flexDirection: "column",
   width: "100%",
   height: "100%,",
-  padding: 25,
 });
 
 const ButtonNavigationContainer = styled("div")({
@@ -47,6 +42,7 @@ const ButtonNavigationContainer = styled("div")({
 
 const MainCatImage = styled("img")({
   width: "400px",
+  height: "400px",
   objectFit: "cover",
 });
 
@@ -60,8 +56,6 @@ const SecondaryImageContainer = styled("div")({
 const RightContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
-  padding: 20,
   width: "400px",
 });
 

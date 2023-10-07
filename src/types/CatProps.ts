@@ -7,7 +7,6 @@ interface ICatProps {
     image: string;
     appearsOnCards: number[];
   };
-  stateFromParent?: boolean;
   displayName?: boolean;
   style?: any;
   imageSize?: number;
