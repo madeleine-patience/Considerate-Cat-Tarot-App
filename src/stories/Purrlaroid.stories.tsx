@@ -37,6 +37,7 @@ export { Default };
 const NoDisplayName: StoryType = Template.bind({});
 NoDisplayName.args = {
   ...Default.args,
+  width: 100,
   displayName: false,
 };
 

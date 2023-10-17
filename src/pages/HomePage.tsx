@@ -50,7 +50,7 @@ const ContainerWithElmer = styled("div")({
   backgroundSize: "cover",
   height: 700,
   width: 500,
-  border: "5px double   white",
+  border: "5px double white",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",

@@ -7,6 +7,8 @@ import CatCatalogue from "./pages/CatCatalogue";
 import { Deck } from "./pages/Deck";
 import HoroscopeRead from "./pages/Horoscope";
 import { LearnTarot } from "./pages/LearnTarot";
+import AnatomyOfATarotCard from "./pages/AnatomyOfATarotCard";
+import TarotReadDirectory from "./pages/TarotReadDirectory";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,6 +29,8 @@ function App() {
       <Route path="/CatCatalogue" element={<CatCatalogue />} />
       <Route path="/Horoscope" element={<HoroscopeRead />} />
       <Route path="/LearnTarot" element={<LearnTarot />} />
+      <Route path="/AnatomyOfATarotCard" element={<AnatomyOfATarotCard />} />
+      <Route path="/TarotReadDirectory" element={<TarotReadDirectory />} />
     </Routes>
   );
 }

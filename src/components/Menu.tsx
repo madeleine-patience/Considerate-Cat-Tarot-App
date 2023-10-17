@@ -125,7 +125,7 @@ const Menu = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <MenuContainer ref={ref}>
         {
           <MenuDropDown>
@@ -143,7 +143,7 @@ const Menu = () => {
         )}
       </MenuContainer>
       <ButtonContainer2>{menuButtons}</ButtonContainer2>
-    </ThemeProvider>
+    </>
   );
 };
 
