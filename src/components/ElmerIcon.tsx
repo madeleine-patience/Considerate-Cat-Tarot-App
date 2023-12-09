@@ -2,11 +2,9 @@ import { styled } from "@mui/system";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
-const Keyframes = styled("div")({});
-const Container = styled("div")(({ theme }) => ({}));
 const Circle = styled("div")(({ theme }) => ({
-  width: 100,
-  height: 100,
+  width: 125,
+  height: 125,
   background: "#e6dbbe",
   borderRadius: "100%",
   overflow: "hidden",
@@ -23,7 +21,7 @@ const Elmer = styled("img")(({ theme }) => ({
   position: "absolute",
   width: 250,
   overflow: "hidden",
-  left: -87,
+  left: -70,
   top: 80,
   animation: "800ms ease 700ms 1 normal none running elmerRise",
   animationFillMode: "forwards",

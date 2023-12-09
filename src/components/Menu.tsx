@@ -20,7 +20,7 @@ const MenuDropDown = styled("div")(({ theme }) => ({
 }));
 
 const H1Title = styled("h1")(() => ({
-  fontSize: "75px",
+  fontSize: "90px",
   fontStyle: "italic",
   fontFamily: theme.typography.h1.fontFamily,
   color: "white",
@@ -77,6 +77,15 @@ const StyledMenuIcon = styled(MenuIcon)(({ theme }) => ({
     display: "none",
   },
 }));
+
+const StyledElmer = styled(ElmerIcon)(({ theme }) => ({
+  color: "white",
+
+  [theme.breakpoints.down("lg")]: {
+    margin: "auto",
+  },
+}));
+
 const Menu = () => {
   const navigate = useNavigate();
   const buttonInfo = [
@@ -131,7 +140,7 @@ const Menu = () => {
           <MenuDropDown>
             <MainHeaderContent>
               <LeftHeaderContent>
-                <ElmerIcon />
+                <StyledElmer />
                 <H1Title> Considerate Cat </H1Title>
               </LeftHeaderContent>
               <StyledMenuIcon onMouseEnter={showHideMenuButton} />
